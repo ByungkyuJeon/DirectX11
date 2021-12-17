@@ -149,10 +149,12 @@
   <ItemGroup>
     <ClCompile Include="ErrorLogger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="StringConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ErrorLogger.h" />
+    <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="StringConverter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
