@@ -1,4 +1,4 @@
-#include "RenderWindow.h"
+#include "Engine.h"
 #pragma comment(lib, "d3d11.lib")
 #pragma commnet(lib, "DirectXTK.lib")
 
@@ -31,10 +31,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
-	RenderWindow rw;
-	rw.Initialize(hInstance, "Title", "WindowClass", 1000, 1000);
+	Engine engine;
+	engine.Initialize(hInstance, "Title", "WindowClass", 1000, 1000);
 
-	while (rw.ProcessMessages())
+	while (engine.ProcessMessages())
 	{
 
 	}
