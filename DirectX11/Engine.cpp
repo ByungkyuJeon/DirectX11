@@ -23,4 +23,14 @@ void Engine::Update()
 		KeyboardEvent kbe = keyboard.ReadKey();
 		unsigned char keycode = kbe.GetKeyCode();
 	}
+
+	while (!mouse.EventBufferIsEmpty())
+	{
+		MouseEvent me = mouse.ReadEvent();
+		MousePoint pos = me.GetPos();
+		if (me.GetType() == MouseEvent::EventType::RAW_MOVE)
+		{
+
+		}
+	}
 }
