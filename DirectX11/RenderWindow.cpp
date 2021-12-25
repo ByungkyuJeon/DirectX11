@@ -78,6 +78,11 @@ bool RenderWindow::ProcessMessages()
 	return true;
 }
 
+HWND RenderWindow::GetHWND() const
+{
+	return this->handle;
+}
+
 /// <summary>
 /// 렌더 윈도 클래스 소멸자
 /// </summary>
