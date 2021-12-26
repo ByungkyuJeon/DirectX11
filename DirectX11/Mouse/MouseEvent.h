@@ -19,7 +19,6 @@ public:
 		MRelease,
 		WheelDown,
 		WheelUp,
-		SheelDown,
 		Move,
 		RAW_MOVE,
 		Invalid

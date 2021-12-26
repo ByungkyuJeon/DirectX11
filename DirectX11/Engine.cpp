@@ -7,7 +7,7 @@ bool Engine::Initialize(HINSTANCE hInstance, std::string window_title, std::stri
 		return false;
 	}
 
-	if (!gfx.Initialize(render_window.GetHWND(), width, height))
+	if (!graphics.Initialize(render_window.GetHWND(), width, height))
 	{
 		return false;
 	}
@@ -43,4 +43,9 @@ void Engine::Update()
 
 		}
 	}
+}
+
+void Engine::RenderFrame()
+{
+	graphics.RenderFrame();
 }

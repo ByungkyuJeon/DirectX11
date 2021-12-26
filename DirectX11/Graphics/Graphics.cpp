@@ -9,9 +9,103 @@ bool Graphics::Initialize(HWND hwnd, int width, int height)
 	return true;
 }
 
+void Graphics::RenderFrame()
+{
+	float bgcolor[] = { 0.0f, 1.0f, 1.0f, 1.0f };
+	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolor);
+	// vsync on : 1
+	// vsync off : 0
+	this->swapChain->Present(1, NULL);
+}
+
 bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 {
 	std::vector<AdapterData> adapters = AdapterReader::GetAdapters();
+	int selectedAdapterIdx = 0;
+
+	// 인식된 어뎁터 체크
+	if (adapters.size() < 1)
+	{
+		ErrorLogger::Log("No IDXGI Adapaters found.");
+		return false;
+	}
+	else
+	{
+		// 비디오 메모리가 가장 큰 어뎁터 선택
+		for (int adapterIdx = 0; adapterIdx < adapters.size(); adapterIdx++)
+		{
+			if (adapters[adapterIdx].description.DedicatedVideoMemory > adapters[selectedAdapterIdx].description.DedicatedVideoMemory)
+			{
+				selectedAdapterIdx = adapterIdx;
+			}
+		}
+	}
+
+	// 스왑 체인 구조체 설정
+	DXGI_SWAP_CHAIN_DESC scd;
+	ZeroMemory(&scd, sizeof(DXGI_SWAP_CHAIN_DESC));
+
+	scd.BufferDesc.Width = width;
+	scd.BufferDesc.Height = height;
+	scd.BufferDesc.RefreshRate.Numerator = 60;
+	scd.BufferDesc.RefreshRate.Denominator = 1;
+	scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	scd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
+	scd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
 	
+	scd.SampleDesc.Count = 1;
+	scd.SampleDesc.Quality = 0;
+	
+	scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	// 1 - 더블 버퍼링
+	// 2 - 트리플 버퍼링
+	scd.BufferCount = 1;
+	scd.OutputWindow = hwnd;
+	scd.Windowed = true;
+	scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	scd.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
+
+	// 스왑 체인 오브젝트 생성
+	HRESULT hr;
+	hr = D3D11CreateDeviceAndSwapChain(
+		adapters[selectedAdapterIdx].pAdapter,
+		D3D_DRIVER_TYPE_UNKNOWN,
+		NULL,
+		NULL,
+		NULL,
+		0,
+		D3D11_SDK_VERSION,
+		&scd,
+		this->swapChain.GetAddressOf(),
+		this->device.GetAddressOf(),
+		NULL,
+		this->deviceContext.GetAddressOf()
+	);
+
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "Failed to create device and swapchain.");
+		return false;
+	}
+
+	// 스왑 체인 백버퍼 주소 읽어오기
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
+	hr = this->swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(backBuffer.GetAddressOf()));
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "Failed GetBuffer.");
+		return false;
+	}
+
+	// 렌더 타겟 뷰 생성
+	hr = this->device->CreateRenderTargetView(backBuffer.Get() , NULL, this->renderTargetView.GetAddressOf());
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "CreateRenderTargetView Failed.");
+		return false;
+	}
+
+	this->deviceContext->OMSetRenderTargets(1, this->renderTargetView.GetAddressOf(), NULL);
+
 	return true;
 }
