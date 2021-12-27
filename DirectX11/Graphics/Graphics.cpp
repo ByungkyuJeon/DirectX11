@@ -113,6 +113,16 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 
 	this->deviceContext->OMSetRenderTargets(1, this->renderTargetView.GetAddressOf(), NULL);
 
+	D3D11_VIEWPORT viewport;
+	ZeroMemory(&viewport, sizeof(viewport));
+
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.Width = width;
+	viewport.Height = height;
+
+	this->deviceContext->RSSetViewports(1, &viewport);
+
 	return true;
 }
 
@@ -137,11 +147,6 @@ bool Graphics::InitializeShaders()
 #endif
 	}
 
-	if (!vertexShader.Initialize(this->device, shaderfolder + L"vertexShader.cso"))
-	{
-		return false;
-	}
-
 	D3D11_INPUT_ELEMENT_DESC layout[] =
 	{
 		{"POSITION", 0, DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA, 0 }, // Offset macro : D3D11_APPEND_ALIGNED_ELEMENT
@@ -149,12 +154,16 @@ bool Graphics::InitializeShaders()
 
 	UINT numElements = ARRAYSIZE(layout);
 
-	HRESULT hr = this->device->CreateInputLayout(layout, numElements, vertexShader.GetBuffer()->GetBufferPointer(), vertexShader.GetBuffer()->GetBufferSize(), this->inputLayout.GetAddressOf());
-	if (FAILED(hr))
+	if (!vertexShader.Initialize(this->device, shaderfolder + L"vertexShader.cso", layout, numElements))
 	{
-		ErrorLogger::Log(hr, "CreateInputLayout failed.");
 		return false;
 	}
+
+	if (!pixelShader.Initialize(this->device, shaderfolder + L"pixelShader.cso"))
+	{
+		return false;
+	}
+
 	return true;
 }
 
