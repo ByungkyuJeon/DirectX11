@@ -65,7 +65,7 @@ bool PixelShader::Initialize(Microsoft::WRL::ComPtr<ID3D11Device>& device, std::
 		return false;
 	}
 
-	return false;
+	return true;
 }
 
 ID3D11PixelShader* PixelShader::GetShader()
