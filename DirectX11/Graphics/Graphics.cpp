@@ -6,6 +6,12 @@ bool Graphics::Initialize(HWND hwnd, int width, int height)
 	{
 		return false;
 	}
+
+	if (!InitializeShaders())
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -109,3 +115,51 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 
 	return true;
 }
+
+bool Graphics::InitializeShaders()
+{
+	std::wstring shaderfolder;
+#pragma region DetermineShaderPath
+	if (IsDebuggerPresent() == TRUE)
+	{
+#ifdef _DEBUG 
+		#ifdef _WIN64
+			shaderfolder = L"..\\x64\\Debug\\";
+		#else
+			shaderfolder = L"..\\Debug\\";
+		#endif
+#else
+		#ifdef _WIN64
+			shaderfolder = L"..\\x64\\Release\\";
+		#else
+			shaderfolder = L"..\\Release\\";
+		#endif
+#endif
+	}
+
+	if (!vertexShader.Initialize(this->device, shaderfolder + L"vertexShader.cso"))
+	{
+		return false;
+	}
+
+	D3D11_INPUT_ELEMENT_DESC layout[] =
+	{
+		{"POSITION", 0, DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA, 0 }, // Offset macro : D3D11_APPEND_ALIGNED_ELEMENT
+	};
+
+	UINT numElements = ARRAYSIZE(layout);
+
+	HRESULT hr = this->device->CreateInputLayout(layout, numElements, vertexShader.GetBuffer()->GetBufferPointer(), vertexShader.GetBuffer()->GetBufferSize(), this->inputLayout.GetAddressOf());
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "CreateInputLayout failed.");
+		return false;
+	}
+	return true;
+}
+
+// input assembler
+// vertex shader
+// rasterizer
+// pixel shader
+// ouput merger
