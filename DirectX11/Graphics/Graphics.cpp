@@ -39,6 +39,17 @@ void Graphics::RenderFrame()
 	this->deviceContext->PSSetShader(this->pixelShader.GetShader(), NULL, 0);
 
 	UINT offset = 0;
+
+	// update constant buffer
+	constantBuffer.data.xOffset = 0.5f;
+	constantBuffer.data.yOffset = 0.5f;
+
+	if (!constantBuffer.ApplyChanges())
+	{
+		return;
+	}
+	this->deviceContext->VSSetConstantBuffers(0, 1, constantBuffer.GetAddressOf());
+
 	this->deviceContext->PSSetShaderResources(0, 1, this->myTexture.GetAddressOf());
 	this->deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), vertexBuffer.StridePtr(), &offset);
 	this->deviceContext->IASetIndexBuffer(indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
@@ -321,6 +332,13 @@ bool Graphics::InitializeScene()
 	if (FAILED(hr))
 	{
 		ErrorLogger::Log(hr, "CreateWICTextureFromFIle failed.");
+		return false;
+	}
+
+	hr = constantBuffer.Initialize(this->device.Get(), this->deviceContext.Get());
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "constant buffer initialization failed.");
 		return false;
 	}
 
