@@ -41,9 +41,9 @@ void Graphics::RenderFrame()
 	UINT offset = 0;
 	this->deviceContext->PSSetShaderResources(0, 1, this->myTexture.GetAddressOf());
 	this->deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), vertexBuffer.StridePtr(), &offset);
-	this->deviceContext->IASetIndexBuffer(indicesBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+	this->deviceContext->IASetIndexBuffer(indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
 	//this->deviceContext->Draw(6, 0);
-	this->deviceContext->DrawIndexed(6, 0, 0);
+	this->deviceContext->DrawIndexed(indexBuffer.BufferSize(), 0, 0);
 
 	spriteBatch->Begin();
 	spriteFont->DrawString(spriteBatch.get(), L"SpriteFont Test", DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::Colors::White, 0.0f, DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f));
@@ -310,25 +310,12 @@ bool Graphics::InitializeScene()
 		return false;
 	}
 
-	D3D11_BUFFER_DESC indexBufferDesc;
-	ZeroMemory(&indexBufferDesc, sizeof(D3D11_BUFFER_DESC));
-
-	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth = sizeof(DWORD) * ARRAYSIZE(indices);
-	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	indexBufferDesc.CPUAccessFlags = 0;
-	indexBufferDesc.MiscFlags = 0;
-
-	D3D11_SUBRESOURCE_DATA indexBufferData;
-	ZeroMemory(&indexBufferData, sizeof(D3D11_SUBRESOURCE_DATA));
-	indexBufferData.pSysMem = indices;
-	hr = device->CreateBuffer(&indexBufferDesc, &indexBufferData, indicesBuffer.GetAddressOf());
+	hr = indexBuffer.Initialize(this->device.Get(), indices, ARRAYSIZE(indices));
 	if (FAILED(hr))
 	{
 		ErrorLogger::Log(hr, "indices buffer creation failed.");
 		return false;
 	}
-
 
 	hr = DirectX::CreateWICTextureFromFile(this->device.Get(), L"Data\\Textures\\testTexture.png", nullptr, myTexture.GetAddressOf());
 	if (FAILED(hr))
