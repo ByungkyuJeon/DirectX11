@@ -2,6 +2,9 @@
 #include "AdapterReader.h"
 #include "Shaders.h"
 #include "Vertex.h"
+#include <SpriteBatch.h>
+#include <SpriteFont.h>
+#include <WICTextureLoader.h>
 
 class Graphics
 {
@@ -17,9 +20,25 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> deviceContext;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> swapChain;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView;
-
+	
+	// 셰이더
 	VertexShader vertexShader; 
 	PixelShader pixelShader;
 
 	Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> indicesBuffer;
+
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> depthStencilView;
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> depthStencilBuffer;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilState;
+
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState> raterizerState;
+
+	// 폰트
+	std::unique_ptr<DirectX::SpriteBatch> spriteBatch;
+	std::unique_ptr<DirectX::SpriteFont> spriteFont;
+
+	// 텍스처
+	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> myTexture;
 };

@@ -23,15 +23,27 @@ bool RenderWindow::Initialize(WindowContainer* pWindowContainer, HINSTANCE hInst
 	// 윈도우 구조체 초기화
 	this->RegisterWindowClass();
 
+	// 생성 위치 스크린 중앙으로 설정
+	int centerScreenX = GetSystemMetrics(SM_CXSCREEN) / 2 - this->width / 2;
+	int centerScreenY = GetSystemMetrics(SM_CYSCREEN) / 2 - this->height / 2;
+
+	// 윈도우 영역 보정
+	RECT wr;
+	wr.left = centerScreenX;
+	wr.top = centerScreenY;
+	wr.right = wr.left + this->width;
+	wr.bottom = wr.top + this->height;
+	AdjustWindowRect(&wr, WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU, FALSE);
+
 	// 윈도우 생성
 	this->handle = CreateWindowEx(0,
 		this->window_class_wide.c_str(),
 		this->window_title_wide.c_str(),
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
-		0,
-		0,
-		this->width,
-		this->height,
+		wr.left,
+		wr.top,
+		wr.right - wr.left,
+		wr.bottom - wr.top,
 		NULL,
 		NULL,
 		this->hInstance,
