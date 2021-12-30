@@ -2,6 +2,8 @@
 
 bool Engine::Initialize(HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
 {
+	frameTimer.Start();
+
 	if (!this->render_window.Initialize(this, hInstance, window_title, window_class, width, height))
 	{
 		return false;
@@ -22,6 +24,9 @@ bool Engine::ProcessMessages()
 
 void Engine::Update()
 {
+	float frameTime = frameTimer.GetMilisecondsElapsed();
+	frameTimer.ReStart();
+
 	while (!keyboard.CharBufferIsEmpty())
 	{
 		unsigned char ch = keyboard.ReadChar();
@@ -46,33 +51,33 @@ void Engine::Update()
 		}
 	}
 
-	const DirectX::XMFLOAT3 cameraSpeed{ 0.02f, 0.02f, 0.02f };
+	const float cameraSpeed = 0.01f;
 
 	if (mouse.IsRightDown())
 	{
 		if (keyboard.KeyIsPressed('W'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetForwardVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetForwardVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('A'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetLeftVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetLeftVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('S'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetBackwardVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetBackwardVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('D'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetRightVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetRightVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('E'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetUpVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetUpVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('Q'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorMultiply(this->graphics.camera.GetDownVector(), DirectX::XMLoadFloat3(&cameraSpeed)));
+			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetDownVector(), cameraSpeed * frameTime));
 		}
 	}
 }

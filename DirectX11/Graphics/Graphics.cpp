@@ -2,6 +2,8 @@
 
 bool Graphics::Initialize(HWND hwnd, int width, int height)
 {
+	frameTimer.Start();
+
 	windowWidth = width;
 	windowHeight = height;
 
@@ -61,8 +63,18 @@ void Graphics::RenderFrame()
 	//this->deviceContext->Draw(6, 0);
 	this->deviceContext->DrawIndexed(indexBuffer.BufferSize(), 0, 0);
 
+	static int frameTime = 0;
+	static std::string frameTimeString = "FPS : 0";
+	frameTime += 1;
+	if (frameTimer.GetMilisecondsElapsed() > 500.0)
+	{
+		frameTimeString = "FPS : " + std::to_string(frameTime * 2);
+		frameTime = 0;
+		frameTimer.ReStart();
+	}
+
 	spriteBatch->Begin();
-	spriteFont->DrawString(spriteBatch.get(), L"SpriteFont Test", DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::Colors::White, 0.0f, DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f));
+	spriteFont->DrawString(spriteBatch.get(), StringConverter::StringToWide(frameTimeString).c_str(), DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::Colors::White, 0.0f, DirectX::XMFLOAT2(0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f));
 	spriteBatch->End();
 
 	// vsync on : 1
