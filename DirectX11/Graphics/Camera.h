@@ -27,6 +27,13 @@ public:
 
 	void SetLookAtPos(DirectX::XMFLOAT3 lookAtPos);
 
+	const DirectX::XMVECTOR& GetForwardVector();
+	const DirectX::XMVECTOR& GetRightVector();
+	const DirectX::XMVECTOR& GetLeftVector();
+	const DirectX::XMVECTOR& GetBackwardVector();
+	const DirectX::XMVECTOR& GetUpVector();
+	const DirectX::XMVECTOR& GetDownVector();
+
 private:
 	void UpdateViewMatrix();
 	DirectX::XMVECTOR posVector;
@@ -38,4 +45,15 @@ private:
 
 	const DirectX::XMVECTOR DEFAULT_FORWARD_VECTOR = DirectX::XMVectorSet(0.0f, 0.0f, 1.0f, 0.0f);
 	const DirectX::XMVECTOR DEFAULT_UP_VECTOR = DirectX::XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+	const DirectX::XMVECTOR DEFAULT_DOWN_VECTOR = DirectX::XMVectorSet(0.0f, -1.0f, 0.0f, 0.0f);
+	const DirectX::XMVECTOR DEFAULT_BACKWARD_VECTOR = DirectX::XMVectorSet(0.0f, 0.0f, -1.0f, 0.0f);
+	const DirectX::XMVECTOR DEFAULT_LEFT_VECTOR = DirectX::XMVectorSet(-1.0f, 0.0f, 0.0f, 0.0f);
+	const DirectX::XMVECTOR DEFAULT_RIGHT_VECTOR = DirectX::XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+
+	DirectX::XMVECTOR vec_forward;
+	DirectX::XMVECTOR vec_left;
+	DirectX::XMVECTOR vec_right;
+	DirectX::XMVECTOR vec_backward;
+	DirectX::XMVECTOR vec_up;
+	DirectX::XMVECTOR vec_down;
 };
