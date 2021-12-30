@@ -2,7 +2,10 @@
 
 bool Graphics::Initialize(HWND hwnd, int width, int height)
 {
-	if (!InitializeDirectX(hwnd, width, height))
+	windowWidth = width;
+	windowHeight = height;
+
+	if (!InitializeDirectX(hwnd))
 	{
 		return false;
 	}
@@ -41,8 +44,12 @@ void Graphics::RenderFrame()
 	UINT offset = 0;
 
 	// update constant buffer
-	constantBuffer.data.xOffset = 0.5f;
-	constantBuffer.data.yOffset = 0.5f;
+	DirectX::XMMATRIX world = DirectX::XMMatrixIdentity();
+	camera.AdjustPosition(0.01f, 0.0f, 0.0f);
+	camera.SetLookAtPos(DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f));
+
+	constantBuffer.data.mat = world * camera.GetViewMatrix() * camera.GetProjectionMatrix();
+	constantBuffer.data.mat = DirectX::XMMatrixTranspose(constantBuffer.data.mat);
 
 	if (!constantBuffer.ApplyChanges())
 	{
@@ -65,7 +72,7 @@ void Graphics::RenderFrame()
 	this->swapChain->Present(1, NULL);
 }
 
-bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
+bool Graphics::InitializeDirectX(HWND hwnd)
 {
 	std::vector<AdapterData> adapters = AdapterReader::GetAdapters();
 	int selectedAdapterIdx = 0;
@@ -92,8 +99,8 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 	DXGI_SWAP_CHAIN_DESC scd;
 	ZeroMemory(&scd, sizeof(DXGI_SWAP_CHAIN_DESC));
 
-	scd.BufferDesc.Width = width;
-	scd.BufferDesc.Height = height;
+	scd.BufferDesc.Width = windowWidth;
+	scd.BufferDesc.Height = windowHeight;
 	scd.BufferDesc.RefreshRate.Numerator = 60;
 	scd.BufferDesc.RefreshRate.Denominator = 1;
 	scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -155,8 +162,8 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 	D3D11_TEXTURE2D_DESC depthStencilDesc;
 	ZeroMemory(&depthStencilDesc, sizeof(D3D11_TEXTURE2D_DESC));
 
-	depthStencilDesc.Width = width;
-	depthStencilDesc.Height = height;
+	depthStencilDesc.Width = windowWidth;
+	depthStencilDesc.Height = windowHeight;
 	depthStencilDesc.MipLevels = 1;
 	depthStencilDesc.ArraySize = 1;
 	depthStencilDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
@@ -206,8 +213,8 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 
 	viewport.TopLeftX = 0;
 	viewport.TopLeftY = 0;
-	viewport.Width = width;
-	viewport.Height = height;
+	viewport.Width = windowWidth;
+	viewport.Height = windowHeight;
 	viewport.MinDepth = 0.0f;
 	viewport.MaxDepth = 1.0f;
 
@@ -300,12 +307,12 @@ bool Graphics::InitializeScene()
 {
 	Vertex v[]
 	{
-		Vertex{-0.5f, -0.5f, 1.0f, 0.0f, 1.0f},
-		Vertex{-0.5f, 0.5f, 1.0f, 0.0f, 0.0f},
-		Vertex{0.5f, 0.5f, 1.0f, 1.0f, 0.0f},
+		Vertex{-0.5f, -0.5f, 0.0f, 0.0f, 1.0f},
+		Vertex{-0.5f, 0.5f, 0.0f, 0.0f, 0.0f},
+		Vertex{0.5f, 0.5f, 0.0f, 1.0f, 0.0f},
 
 		
-		Vertex{0.5f, -0.5f, 1.0f, 1.0f, 1.0f},
+		Vertex{0.5f, -0.5f, 0.0f, 1.0f, 1.0f},
 	};
 
 	DWORD indices[]
@@ -341,6 +348,10 @@ bool Graphics::InitializeScene()
 		ErrorLogger::Log(hr, "constant buffer initialization failed.");
 		return false;
 	}
+
+	camera.SetPosition(0.0f, 0.0f, -2.0f);
+	camera.SetProjectionValues(90.0f, static_cast<float>(windowWidth) / static_cast<float>(windowHeight), 0.1f, 1000.0f);
+
 
 	return true;
 }

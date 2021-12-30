@@ -4,8 +4,7 @@
 struct alignas(16) CB_VS_vertexshader
 {
 public:
-	CB_VS_vertexshader() : xOffset{ 0.0f }, yOffset{ 0.0f }{}
+	CB_VS_vertexshader() : mat{ DirectX::XMMatrixIdentity() }{}
 
-	float xOffset;
-	float yOffset;
+	DirectX::XMMATRIX mat;
 };
