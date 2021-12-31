@@ -4,20 +4,35 @@
 #define VertexBuffer_h__
 #include <d3d11.h>
 #include <wrl/client.h>
+#include <memory>
+#include "..\\ErrorLogger.h"
 
 template<class T>
 class VertexBuffer
 {
 private:
-	VertexBuffer(const VertexBuffer<T>& rhs);
-
-private:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> buffer;
-	std::unique_ptr<UINT> stride;
+	std::shared_ptr<UINT> stride;
 	UINT bufferSize = 0;
 
 public:
 	VertexBuffer() {}
+
+	VertexBuffer(const VertexBuffer<T>& other)
+	{
+		this->buffer = other.buffer;
+		this->bufferSize = other.bufferSize;
+		this->stride = other.stride;
+	}
+
+	VertexBuffer<T>& operator=(const VertexBuffer<T>& other)
+	{
+		this->buffer = other.buffer;
+		this->bufferSize = other.bufferSize;
+		this->stride = other.stride;
+
+		return *this;
+	}
 
 	ID3D11Buffer* Get() const
 	{
@@ -46,8 +61,16 @@ public:
 
 	HRESULT Initialize(ID3D11Device* device, T* data, UINT numVertices)
 	{
+		if (buffer.Get() != nullptr)
+		{
+			buffer.Reset();
+		}
+
 		this->bufferSize = numVertices;
-		this->stride = std::make_unique<UINT>(sizeof(T));
+		if (this->stride.get() == nullptr)
+		{
+			this->stride = std::make_shared<UINT>(sizeof(T));
+		}
 
 		D3D11_BUFFER_DESC vertexBufferDesc;
 		ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));

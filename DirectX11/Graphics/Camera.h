@@ -16,13 +16,17 @@ public:
 	const DirectX::XMFLOAT3& GetRotationFloat3() const;
 
 	void SetPosition(const DirectX::XMVECTOR& pos);
+	void SetPosition(const DirectX::XMFLOAT3& pos);
 	void SetPosition(float x, float y, float z);
 	void AdjustPosition(const DirectX::XMVECTOR& pos);
+	void AdjustPosition(const DirectX::XMFLOAT3& pos);
 	void AdjustPosition(float x, float y, float z);
 
 	void SetRotation(const DirectX::XMVECTOR& rot);
+	void SetRotation(const DirectX::XMFLOAT3& rot);
 	void SetRotation(float x, float y, float z);
 	void AdjustRotation(const DirectX::XMVECTOR& rot);
+	void AdjustRotation(const DirectX::XMFLOAT3& rot);
 	void AdjustRotation(float x, float y, float z);
 
 	void SetLookAtPos(DirectX::XMFLOAT3 lookAtPos);

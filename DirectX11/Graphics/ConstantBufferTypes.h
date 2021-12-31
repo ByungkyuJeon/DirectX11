@@ -8,3 +8,8 @@ public:
 
 	DirectX::XMMATRIX mat;
 };
+
+struct alignas(16) CB_PS_pixelshader
+{
+	float alpha = 1.0f;
+};

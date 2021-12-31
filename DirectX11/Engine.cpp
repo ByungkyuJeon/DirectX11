@@ -51,7 +51,7 @@ void Engine::Update()
 		}
 	}
 
-	const float cameraSpeed = 0.01f;
+	const float cameraSpeed = 0.51f;
 
 	if (mouse.IsRightDown())
 	{
