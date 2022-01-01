@@ -1,10 +1,9 @@
 #include "Model.h"
 
-bool Model::Initialize(const std::string& filePath, ID3D11Device* device, ID3D11DeviceContext* deviceContext, ID3D11ShaderResourceView* texture, ConstantBuffer<CB_VS_vertexshader>& cb_vs_vertexShader)
+bool Model::Initialize(const std::string& filePath, ID3D11Device* device, ID3D11DeviceContext* deviceContext, ConstantBuffer<CB_VS_vertexshader>& cb_vs_vertexShader)
 {
 	this->device = device;
 	this->deviceContext = deviceContext;
-	this->texture = texture;
 	this->cb_vs_vertexShader = &cb_vs_vertexShader;
 	
 	try
@@ -23,11 +22,6 @@ bool Model::Initialize(const std::string& filePath, ID3D11Device* device, ID3D11
 	return true;
 }
 
-void Model::SetTexture(ID3D11ShaderResourceView* texture)
-{
-	this->texture = texture;
-}
-
 void Model::Draw(const DirectX::XMMATRIX& worldMatrix, const DirectX::XMMATRIX& viewProjectionMatrix)
 {
 	this->cb_vs_vertexShader->data.mat = DirectX::XMMatrixMultiply(worldMatrix, viewProjectionMatrix);
@@ -35,7 +29,6 @@ void Model::Draw(const DirectX::XMMATRIX& worldMatrix, const DirectX::XMMATRIX& 
 	this->cb_vs_vertexShader->ApplyChanges();
 
 	this->deviceContext->VSSetConstantBuffers(0, 1, this->cb_vs_vertexShader->GetAddressOf());
-	this->deviceContext->PSSetShaderResources(0, 1, &this->texture);
 
 	for (int i = 0; i < meshes.size(); i++)
 	{
@@ -105,5 +98,8 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 		}
 	}
 
-	return Mesh(this->device, this->deviceContext, vertices, indices);
+	std::vector<Texture> textures;
+	textures.emplace_back(Texture(this->device, Colors::UnloadedTextureColor, aiTextureType::aiTextureType_DIFFUSE));
+
+	return Mesh(this->device, this->deviceContext, vertices, indices, textures);
 }

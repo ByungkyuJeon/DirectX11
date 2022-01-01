@@ -87,6 +87,12 @@
     <ClCompile Include="Graphics\GameObject.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\Color.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Texture.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringConverter.h">
@@ -156,6 +162,12 @@
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\GameObject.h">
+      <Filter>Headers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Color.h">
+      <Filter>Headers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Texture.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

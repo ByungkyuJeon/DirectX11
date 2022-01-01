@@ -311,7 +311,7 @@ bool Graphics::InitializeScene()
 		COM_ERROR_IF_FAILED(hr, "pixel constant buffer initialization failed.");
 
 		// ¸ğµ¨ ÃÊ±âÈ­
-		if (!gameObject.Initialize("Data\\Objects\\Ivan_1304_OBJ.obj", this->device.Get(), this->deviceContext.Get(), this->Texture_1.Get(), this->cb_vs_vertexShader))
+		if (!gameObject.Initialize("Data\\Objects\\Ivan_1304_OBJ.obj", this->device.Get(), this->deviceContext.Get(), this->cb_vs_vertexShader))
 		{
 			return false;
 		}
