@@ -16,9 +16,9 @@ bool RenderWindow::Initialize(WindowContainer* pWindowContainer, HINSTANCE hInst
 	this->width = width;
 	this->height = height;
 	this->window_title = window_title;
-	this->window_title_wide = StringConverter::StringToWide(this->window_title);
+	this->window_title_wide = StringHelper::StringToWide(this->window_title);
 	this->window_class = window_class;
-	this->window_class_wide = StringConverter::StringToWide(this->window_class);
+	this->window_class_wide = StringHelper::StringToWide(this->window_class);
 
 	// 윈도우 구조체 초기화
 	this->RegisterWindowClass();

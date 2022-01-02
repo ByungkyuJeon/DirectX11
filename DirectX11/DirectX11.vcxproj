@@ -168,7 +168,7 @@
     <ClCompile Include="Mouse\MouseEvent.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Graphics\Shaders.cpp" />
-    <ClCompile Include="StringConverter.cpp" />
+    <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="Graphics\Texture.cpp" />
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
@@ -193,7 +193,7 @@
     <ClInclude Include="Mouse\MouseEvent.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Graphics\Shaders.h" />
-    <ClInclude Include="StringConverter.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="Graphics\Vertex.h" />
     <ClInclude Include="Graphics\VertexBuffer.h" />
     <ClInclude Include="Graphics\Texture.h" />
