@@ -4,8 +4,6 @@
 class GameObject
 {
 public:
-	bool Initialize(const std::string& filePath, ID3D11Device* device, ID3D11DeviceContext* deviceContext, ConstantBuffer<CB_VS_vertexshader>& cb_vs_vertexShader);
-	void Draw(const DirectX::XMMATRIX& viewProjectionMatrix);
 
 	const DirectX::XMVECTOR& GetPositionVector() const;
 	const DirectX::XMFLOAT3& GetPositionFloat3() const;
@@ -35,12 +33,8 @@ public:
 	const DirectX::XMVECTOR& GetUpVector();
 	const DirectX::XMVECTOR& GetDownVector();
 
-private:
-	Model model;
-	void UpdateWorldMatrix();
-
-
-	DirectX::XMMATRIX worldMatrix = DirectX::XMMatrixIdentity();
+protected:
+	virtual void UpdateMatrix();
 
 	DirectX::XMVECTOR posVector;
 	DirectX::XMVECTOR rotVector;

@@ -93,6 +93,12 @@
     <ClCompile Include="Graphics\Texture.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\Grid.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\RenderableGameObject.cpp">
+      <Filter>Sources\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringHelper.h">
@@ -168,6 +174,12 @@
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\Texture.h">
+      <Filter>Headers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Grid.h">
+      <Filter>Headers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\RenderableGameObject.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
