@@ -4,6 +4,7 @@
 class GameObject
 {
 public:
+	virtual void Tick();
 
 	const DirectX::XMVECTOR& GetPositionVector() const;
 	const DirectX::XMFLOAT3& GetPositionFloat3() const;
@@ -54,8 +55,4 @@ protected:
 	DirectX::XMVECTOR vec_backward;
 	DirectX::XMVECTOR vec_up;
 	DirectX::XMVECTOR vec_down;
-
-	// physics
-	bool enableGravity;
-
 };

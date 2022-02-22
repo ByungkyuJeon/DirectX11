@@ -37,6 +37,12 @@
     <Filter Include="Sources\Physics">
       <UniqueIdentifier>{41f551e0-f1f7-4211-97fc-733c43cf09ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\GameSystem">
+      <UniqueIdentifier>{b0bb6bdb-3600-42d1-9c07-c70129ad6dfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\GameSystem">
+      <UniqueIdentifier>{54b1045f-95df-4572-8f24-21f95becd33c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="Physics\Physics.cpp">
       <Filter>Sources\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\Map.cpp">
+      <Filter>Sources\GameSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="Physics\Physics.h">
       <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\Map.h">
+      <Filter>Headers\GameSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
