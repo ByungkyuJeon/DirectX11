@@ -31,6 +31,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headers\Physics">
+      <UniqueIdentifier>{ad499aab-22a0-4fc8-8bf1-0dc0d509b198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Physics">
+      <UniqueIdentifier>{41f551e0-f1f7-4211-97fc-733c43cf09ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,8 +102,11 @@
     <ClCompile Include="Graphics\Grid.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\RenderableGameObject.cpp">
+    <ClCompile Include="Graphics\Actor.cpp">
       <Filter>Sources\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Physics.cpp">
+      <Filter>Sources\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +188,11 @@
     <ClInclude Include="Graphics\Grid.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\RenderableGameObject.h">
+    <ClInclude Include="Graphics\Actor.h">
       <Filter>Headers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Physics.h">
+      <Filter>Headers\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

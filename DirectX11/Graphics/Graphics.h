@@ -9,7 +9,7 @@
 #include "..\\FrameTimer.h"
 #include "Model.h"
 #include "GameObject.h"
-#include "RenderableGameObject.h"
+#include "Actor.h"
 
 class Graphics
 {
@@ -17,7 +17,7 @@ public:
 	bool Initialize(HWND hwnd, int width, int height);
 	void RenderFrame();
 	Camera camera;
-	RenderableGameObject gameObject;
+	Actor actor;
 
 private:
 	bool InitializeDirectX(HWND hwnd);

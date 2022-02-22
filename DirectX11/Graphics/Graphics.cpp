@@ -31,23 +31,35 @@ void Graphics::RenderFrame()
 	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolor);
 	this->deviceContext->ClearDepthStencilView(this->depthStencilView.Get(), D3D11_CLEAR_DEPTH || D3D11_CLEAR_STENCIL, 1.0f, 0);
 
+	// Input Assembler Stage
 	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
 	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	//D3D10_PRIMITIVE_TOPOLOGY_POINTLIST
 	//D3D10_PRIMITIVE_TOPOLOGY_LINELIST
 	//D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST
+
+	// Vertex Shader Stage
+	this->deviceContext->VSSetShader(this->vertexShader.GetShader(), NULL, 0);
+
+	// Hull Shader
+	// Tesselator
+	// Domain Shader
+	// Geometry Shader
+	// Rasterizer
 	this->deviceContext->RSSetState(this->raterizerState.Get());
+	// Pixel Shader
+	this->deviceContext->PSSetSamplers(0, 1, this->samplerState.GetAddressOf());
+	this->deviceContext->PSSetShader(this->pixelShader.GetShader(), NULL, 0);
+	// Output Merger
 	this->deviceContext->OMSetDepthStencilState(this->depthStencilState.Get(), 0);
 	this->deviceContext->OMSetBlendState(NULL, NULL, 0xFFFFFFFF); // this->blendState.Get()
-	this->deviceContext->PSSetSamplers(0, 1, this->samplerState.GetAddressOf());
 
-	this->deviceContext->VSSetShader(this->vertexShader.GetShader(), NULL, 0);
-	this->deviceContext->PSSetShader(this->pixelShader.GetShader(), NULL, 0);
+
 
 	UINT offset = 0;
 
 	// MODELS
-	this->gameObject.Draw(DirectX::XMMatrixMultiply(this->camera.GetViewMatrix(), this->camera.GetProjectionMatrix()));
+	this->actor.Draw(DirectX::XMMatrixMultiply(this->camera.GetViewMatrix(), this->camera.GetProjectionMatrix()));
 
 	// Pixel shader constant buffer
 	/*static float alpha = 0.5f;
@@ -311,7 +323,7 @@ bool Graphics::InitializeScene()
 		COM_ERROR_IF_FAILED(hr, "pixel constant buffer initialization failed.");
 
 		// ¸ğµ¨ ÃÊ±âÈ­
-		if (!gameObject.Initialize("Data\\Objects\\car.fbx", this->device.Get(), this->deviceContext.Get(), this->cb_vs_vertexShader))
+		if (!actor.Initialize("Data\\Objects\\car.fbx", this->device.Get(), this->deviceContext.Get(), this->cb_vs_vertexShader))
 		{
 			return false;
 		}

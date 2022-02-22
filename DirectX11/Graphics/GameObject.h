@@ -54,4 +54,8 @@ protected:
 	DirectX::XMVECTOR vec_backward;
 	DirectX::XMVECTOR vec_up;
 	DirectX::XMVECTOR vec_down;
+
+	// physics
+	bool enableGravity;
+
 };
