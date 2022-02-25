@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Physics\IntersectionData.cpp" />
+    <ClCompile Include="Physics\BoundingSphere.cpp" />
     <ClCompile Include="Graphics\Color.cpp" />
     <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="Graphics\GameObject.cpp" />
@@ -177,6 +179,8 @@
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Physics\IntersectionData.h" />
+    <ClInclude Include="Physics\BoundingSphere.h" />
     <ClInclude Include="Graphics\Color.h" />
     <ClInclude Include="COMException.h" />
     <ClInclude Include="FrameTimer.h" />

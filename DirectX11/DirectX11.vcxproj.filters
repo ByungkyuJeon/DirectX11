@@ -117,6 +117,12 @@
     <ClCompile Include="GameSystem\Map.cpp">
       <Filter>Sources\GameSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\BoundingSphere.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\IntersectionData.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringHelper.h">
@@ -205,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="GameSystem\Map.h">
       <Filter>Headers\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\BoundingSphere.h">
+      <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\IntersectionData.h">
+      <Filter>Headers\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
