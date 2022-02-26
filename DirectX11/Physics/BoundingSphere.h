@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Collider.h"
+#include "IntersectionData.h"
+#include <DirectXMath.h>
 
-class BoundingSphere : public Collider
+class BoundingSphere
 {
 public:
 	BoundingSphere() = default;

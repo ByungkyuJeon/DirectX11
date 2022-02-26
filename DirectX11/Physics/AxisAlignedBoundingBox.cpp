@@ -25,7 +25,10 @@ void AxisAlignedBoundingBox::setMaxExtent(const DirectX::XMVECTOR& extent)
 	this->maxExtent = extent;
 }
 
-IntersectionData AxisAlignedBoundingBox::isIntersected(const Collider& other) const
+IntersectionData AxisAlignedBoundingBox::isIntersected(const AxisAlignedBoundingBox& other) const
 {
-	return IntersectionData();
+	DirectX::XMVECTOR lhsDistance = 
+
+	IntersectionData ret;
+
 }

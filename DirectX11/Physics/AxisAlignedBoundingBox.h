@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Collider.h"
+#include "IntersectionData.h"
+#include <DirectXMath.h>
 
-class AxisAlignedBoundingBox : public Collider
+class AxisAlignedBoundingBox
 {
 public:
 	AxisAlignedBoundingBox() = default;
@@ -14,7 +15,7 @@ public:
 	void setMinExtent(const DirectX::XMVECTOR& extent);
 	void setMaxExtent(const DirectX::XMVECTOR& extent);
 
-	IntersectionData isIntersected(const Collider& other) const;
+	IntersectionData isIntersected(const AxisAlignedBoundingBox& other) const;
 
 private:
 	DirectX::XMVECTOR minExtent;
