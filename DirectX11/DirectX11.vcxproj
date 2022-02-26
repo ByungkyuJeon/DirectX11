@@ -180,6 +180,7 @@
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomMath.h" />
     <ClInclude Include="Physics\AxisAlignedBoundingBox.h" />
     <ClInclude Include="Physics\IntersectionData.h" />
     <ClInclude Include="Physics\BoundingSphere.h" />

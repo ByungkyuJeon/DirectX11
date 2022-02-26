@@ -224,6 +224,9 @@
     <ClInclude Include="Physics\AxisAlignedBoundingBox.h">
       <Filter>Headers\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="CustomMath.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="vertexShader.hlsl">

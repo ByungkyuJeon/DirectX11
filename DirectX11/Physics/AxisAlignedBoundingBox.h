@@ -8,16 +8,20 @@ class AxisAlignedBoundingBox
 public:
 	AxisAlignedBoundingBox() = default;
 	AxisAlignedBoundingBox(DirectX::XMVECTOR& minExtent, DirectX::XMVECTOR& maxExtent);
+	AxisAlignedBoundingBox(DirectX::XMFLOAT3& minExtent, DirectX::XMFLOAT3& maxExtent);
 
-	const DirectX::XMVECTOR& getMinExtent();
-	const DirectX::XMVECTOR& getMaxExtent();
+	const DirectX::XMFLOAT3& getMinExtent();
+	const DirectX::XMFLOAT3& getMaxExtent();
 
 	void setMinExtent(const DirectX::XMVECTOR& extent);
 	void setMaxExtent(const DirectX::XMVECTOR& extent);
+	void setMinExtent(const DirectX::XMFLOAT3& extent);
+	void setMaxExtent(const DirectX::XMFLOAT3& extent);
 
 	IntersectionData isIntersected(const AxisAlignedBoundingBox& other) const;
 
 private:
-	DirectX::XMVECTOR minExtent;
-	DirectX::XMVECTOR maxExtent;
+	// XMVECTOR doesn't automatically aligned as 16 bytes in class
+	DirectX::XMFLOAT3 minExtent;
+	DirectX::XMFLOAT3 maxExtent;
 };
