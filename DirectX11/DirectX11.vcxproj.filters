@@ -123,6 +123,12 @@
     <ClCompile Include="Physics\IntersectionData.cpp">
       <Filter>Sources\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\AxisAlignedBoundingBox.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Collider.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringHelper.h">
@@ -216,6 +222,12 @@
       <Filter>Headers\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Physics\IntersectionData.h">
+      <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\AxisAlignedBoundingBox.h">
+      <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collider.h">
       <Filter>Headers\Physics</Filter>
     </ClInclude>
   </ItemGroup>

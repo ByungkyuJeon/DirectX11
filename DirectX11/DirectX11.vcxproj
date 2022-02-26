@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Physics\Collider.cpp" />
+    <ClCompile Include="Physics\AxisAlignedBoundingBox.cpp" />
     <ClCompile Include="Physics\IntersectionData.cpp" />
     <ClCompile Include="Physics\BoundingSphere.cpp" />
     <ClCompile Include="Graphics\Color.cpp" />
@@ -179,6 +181,8 @@
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Physics\Collider.h" />
+    <ClInclude Include="Physics\AxisAlignedBoundingBox.h" />
     <ClInclude Include="Physics\IntersectionData.h" />
     <ClInclude Include="Physics\BoundingSphere.h" />
     <ClInclude Include="Graphics\Color.h" />
