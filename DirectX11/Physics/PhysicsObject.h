@@ -17,7 +17,7 @@ public:
 	void setVelocity(const DirectX::XMFLOAT3& velocity);
 	void setVelocity(const DirectX::XMVECTOR& velocity);
 
-	void Integrate(float delta);
+	void Update(float delta);
 
 private:
 	DirectX::XMFLOAT3 position;

@@ -41,7 +41,7 @@ void PhysicsObject::setVelocity(const DirectX::XMVECTOR& velocity)
 	DirectX::XMStoreFloat3(&this->velocity, velocity);
 }
 
-void PhysicsObject::Integrate(float delta)
+void PhysicsObject::Update(float delta)
 {
 	DirectX::XMStoreFloat3(
 		&this->position,

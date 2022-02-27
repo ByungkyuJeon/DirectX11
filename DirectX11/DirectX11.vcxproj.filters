@@ -111,7 +111,7 @@
     <ClCompile Include="Graphics\Actor.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Physics\Physics.cpp">
+    <ClCompile Include="Physics\PhysicsEngine.cpp">
       <Filter>Sources\Physics</Filter>
     </ClCompile>
     <ClCompile Include="GameSystem\Map.cpp">
@@ -215,7 +215,7 @@
     <ClInclude Include="Graphics\Actor.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\Physics.h">
+    <ClInclude Include="Physics\PhysicsEngine.h">
       <Filter>Headers\Physics</Filter>
     </ClInclude>
     <ClInclude Include="GameSystem\Map.h">

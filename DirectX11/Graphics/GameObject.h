@@ -4,7 +4,7 @@
 class GameObject
 {
 public:
-	virtual void Tick();
+	virtual void Update();
 
 	const DirectX::XMVECTOR& GetPositionVector() const;
 	const DirectX::XMFLOAT3& GetPositionFloat3() const;

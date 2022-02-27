@@ -4,6 +4,7 @@
 #include "Graphics/Graphics.h"
 #include "FrameTimer.h"
 #include "GameSystem/Map.h"
+#include "Physics/PhysicsEngine.h"
 
 /// <summary>
 /// the most top level game engine
@@ -22,6 +23,9 @@ private:
 
 	// graphics module
 	Graphics graphics;
+
+	// physics module
+	PhysicsEngine physicsEngine;
 
 	// game maps
 	std::vector<Map> maps;

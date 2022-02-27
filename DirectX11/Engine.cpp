@@ -14,6 +14,11 @@ bool Engine::Initialize(HINSTANCE hInstance, std::string window_title, std::stri
 		return false;
 	}
 
+	if (!physicsEngine.Initialize())
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -24,13 +29,13 @@ bool Engine::ProcessMessages()
 
 void Engine::Update()
 {
+	// frame timing
 	float frameTime = frameTimer.GetMilisecondsElapsed();
 	frameTimer.ReStart();
 
 	while (!keyboard.CharBufferIsEmpty())
 	{
 		unsigned char ch = keyboard.ReadChar();
-		
 	}
 
 	while (!keyboard.KeyBufferIsEmpty())
@@ -53,6 +58,7 @@ void Engine::Update()
 
 	const float cameraSpeed = 0.51f;
 
+	// key input
 	if (mouse.IsRightDown())
 	{
 		if (keyboard.KeyIsPressed('W'))
@@ -80,6 +86,9 @@ void Engine::Update()
 			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetDownVector(), cameraSpeed * frameTime));
 		}
 	}
+
+	// physics engine update
+	physicsEngine.Update(frameTime);
 }
 
 void Engine::RenderFrame()
