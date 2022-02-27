@@ -1,18 +1,23 @@
 #include "BoundingSphere.h"
 
-const DirectX::XMVECTOR& BoundingSphere::getCenter()
+const DirectX::XMFLOAT3& BoundingSphere::getCenter()
 {
-	return center;
+	return this->center;
 }
 
 float BoundingSphere::getRadius()
 {
-	return radius;
+	return this->radius;
+}
+
+void BoundingSphere::setCenter(DirectX::XMFLOAT3& center)
+{
+	this->center = center;
 }
 
 void BoundingSphere::setCenter(DirectX::XMVECTOR& center)
 {
-	this->center = center;
+	DirectX::XMStoreFloat3(&this->center, center);
 }
 
 void BoundingSphere::setRadius(float radius)
@@ -23,7 +28,7 @@ void BoundingSphere::setRadius(float radius)
 IntersectionData BoundingSphere::isIntersected(const BoundingSphere& other) const
 {
 	IntersectionData ret;
-	float dist = DirectX::XMVectorGetX(DirectX::XMVector3Length(DirectX::XMVectorAdd(this->center, other.center)));
+	float dist = DirectX::XMVectorGetX(DirectX::XMVector3Length(DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&this->center), DirectX::XMLoadFloat3(&other.center))));
 	bool intersectionState = dist <= this->radius + other.radius;
 	ret.setIntersectionState(intersectionState);
 	if (intersectionState)
