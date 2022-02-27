@@ -10,8 +10,8 @@ For deeper understanding in game algorithms.
 
 ## Features
 
-* Planning to implement various graphics features.
-* Planning to implement game physics.
+* Working on implementing various graphics features.
+* Working on implementing game physics.
 * Planning to implement game algorithms.
 
 ## Tech/Framework Used
