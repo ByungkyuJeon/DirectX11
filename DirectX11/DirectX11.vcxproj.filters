@@ -129,6 +129,9 @@
     <ClCompile Include="Physics\PlaneCollider.cpp">
       <Filter>Sources\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\PhysicsObject.cpp">
+      <Filter>Sources\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringHelper.h">
@@ -231,6 +234,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="Physics\PlaneCollider.h">
+      <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsObject.h">
       <Filter>Headers\Physics</Filter>
     </ClInclude>
   </ItemGroup>

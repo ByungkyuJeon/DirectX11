@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Physics\PhysicsObject.cpp" />
     <ClCompile Include="Physics\AxisAlignedBoundingBox.cpp" />
     <ClCompile Include="Physics\IntersectionData.cpp" />
     <ClCompile Include="Physics\BoundingSphere.cpp" />
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomMath.h" />
+    <ClInclude Include="Physics\PhysicsObject.h" />
     <ClInclude Include="Physics\AxisAlignedBoundingBox.h" />
     <ClInclude Include="Physics\IntersectionData.h" />
     <ClInclude Include="Physics\BoundingSphere.h" />
