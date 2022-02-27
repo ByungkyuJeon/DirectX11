@@ -12,12 +12,12 @@ AxisAlignedBoundingBox::AxisAlignedBoundingBox(DirectX::XMFLOAT3& minExtent, Dir
 {
 }
 
-const DirectX::XMFLOAT3& AxisAlignedBoundingBox::getMinExtent()
+const DirectX::XMFLOAT3& AxisAlignedBoundingBox::getMinExtent() const
 {
 	return this->minExtent;
 }
 
-const DirectX::XMFLOAT3& AxisAlignedBoundingBox::getMaxExtent()
+const DirectX::XMFLOAT3& AxisAlignedBoundingBox::getMaxExtent() const
 {
 	return this->maxExtent;
 }

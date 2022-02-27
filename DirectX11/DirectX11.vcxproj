@@ -173,6 +173,7 @@
     <ClCompile Include="Mouse\MouseEvent.cpp" />
     <ClCompile Include="Graphics\Actor.cpp" />
     <ClCompile Include="Physics\Physics.cpp" />
+    <ClCompile Include="Physics\PlaneCollider.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Graphics\Shaders.cpp" />
     <ClCompile Include="StringHelper.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Mouse\MouseEvent.h" />
     <ClInclude Include="Graphics\Actor.h" />
     <ClInclude Include="Physics\Physics.h" />
+    <ClInclude Include="Physics\PlaneCollider.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Graphics\Shaders.h" />
     <ClInclude Include="StringHelper.h" />

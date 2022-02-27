@@ -10,8 +10,8 @@ public:
 	AxisAlignedBoundingBox(DirectX::XMVECTOR& minExtent, DirectX::XMVECTOR& maxExtent);
 	AxisAlignedBoundingBox(DirectX::XMFLOAT3& minExtent, DirectX::XMFLOAT3& maxExtent);
 
-	const DirectX::XMFLOAT3& getMinExtent();
-	const DirectX::XMFLOAT3& getMaxExtent();
+	const DirectX::XMFLOAT3& getMinExtent() const;
+	const DirectX::XMFLOAT3& getMaxExtent() const;
 
 	void setMinExtent(const DirectX::XMVECTOR& extent);
 	void setMaxExtent(const DirectX::XMVECTOR& extent);

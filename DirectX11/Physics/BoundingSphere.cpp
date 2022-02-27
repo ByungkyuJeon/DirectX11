@@ -1,11 +1,22 @@
 #include "BoundingSphere.h"
 
-const DirectX::XMFLOAT3& BoundingSphere::getCenter()
+BoundingSphere::BoundingSphere(DirectX::XMVECTOR& center, float radius) :
+	radius{ radius }
+{
+	DirectX::XMStoreFloat3(&this->center, center);
+}
+
+BoundingSphere::BoundingSphere(DirectX::XMFLOAT3& center, float radius) :
+	center{ center }, radius{ radius }
+{
+}
+
+const DirectX::XMFLOAT3& BoundingSphere::getCenter() const
 {
 	return this->center;
 }
 
-float BoundingSphere::getRadius()
+float BoundingSphere::getRadius() const
 {
 	return this->radius;
 }

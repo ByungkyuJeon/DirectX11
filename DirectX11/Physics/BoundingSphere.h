@@ -7,10 +7,11 @@ class BoundingSphere
 {
 public:
 	BoundingSphere() = default;
-	BoundingSphere(DirectX::XMVECTOR& center, float radius) : center{ center }, radius{ radius }{}
+	BoundingSphere(DirectX::XMVECTOR& center, float radius);
+	BoundingSphere(DirectX::XMFLOAT3& center, float radius);
 
-	const DirectX::XMFLOAT3& getCenter();
-	float getRadius();
+	const DirectX::XMFLOAT3& getCenter() const;
+	float getRadius() const;
 
 	void setCenter(DirectX::XMFLOAT3& center);
 	void setCenter(DirectX::XMVECTOR& center);
