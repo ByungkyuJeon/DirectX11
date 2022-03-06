@@ -117,7 +117,7 @@
     <ClCompile Include="GameSystem\Map.cpp">
       <Filter>Sources\GameSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Physics\BoundingSphere.cpp">
+    <ClCompile Include="Physics\SphereCollider.cpp">
       <Filter>Sources\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Physics\IntersectionData.cpp">
@@ -140,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="GameSystem\Camera.cpp">
       <Filter>Sources\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Collider.cpp">
+      <Filter>Sources\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,7 +227,7 @@
     <ClInclude Include="GameSystem\Map.h">
       <Filter>Headers\GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Physics\BoundingSphere.h">
+    <ClInclude Include="Physics\SphereCollider.h">
       <Filter>Headers\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Physics\IntersectionData.h">
@@ -250,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="GameSystem\Camera.h">
       <Filter>Headers\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collider.h">
+      <Filter>Headers\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

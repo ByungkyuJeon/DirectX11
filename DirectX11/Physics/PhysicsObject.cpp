@@ -1,52 +1,39 @@
 #include "PhysicsObject.h"
 
-PhysicsObject::PhysicsObject(const DirectX::XMFLOAT3& position, const DirectX::XMFLOAT3& velocity) :
-	position{ position }, velocity{ velocity }
+PhysicsObject::PhysicsObject(std::shared_ptr<Transform> transform, std::shared_ptr<DirectX::XMFLOAT3> velocity) :
+	mTransform{ transform }, mVelocity{ velocity }
 {
 }
 
-PhysicsObject::PhysicsObject(const DirectX::XMVECTOR& position, const DirectX::XMVECTOR& velocity)
+void PhysicsObject::setTransform(std::shared_ptr<Transform> transform)
 {
-	DirectX::XMStoreFloat3(&this->position, position);
-	DirectX::XMStoreFloat3(&this->velocity, velocity);
+	this->mTransform = transform;
 }
 
-const DirectX::XMFLOAT3& PhysicsObject::getPosition() const
+void PhysicsObject::setVelocity(std::shared_ptr<DirectX::XMFLOAT3> velocity)
 {
-	return this->position;
+	this->mVelocity = velocity;
 }
 
-const DirectX::XMFLOAT3& PhysicsObject::getVelocity() const
+std::shared_ptr<Transform> PhysicsObject::getTransform() const
 {
-	return this->velocity;
+	return this->mTransform;
 }
 
-void PhysicsObject::setPosition(const DirectX::XMFLOAT3& position)
+std::shared_ptr<DirectX::XMFLOAT3> PhysicsObject::getVelocity() const
 {
-	this->position = position;
-}
-
-void PhysicsObject::setPosition(const DirectX::XMVECTOR& position)
-{
-	DirectX::XMStoreFloat3(&this->position, position);
-}
-
-void PhysicsObject::setVelocity(const DirectX::XMFLOAT3& velocity)
-{
-	this->velocity = velocity;
-}
-
-void PhysicsObject::setVelocity(const DirectX::XMVECTOR& velocity)
-{
-	DirectX::XMStoreFloat3(&this->velocity, velocity);
+	return this->mVelocity;
 }
 
 void PhysicsObject::Update(float delta)
 {
+	DirectX::XMFLOAT3 res;
 	DirectX::XMStoreFloat3(
-		&this->position,
+		&res,
 		DirectX::XMVectorMultiply(
-			DirectX::XMLoadFloat3(&this->velocity),
+			DirectX::XMLoadFloat3(this->mVelocity.get()),
 			DirectX::XMVectorReplicate(delta)
 		));
+
+	this->mTransform->setPosition(res);
 }

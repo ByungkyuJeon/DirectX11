@@ -11,7 +11,9 @@ public:
 
 	bool Initialize();
 
-	void AddObject(const PhysicsObject& object);
+	void registerObject(const PhysicsObject& object);
+	//bool removeObject(const PhysicsObject& object);
+
 	size_t getObjectSize() const;
 	const PhysicsObject& getObject(size_t idx) const;
 

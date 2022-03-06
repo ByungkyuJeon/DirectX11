@@ -58,6 +58,7 @@ private:
 
 	FrameTimer frameTimer;
 
+	// 렌더링이 필요한 오브젝트들
 	std::vector<RenderableObjects> renderableObjects;
 
 	// 카메라

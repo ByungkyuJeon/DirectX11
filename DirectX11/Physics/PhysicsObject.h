@@ -1,25 +1,24 @@
 #pragma once
 
+#include "../CoordinateSystem/Transform.h"
+#include <memory>
 #include <DirectXMath.h>
 
 class PhysicsObject
 {
 public:
 	PhysicsObject() = default;
-	PhysicsObject(const DirectX::XMFLOAT3& position, const DirectX::XMFLOAT3& velocity);
-	PhysicsObject(const DirectX::XMVECTOR& position, const DirectX::XMVECTOR& velocity);
+	PhysicsObject(std::shared_ptr<Transform> transform, std::shared_ptr<DirectX::XMFLOAT3> velocity);
 
-	const DirectX::XMFLOAT3& getPosition() const;
-	const DirectX::XMFLOAT3& getVelocity() const;
+	void setTransform(std::shared_ptr<Transform> transform);
+	void setVelocity(std::shared_ptr<DirectX::XMFLOAT3> velocity);
 
-	void setPosition(const DirectX::XMFLOAT3& position);
-	void setPosition(const DirectX::XMVECTOR& position);
-	void setVelocity(const DirectX::XMFLOAT3& velocity);
-	void setVelocity(const DirectX::XMVECTOR& velocity);
+	std::shared_ptr<Transform> getTransform() const;
+	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
 
 	void Update(float delta);
 
 private:
-	DirectX::XMFLOAT3 position;
-	DirectX::XMFLOAT3 velocity;
+	std::shared_ptr<Transform> mTransform;
+	std::shared_ptr<DirectX::XMFLOAT3> mVelocity;
 };

@@ -12,7 +12,7 @@ bool PhysicsEngine::Initialize()
 	return true;
 }
 
-void PhysicsEngine::AddObject(const PhysicsObject& object)
+void PhysicsEngine::registerObject(const PhysicsObject& object)
 {
 	this->physicsObjects.emplace_back(object);
 }
