@@ -58,8 +58,12 @@ void Graphics::RenderFrame()
 
 	UINT offset = 0;
 
-	// MODELS
-	this->actor.Draw(DirectX::XMMatrixMultiply(this->camera.GetViewMatrix(), this->camera.GetProjectionMatrix()));
+	// Draw Renderable Objects
+	for (auto& renderable : this->renderableObjects)
+	{
+		renderable.Draw(DirectX::XMMatrixMultiply(this->mCamera->GetViewMatrix(), this->mCamera->GetProjectionMatrix()));
+	}
+	//this->actor.Draw(DirectX::XMMatrixMultiply(this->camera.GetViewMatrix(), this->camera.GetProjectionMatrix()));
 
 	// Pixel shader constant buffer
 	/*static float alpha = 0.5f;
@@ -87,6 +91,16 @@ void Graphics::RenderFrame()
 	// vsync on : 1
 	// vsync off : 0
 	this->swapChain->Present(1, NULL);
+}
+
+void Graphics::setCamera(std::shared_ptr<Camera> camera)
+{
+	this->mCamera = camera;
+}
+
+std::shared_ptr<Camera> Graphics::getCamera()
+{
+	return this->mCamera;
 }
 
 bool Graphics::InitializeDirectX(HWND hwnd)
@@ -323,13 +337,18 @@ bool Graphics::InitializeScene()
 		COM_ERROR_IF_FAILED(hr, "pixel constant buffer initialization failed.");
 
 		// ¸ðµ¨ ÃÊ±âÈ­
-		if (!actor.Initialize("Data\\Objects\\car.fbx", this->device.Get(), this->deviceContext.Get(), this->cb_vs_vertexShader))
+		/*if (!actor.Initialize("Data\\Objects\\car.fbx", this->device.Get(), this->deviceContext.Get(), this->cb_vs_vertexShader))
 		{
 			return false;
+		}*/
+
+		if (mCamera == nullptr)
+		{
+			mCamera = std::make_shared<Camera>();
+			mCamera->getTransform()->setPosition(0.0f, 0.0f, -2.0f);
+			mCamera->SetProjectionValues(90.0f, static_cast<float>(windowWidth) / static_cast<float>(windowHeight), 0.1f, 1000.0f);
 		}
 
-		camera.SetPosition(0.0f, 0.0f, -2.0f);
-		camera.SetProjectionValues(90.0f, static_cast<float>(windowWidth) / static_cast<float>(windowHeight), 0.1f, 1000.0f);
 	}
 	catch (COMException& exception)
 	{

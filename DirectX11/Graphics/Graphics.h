@@ -1,23 +1,25 @@
 #pragma once
 #include "AdapterReader.h"
 #include "Shaders.h"
+#include "ConstantBufferTypes.h"
+#include "..\\FrameTimer.h"
+#include "Model.h"
+#include "RenderableObjects.h"
+#include "../GameSystem/Camera.h"
 #include <SpriteBatch.h>
 #include <SpriteFont.h>
 #include <WICTextureLoader.h>
-#include "ConstantBufferTypes.h"
-#include "Camera.h"
-#include "..\\FrameTimer.h"
-#include "Model.h"
-#include "GameObject.h"
-#include "Actor.h"
+#include <vector>
 
 class Graphics
 {
 public:
 	bool Initialize(HWND hwnd, int width, int height);
 	void RenderFrame();
-	Camera camera;
-	Actor actor;
+	//RenderableObjects actor;
+
+	void setCamera(std::shared_ptr<Camera> camera);
+	std::shared_ptr<Camera> getCamera();
 
 private:
 	bool InitializeDirectX(HWND hwnd);
@@ -55,4 +57,9 @@ private:
 	int windowHeight = 0;
 
 	FrameTimer frameTimer;
+
+	std::vector<RenderableObjects> renderableObjects;
+
+	// Ä«¸Þ¶ó
+	std::shared_ptr<Camera> mCamera;
 };

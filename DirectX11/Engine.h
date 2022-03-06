@@ -5,6 +5,9 @@
 #include "FrameTimer.h"
 #include "GameSystem/Map.h"
 #include "Physics/PhysicsEngine.h"
+#include <unordered_map>
+
+
 
 /// <summary>
 /// the most top level game engine
@@ -18,7 +21,13 @@ public:
 	void Update();
 	void RenderFrame();
 
+	void LoadMap(const std::string& mapName);
+	void UnloadMap(const std::string& mapName);
+
+
+
 private:
+	// frame timer
 	FrameTimer frameTimer;
 
 	// graphics module
@@ -27,6 +36,9 @@ private:
 	// physics module
 	PhysicsEngine physicsEngine;
 
-	// game maps
-	std::vector<Map> maps;
+	// game maps (hash table based)
+	std::unordered_map<std::string, Map> maps;
+
+
+	
 };

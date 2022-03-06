@@ -51,7 +51,7 @@ void Engine::Update()
 		{
 			if (mouse.IsRightDown())
 			{
-				this->graphics.camera.AdjustRotation((float)me.GetPostY() * 0.01f, (float)me.GetPosX() * 0.01f, 0);
+				this->graphics.getCamera()->getTransform()->rotate((float)me.GetPostY() * 0.01f, (float)me.GetPosX() * 0.01f, 0);
 			}
 		}
 	}
@@ -63,27 +63,27 @@ void Engine::Update()
 	{
 		if (keyboard.KeyIsPressed('W'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetForwardVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getForwardVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('A'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetLeftVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getLeftVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('S'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetBackwardVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getBackwardVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('D'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetRightVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getRightVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('E'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetUpVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getUpVector(), cameraSpeed * frameTime));
 		}
 		if (keyboard.KeyIsPressed('Q'))
 		{
-			this->graphics.camera.AdjustPosition(DirectX::XMVectorScale(this->graphics.camera.GetDownVector(), cameraSpeed * frameTime));
+			this->graphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->graphics.getCamera()->getTransform()->getDownVector(), cameraSpeed * frameTime));
 		}
 	}
 
@@ -94,4 +94,12 @@ void Engine::Update()
 void Engine::RenderFrame()
 {
 	graphics.RenderFrame();
+}
+
+void Engine::LoadMap(const std::string& mapName)
+{
+}
+
+void Engine::UnloadMap(const std::string& mapName)
+{
 }

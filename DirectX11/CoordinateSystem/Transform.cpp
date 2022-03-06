@@ -45,13 +45,11 @@ const DirectX::XMFLOAT3& Transform::getWorldScaleFactor()
 void Transform::setPosition(const DirectX::XMVECTOR& position)
 {
 	DirectX::XMStoreFloat3(&this->mWorldPosition, position);
-	this->updateMatrix();
 }
 
 void Transform::setPosition(const DirectX::XMFLOAT3& position)
 {
 	this->mWorldPosition = position;
-	this->updateMatrix();
 }
 
 void Transform::setPosition(float x, float y, float z)
@@ -59,13 +57,11 @@ void Transform::setPosition(float x, float y, float z)
 	this->mWorldPosition.x = x;
 	this->mWorldPosition.y = y;
 	this->mWorldPosition.z = z;
-	this->updateMatrix();
 }
 
 void Transform::translate(const DirectX::XMVECTOR& pos)
 {
 	DirectX::XMStoreFloat3(&this->mWorldPosition, DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&this->mWorldPosition), pos));
-	this->updateMatrix();
 }
 
 void Transform::translate(const DirectX::XMFLOAT3& pos)
@@ -73,7 +69,6 @@ void Transform::translate(const DirectX::XMFLOAT3& pos)
 	this->mWorldPosition.x += pos.x;
 	this->mWorldPosition.y += pos.y;
 	this->mWorldPosition.z += pos.z;
-	this->updateMatrix();
 }
 
 void Transform::translate(float x, float y, float z)
@@ -81,13 +76,11 @@ void Transform::translate(float x, float y, float z)
 	this->mWorldPosition.x += x;
 	this->mWorldPosition.y += y;
 	this->mWorldPosition.z += z;
-	this->updateMatrix();
 }
 
 void Transform::setRotation(const DirectX::XMVECTOR& rot)
 {
 	DirectX::XMStoreFloat3(&this->mWorldRotation, rot);
-	this->updateMatrix();
 }
 
 void Transform::setRotation(const DirectX::XMFLOAT3& rot)
@@ -95,7 +88,6 @@ void Transform::setRotation(const DirectX::XMFLOAT3& rot)
 	this->mWorldRotation.x = rot.x;
 	this->mWorldRotation.y = rot.y;
 	this->mWorldRotation.z = rot.z;
-	this->updateMatrix();
 }
 
 void Transform::setRotation(float x, float y, float z)
@@ -103,13 +95,11 @@ void Transform::setRotation(float x, float y, float z)
 	this->mWorldRotation.x = x;
 	this->mWorldRotation.y = y;
 	this->mWorldRotation.z = z;
-	this->updateMatrix();
 }
 
 void Transform::rotate(const DirectX::XMVECTOR& rot)
 {
 	DirectX::XMStoreFloat3(&this->mWorldRotation, DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&this->mWorldRotation), rot));
-	this->updateMatrix();
 }
 
 void Transform::rotate(const DirectX::XMFLOAT3& rot)
@@ -117,7 +107,6 @@ void Transform::rotate(const DirectX::XMFLOAT3& rot)
 	this->mWorldRotation.x += rot.x;
 	this->mWorldRotation.y += rot.y;
 	this->mWorldRotation.z += rot.z;
-	this->updateMatrix();
 }
 
 void Transform::rotate(float x, float y, float z)
@@ -125,7 +114,6 @@ void Transform::rotate(float x, float y, float z)
 	this->mWorldRotation.x += x;
 	this->mWorldRotation.y += y;
 	this->mWorldRotation.z += z;
-	this->updateMatrix();
 }
 
 const DirectX::XMMATRIX& Transform::getWorldMatrix()
@@ -167,32 +155,32 @@ void Transform::setLookAtPos(DirectX::XMFLOAT3 lookAtPos)
 
 const DirectX::XMVECTOR& Transform::getForwardVector()
 {
-	this->mForward;
+	return this->mForward;
 }
 
 const DirectX::XMVECTOR& Transform::getRightVector()
 {
-	return mRight;
+	return this->mRight;
 }
 
 const DirectX::XMVECTOR& Transform::getLeftVector()
 {
-	return mLeft;
+	return this->mLeft;
 }
 
 const DirectX::XMVECTOR& Transform::getBackwardVector()
 {
-	return mBack;
+	return this->mBack;
 }
 
 const DirectX::XMVECTOR& Transform::getUpVector()
 {
-	return mUp;
+	return this->mUp;
 }
 
 const DirectX::XMVECTOR& Transform::getDownVector()
 {
-	return mDown;
+	return this->mDown;
 }
 
 void Transform::setForwardVector(const DirectX::XMVECTOR& forward)

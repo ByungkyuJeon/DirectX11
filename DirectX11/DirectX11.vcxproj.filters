@@ -43,6 +43,12 @@
     <Filter Include="Sources\GameSystem">
       <UniqueIdentifier>{54b1045f-95df-4572-8f24-21f95becd33c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\CoordinateSystem">
+      <UniqueIdentifier>{a6d17db8-1462-4f8c-9aaf-e60bd94da949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\CoordinateSystem">
+      <UniqueIdentifier>{d4186f77-6114-42cf-a23a-af741d28f456}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,9 +90,6 @@
     <ClCompile Include="Graphics\Shaders.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\Camera.cpp">
-      <Filter>Sources\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="FrameTimer.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -94,9 +97,6 @@
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\Mesh.cpp">
-      <Filter>Sources\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics\GameObject.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\Color.cpp">
@@ -108,7 +108,7 @@
     <ClCompile Include="Graphics\Grid.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\Actor.cpp">
+    <ClCompile Include="Graphics\RenderableObjects.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Physics\PhysicsEngine.cpp">
@@ -131,6 +131,15 @@
     </ClCompile>
     <ClCompile Include="Physics\PhysicsObject.cpp">
       <Filter>Sources\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="CoordinateSystem\Transform.cpp">
+      <Filter>Sources\CoordinateSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\GameObject.cpp">
+      <Filter>Sources\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem\Camera.cpp">
+      <Filter>Sources\GameSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +194,6 @@
     <ClInclude Include="Graphics\ConstantBuffer.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\Camera.h">
-      <Filter>Headers\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="FrameTimer.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -200,9 +206,6 @@
     <ClInclude Include="Graphics\Mesh.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\GameObject.h">
-      <Filter>Headers\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\Color.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
@@ -212,7 +215,7 @@
     <ClInclude Include="Graphics\Grid.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\Actor.h">
+    <ClInclude Include="Graphics\RenderableObjects.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Physics\PhysicsEngine.h">
@@ -238,6 +241,15 @@
     </ClInclude>
     <ClInclude Include="Physics\PhysicsObject.h">
       <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CoordinateSystem\Transform.h">
+      <Filter>Headers\CoordinateSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\GameObject.h">
+      <Filter>Headers\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem\Camera.h">
+      <Filter>Headers\GameSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 
 Camera::Camera()
 {
+	this->setTransform(std::make_shared<Transform>());
 	this->mTransform->setPosition(0.0f, 0.0f, 0.0f);
 	this->mTransform->setRotation(0.0f, 0.0f, 0.0f);
 
