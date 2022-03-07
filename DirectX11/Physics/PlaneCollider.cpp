@@ -48,7 +48,7 @@ void PlaneCollider::setDistance(float distance)
 	this->distance = distance;
 }
 
-IntersectionData PlaneCollider::isIntersected(const BoundingSphere& other) const
+IntersectionData PlaneCollider::isIntersected(const SphereCollider& other) const
 {
 	float distance = fabsf(this->distance 
 		+ DirectX::XMVectorGetX(

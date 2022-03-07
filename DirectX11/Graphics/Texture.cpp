@@ -43,7 +43,7 @@ Texture::Texture(ID3D11Device* device, const uint8_t* pData, size_t size, aiText
 	COM_ERROR_IF_FAILED(hr, "CreateWICTextureFromMemory failed.");
 }
 
-aiTextureType Texture::GetType()
+aiTextureType Texture::GetType() const
 {
 	return this->type;
 }

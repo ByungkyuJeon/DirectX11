@@ -5,7 +5,7 @@
 class Transform
 {
 public:
-	Transform() = default;
+	Transform();
 
 	void updateMatrix();
 

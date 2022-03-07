@@ -2,7 +2,7 @@
 
 #include <DirectXMath.h>
 #include "IntersectionData.h"
-#include "BoundingSphere.h"
+#include "SphereCollider.h"
 #include "AxisAlignedBoundingBox.h"
 
 class PlaneCollider
@@ -21,7 +21,7 @@ public:
 	void setNormal(const DirectX::XMVECTOR& normal);
 	void setDistance(float distance);
 
-	IntersectionData isIntersected(const BoundingSphere& other) const;
+	IntersectionData isIntersected(const SphereCollider& other) const;
 	IntersectionData isIntersected(const AxisAlignedBoundingBox& other) const;
 
 private:

@@ -49,6 +49,18 @@
     <Filter Include="Sources\CoordinateSystem">
       <UniqueIdentifier>{d4186f77-6114-42cf-a23a-af741d28f456}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\Factory">
+      <UniqueIdentifier>{78f8871f-62de-45bb-b628-1a56e3feb450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Factory">
+      <UniqueIdentifier>{27502339-22a1-4039-8d89-bcee3669ece6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\ResourceManager">
+      <UniqueIdentifier>{433a1c1a-04f3-4ac4-adf7-bd523ff5970f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\ResourceManager">
+      <UniqueIdentifier>{2eec6e04-5864-4bb8-860c-2358750128cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,7 +75,7 @@
     <ClCompile Include="RenderWindow.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="GameEngine.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="WindowContainer.cpp">
@@ -81,7 +93,7 @@
     <ClCompile Include="Mouse\MouseEvent.cpp">
       <Filter>Sources\Mouse</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\Graphics.cpp">
+    <ClCompile Include="Graphics\GraphicsEngine.cpp">
       <Filter>Sources\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\AdapterReader.cpp">
@@ -144,6 +156,12 @@
     <ClCompile Include="Physics\Collider.cpp">
       <Filter>Sources\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Factory\ModelFactory.cpp">
+      <Filter>Sources\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager\ModelManager.cpp">
+      <Filter>Sources\ResourceManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringHelper.h">
@@ -155,7 +173,7 @@
     <ClInclude Include="RenderWindow.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.h">
+    <ClInclude Include="GameEngine.h">
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="WindowContainer.h">
@@ -173,7 +191,7 @@
     <ClInclude Include="Mouse\MouseEvent.h">
       <Filter>Headers\Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\Graphics.h">
+    <ClInclude Include="Graphics\GraphicsEngine.h">
       <Filter>Headers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\AdapterReader.h">
@@ -256,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="Physics\Collider.h">
       <Filter>Headers\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\ModelFactory.h">
+      <Filter>Headers\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager\ModelManager.h">
+      <Filter>Headers\ResourceManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

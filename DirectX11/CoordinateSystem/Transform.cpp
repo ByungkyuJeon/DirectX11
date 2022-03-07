@@ -1,5 +1,10 @@
 #include "Transform.h"
 
+Transform::Transform() : 
+	mWorldPosition{ 0,0,0 }, mWorldRotation{ 0,0,0 }, mWorldScaleFactor{ 0,0,0 }
+{
+}
+
 void Transform::updateMatrix()
 {
 	this->mWorldMatrix = DirectX::XMMatrixMultiply

@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Factory\ModelFactory.cpp" />
+    <ClCompile Include="ResourceManager\ModelManager.cpp" />
     <ClCompile Include="Physics\Collider.cpp" />
     <ClCompile Include="Physics\PhysicsObject.cpp" />
     <ClCompile Include="Physics\AxisAlignedBoundingBox.cpp" />
@@ -161,9 +163,9 @@
     <ClCompile Include="GameSystem\GameObject.cpp" />
     <ClCompile Include="GameSystem\Camera.cpp" />
     <ClCompile Include="Graphics\AdapterReader.cpp" />
-    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="ErrorLogger.cpp" />
-    <ClCompile Include="Graphics\Graphics.cpp" />
+    <ClCompile Include="Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="Graphics\Grid.cpp" />
     <ClCompile Include="Keyboard\KeyboardClass.cpp" />
     <ClCompile Include="Keyboard\KeyboardEvent.cpp" />
@@ -184,6 +186,8 @@
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Factory\ModelFactory.h" />
+    <ClInclude Include="ResourceManager\ModelManager.h" />
     <ClInclude Include="Physics\Collider.h" />
     <ClInclude Include="CustomMath.h" />
     <ClInclude Include="Physics\PhysicsObject.h" />
@@ -198,9 +202,9 @@
     <ClInclude Include="Graphics\ConstantBuffer.h" />
     <ClInclude Include="Graphics\ConstantBufferTypes.h" />
     <ClInclude Include="Graphics\AdapterReader.h" />
-    <ClInclude Include="Engine.h" />
+    <ClInclude Include="GameEngine.h" />
     <ClInclude Include="ErrorLogger.h" />
-    <ClInclude Include="Graphics\Graphics.h" />
+    <ClInclude Include="Graphics\GraphicsEngine.h" />
     <ClInclude Include="Graphics\IndexBuffer.h" />
     <ClInclude Include="Graphics\Grid.h" />
     <ClInclude Include="Keyboard\KeyboardClass.h" />
