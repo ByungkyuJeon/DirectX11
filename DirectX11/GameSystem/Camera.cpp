@@ -42,11 +42,11 @@ void Camera::updateMatrix()
 	DirectX::XMVECTOR upDir = DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_UP_VECTOR, camRotationMatrix);
 	this->viewMatrix = DirectX::XMMatrixLookAtLH(DirectX::XMLoadFloat3(&mTransform->getWorldPosition()), camTarget, upDir);
 
-	DirectX::XMMATRIX vecRotationMatrix = DirectX::XMMatrixRotationRollPitchYaw(0.0f, this->mTransform->getWorldRotation().y, 0.0f);
+	/*DirectX::XMMATRIX vecRotationMatrix = DirectX::XMMatrixRotationRollPitchYaw(0.0f, this->mTransform->getWorldRotation().y, 0.0f);
 	this->mTransform->setForwardVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_FORWARD_VECTOR, vecRotationMatrix));
 	this->mTransform->setRightVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_RIGHT_VECTOR, vecRotationMatrix));
 	this->mTransform->setLeftVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_LEFT_VECTOR, vecRotationMatrix));
 	this->mTransform->setBackwardVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_BACKWARD_VECTOR, vecRotationMatrix));
 	this->mTransform->setUpVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_UP_VECTOR, vecRotationMatrix));
-	this->mTransform->setDownVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_DOWN_VECTOR, vecRotationMatrix));
+	this->mTransform->setDownVector(DirectX::XMVector3TransformCoord(this->mTransform->DEFAULT_DOWN_VECTOR, vecRotationMatrix));*/
 }
