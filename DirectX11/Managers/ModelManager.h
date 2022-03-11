@@ -3,7 +3,7 @@
 #include "../Graphics/Model.h"
 #include <memory>
 
-class ModelFactory
+class ModelManager
 {
 public:
 	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);

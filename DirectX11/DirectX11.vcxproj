@@ -151,7 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Factory\ModelFactory.cpp" />
+    <ClCompile Include="Managers\ModelManager.cpp" />
+    <ClCompile Include="Managers\MapManager.cpp" />
     <ClCompile Include="ResourceManager\ModelManager.cpp" />
     <ClCompile Include="Physics\Collider.cpp" />
     <ClCompile Include="Physics\PhysicsObject.cpp" />
@@ -186,7 +187,8 @@
     <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Factory\ModelFactory.h" />
+    <ClInclude Include="Managers\ModelManager.h" />
+    <ClInclude Include="Managers\MapManager.h" />
     <ClInclude Include="ResourceManager\ModelManager.h" />
     <ClInclude Include="Physics\Collider.h" />
     <ClInclude Include="CustomMath.h" />

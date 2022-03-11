@@ -1,18 +1,18 @@
-#include "ModelFactory.h"
+#include "ModelManager.h"
 #include "../StringHelper.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <DirectXMath.h>
 
-bool ModelFactory::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+bool ModelManager::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
 	this->device = device;
 	this->deviceContext = deviceContext;
 	return true;
 }
 
-std::shared_ptr<Model> ModelFactory::Instanciate(const std::string& filePath)
+std::shared_ptr<Model> ModelManager::Instanciate(const std::string& filePath)
 {
 	try
 	{
@@ -38,7 +38,7 @@ std::shared_ptr<Model> ModelFactory::Instanciate(const std::string& filePath)
 	}
 }
 
-void ModelFactory::ProcessNode(std::shared_ptr<Model>& model, aiNode* node, const aiScene* scene, const DirectX::XMMATRIX& parentTransformMatrix)
+void ModelManager::ProcessNode(std::shared_ptr<Model>& model, aiNode* node, const aiScene* scene, const DirectX::XMMATRIX& parentTransformMatrix)
 {
 	DirectX::XMMATRIX nodeTansformMatrix = DirectX::XMMatrixTranspose(DirectX::XMMATRIX(&node->mTransformation.a1)) * parentTransformMatrix;
 
@@ -54,7 +54,7 @@ void ModelFactory::ProcessNode(std::shared_ptr<Model>& model, aiNode* node, cons
 	}
 }
 
-void ModelFactory::ProcessMesh(std::shared_ptr<Model>& model, aiMesh* mesh, const aiScene* scene, const DirectX::XMMATRIX& parentTransformMatrix)
+void ModelManager::ProcessMesh(std::shared_ptr<Model>& model, aiMesh* mesh, const aiScene* scene, const DirectX::XMMATRIX& parentTransformMatrix)
 {
 	std::vector<Vertex> vertices;
 	std::vector<DWORD> indices;
@@ -103,7 +103,7 @@ void ModelFactory::ProcessMesh(std::shared_ptr<Model>& model, aiMesh* mesh, cons
 	model->addMesh(Mesh(vertexBuffer, indexBuffer, textures, parentTransformMatrix));
 }
 
-std::vector<Texture> ModelFactory::LoadMaterialTextures(std::shared_ptr<Model>& model, aiMaterial* pMaterial, aiTextureType type, const aiScene* pScene)
+std::vector<Texture> ModelManager::LoadMaterialTextures(std::shared_ptr<Model>& model, aiMaterial* pMaterial, aiTextureType type, const aiScene* pScene)
 {
 	std::vector<Texture> materialTextures;
 	TextureStorageType storeType = TextureStorageType::Invalid;
@@ -169,7 +169,7 @@ std::vector<Texture> ModelFactory::LoadMaterialTextures(std::shared_ptr<Model>& 
 	return materialTextures;
 }
 
-TextureStorageType ModelFactory::DeterminTextureStorageType(const aiScene* pScene, aiMaterial* pMat, unsigned int index, aiTextureType type)
+TextureStorageType ModelManager::DeterminTextureStorageType(const aiScene* pScene, aiMaterial* pMat, unsigned int index, aiTextureType type)
 {
 	if (pMat->GetTextureCount(type) == 0)
 	{
@@ -211,7 +211,7 @@ TextureStorageType ModelFactory::DeterminTextureStorageType(const aiScene* pScen
 	return TextureStorageType::None;
 }
 
-int ModelFactory::GetTextureIndex(aiString* pStr)
+int ModelManager::GetTextureIndex(aiString* pStr)
 {
 	return atoi(&pStr->C_Str()[1]);
 }

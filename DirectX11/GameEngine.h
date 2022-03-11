@@ -3,7 +3,7 @@
 #include "WindowContainer.h"
 #include "Graphics/GraphicsEngine.h"
 #include "Physics/PhysicsEngine.h"
-#include "Factory/ModelFactory.h"
+#include "Managers/ModelManager.h"
 #include "FrameTimer.h"
 #include "GameSystem/Map.h"
 #include <unordered_map>
@@ -35,7 +35,7 @@ private:
 	// physics module
 	PhysicsEngine mPhysicsEngine;
 
-	ModelFactory mModelFactory;
+	ModelManager mModelFactory;
 
 	// game maps (hash table based)
 	std::unordered_map<std::string, Map> maps;
