@@ -23,7 +23,7 @@ public:
 	void LoadMap(const std::string& mapName);
 	void UnloadMap(const std::string& mapName);
 
-
+	std::string currentMap;
 	
 private:
 	// frame timer

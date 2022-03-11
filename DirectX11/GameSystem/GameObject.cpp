@@ -1,8 +1,13 @@
 #include "GameObject.h"
 
-void GameObject::update()
+void GameObject::update(float delta)
 {
 	this->updateMatrix();
+}
+
+GameObject::GameObject(std::shared_ptr<Transform> transform)
+{
+	this->mTransform = transform;
 }
 
 void GameObject::setTransform(std::shared_ptr<Transform> transform)

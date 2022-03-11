@@ -24,7 +24,12 @@ bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::
 		return false;
 	}
 
-	this->mGraphics.registerRenderableObject(std::make_shared<Transform>(), this->mModelFactory.Instanciate("Data\\Objects\\car.fbx"));
+	std::shared_ptr<Transform> temp = std::make_shared<Transform>();
+	this->mGraphics.registerRenderableObject(temp, this->mModelFactory.Instanciate("Data\\Objects\\car.fbx"));
+	this->maps.emplace("test", Map());
+	maps["test"].addGameObject(std::make_shared<GameObject>(temp));
+	maps["test"].addGameObject(std::make_shared<GameObject>(this->mGraphics.getCamera()->getTransform()));
+	currentMap = "test";
 
 	return true;
 }
@@ -39,6 +44,9 @@ void GameEngine::Update()
 	// frame timing
 	float frameTime = frameTimer.GetMilisecondsElapsed();
 	frameTimer.ReStart();
+
+	// camera update state
+	static bool cameraUpdated = false;
 
 	while (!keyboard.CharBufferIsEmpty())
 	{
@@ -58,6 +66,7 @@ void GameEngine::Update()
 		{
 			if (mouse.IsRightDown())
 			{
+				cameraUpdated = true;
 				this->mGraphics.getCamera()->getTransform()->rotate((float)me.GetPostY() * 0.01f, (float)me.GetPosX() * 0.01f, 0);
 			}
 		}
@@ -68,6 +77,7 @@ void GameEngine::Update()
 	// key input
 	if (mouse.IsRightDown())
 	{
+		cameraUpdated = true;
 		if (keyboard.KeyIsPressed('W'))
 		{
 			this->mGraphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->mGraphics.getCamera()->getTransform()->getForwardVector(), cameraSpeed * frameTime));
@@ -94,8 +104,15 @@ void GameEngine::Update()
 		}
 	}
 
+	if (cameraUpdated)
+	{
+		cameraUpdated = false;
+		this->mGraphics.getCamera()->update(frameTime);
+	}
+
 	// physics engine update
 	mPhysicsEngine.Update(frameTime);
+	this->maps["test"].update(frameTime);
 }
 
 void GameEngine::RenderFrame()

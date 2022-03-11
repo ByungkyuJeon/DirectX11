@@ -15,6 +15,8 @@ public:
 class GameObject
 {
 public:
+	GameObject() {}
+	GameObject(std::shared_ptr<Transform> transform);
 
 	void setTransform(std::shared_ptr<Transform> transform);
 	void setModel(std::shared_ptr<Model> model);
@@ -24,8 +26,9 @@ public:
 	std::shared_ptr<Model> getModel() const;
 	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
 
+	virtual void update(float delta);
 protected:
-	virtual void update();
+
 	virtual void updateMatrix();
 
 	GameObjectSetting gameObjectSetting;
