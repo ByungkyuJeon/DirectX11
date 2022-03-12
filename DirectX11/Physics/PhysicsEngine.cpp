@@ -12,9 +12,14 @@ bool PhysicsEngine::Initialize()
 	return true;
 }
 
-void PhysicsEngine::registerObject(const PhysicsObject& object)
+void PhysicsEngine::registerPhysicsObject(const PhysicsObject& object)
 {
 	this->physicsObjects.emplace_back(object);
+}
+
+void PhysicsEngine::registerPhysicsObject(std::shared_ptr<GameObject> gameObject)
+{
+	this->physicsObjects.emplace_back(PhysicsObject(gameObject));
 }
 
 size_t PhysicsEngine::getObjectSize() const
@@ -31,6 +36,6 @@ void PhysicsEngine::Update(float delta)
 {
 	for (auto& object : this->physicsObjects)
 	{
-		object.Update(delta);
+		object.update(delta);
 	}
 }

@@ -54,7 +54,9 @@ void Transform::setPosition(const DirectX::XMVECTOR& position)
 
 void Transform::setPosition(const DirectX::XMFLOAT3& position)
 {
-	this->mWorldPosition = position;
+	this->mWorldPosition.x = position.x;
+	this->mWorldPosition.y = position.y;
+	this->mWorldPosition.z = position.z;
 }
 
 void Transform::setPosition(float x, float y, float z)

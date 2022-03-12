@@ -11,7 +11,8 @@ public:
 
 	bool Initialize();
 
-	void registerObject(const PhysicsObject& object);
+	void registerPhysicsObject(const PhysicsObject& object);
+	void registerPhysicsObject(std::shared_ptr<GameObject> gameObject);
 	//bool removeObject(const PhysicsObject& object);
 
 	size_t getObjectSize() const;

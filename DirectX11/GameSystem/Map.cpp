@@ -1,5 +1,9 @@
 #include "Map.h"
 
+void Map::beginPlay()
+{
+}
+
 void Map::update(float delta)
 {
 	for (auto& elem : this->mGameObjects)

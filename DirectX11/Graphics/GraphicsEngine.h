@@ -21,7 +21,7 @@ public:
 	ID3D11Device* getDevice();
 	ID3D11DeviceContext* getDeviceContext();
 
-	void registerRenderableObject(std::shared_ptr<Transform> transform, std::shared_ptr<Model> model);
+	void registerRenderableObject(std::shared_ptr<GameObject> gameObject);
 
 	void setCamera(std::shared_ptr<Camera> camera);
 	std::shared_ptr<Camera> getCamera();

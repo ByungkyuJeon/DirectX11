@@ -4,6 +4,7 @@
 #include "Graphics/GraphicsEngine.h"
 #include "Physics/PhysicsEngine.h"
 #include "Managers/ModelManager.h"
+#include "Managers/MapManager.h"
 #include "FrameTimer.h"
 #include "GameSystem/Map.h"
 #include <unordered_map>
@@ -35,7 +36,11 @@ private:
 	// physics module
 	PhysicsEngine mPhysicsEngine;
 
-	ModelManager mModelFactory;
+	// model manager
+	ModelManager ModelManager;
+
+	// map manager
+	MapManager mMapManager;
 
 	// game maps (hash table based)
 	std::unordered_map<std::string, Map> maps;

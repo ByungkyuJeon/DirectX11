@@ -17,6 +17,7 @@ class GameObject
 public:
 	GameObject() {}
 	GameObject(std::shared_ptr<Transform> transform);
+	GameObject(std::shared_ptr<Transform> transform, std::shared_ptr<Model> model, std::shared_ptr<DirectX::XMFLOAT3> velocity);
 
 	void setTransform(std::shared_ptr<Transform> transform);
 	void setModel(std::shared_ptr<Model> model);

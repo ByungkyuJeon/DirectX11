@@ -19,17 +19,24 @@ bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::
 		return false;
 	}
 
-	if (!this->mModelFactory.Initialize(this->mGraphics.getDevice(), this->mGraphics.getDeviceContext()))
+	if (!this->ModelManager.Initialize(this->mGraphics.getDevice(), this->mGraphics.getDeviceContext()))
 	{
 		return false;
 	}
 
-	std::shared_ptr<Transform> temp = std::make_shared<Transform>();
-	this->mGraphics.registerRenderableObject(temp, this->mModelFactory.Instanciate("Data\\Objects\\car.fbx"));
-	this->maps.emplace("test", Map());
-	maps["test"].addGameObject(std::make_shared<GameObject>(temp));
-	maps["test"].addGameObject(std::make_shared<GameObject>(this->mGraphics.getCamera()->getTransform()));
+	// 임시 테스트
 	currentMap = "test";
+	this->maps.emplace(currentMap, Map());
+	maps[currentMap].addGameObject(std::make_shared<GameObject>(this->mGraphics.getCamera()->getTransform()));
+	{
+		std::shared_ptr<Transform> transform = std::make_shared<Transform>();
+		std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, -0.098f, 0.0f);
+		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\box.fbx");
+		std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
+		this->mGraphics.registerRenderableObject(gameObject);
+		this->mPhysicsEngine.registerPhysicsObject(gameObject);
+		maps[currentMap].addGameObject(gameObject);
+	}
 
 	return true;
 }

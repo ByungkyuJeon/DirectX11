@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../CoordinateSystem/Transform.h"
+#include "../GameSystem/GameObject.h"
 #include <memory>
 #include <DirectXMath.h>
 
@@ -8,17 +8,14 @@ class PhysicsObject
 {
 public:
 	PhysicsObject() = default;
-	PhysicsObject(std::shared_ptr<Transform> transform, std::shared_ptr<DirectX::XMFLOAT3> velocity);
+	PhysicsObject(std::shared_ptr<GameObject> gameObject);
 
-	void setTransform(std::shared_ptr<Transform> transform);
-	void setVelocity(std::shared_ptr<DirectX::XMFLOAT3> velocity);
-
+	std::shared_ptr<GameObject> getGameObject() const;
 	std::shared_ptr<Transform> getTransform() const;
 	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
 
-	void Update(float delta);
+	void update(float delta);
 
 private:
-	std::shared_ptr<Transform> mTransform;
-	std::shared_ptr<DirectX::XMFLOAT3> mVelocity;
+	std::shared_ptr<GameObject> mGameObject;
 };

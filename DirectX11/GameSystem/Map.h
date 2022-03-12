@@ -5,6 +5,7 @@
 class Map
 {
 public:
+	void beginPlay();
 	void update(float delta);
 
 	void addGameObject(std::shared_ptr<GameObject> gameObject);

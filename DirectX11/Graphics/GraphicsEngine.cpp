@@ -103,9 +103,9 @@ ID3D11DeviceContext* GraphicsEngine::getDeviceContext()
 	return this->deviceContext.Get();
 }
 
-void GraphicsEngine::registerRenderableObject(std::shared_ptr<Transform> transform, std::shared_ptr<Model> model)
+void GraphicsEngine::registerRenderableObject(std::shared_ptr<GameObject> gameObject)
 {
-	this->renderableObjects.emplace_back(transform, model);
+	this->renderableObjects.emplace_back(RenderableObjects(gameObject));
 }
 
 void GraphicsEngine::setCamera(std::shared_ptr<Camera> camera)

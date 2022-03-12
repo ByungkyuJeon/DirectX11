@@ -1,39 +1,34 @@
 #include "PhysicsObject.h"
 
-PhysicsObject::PhysicsObject(std::shared_ptr<Transform> transform, std::shared_ptr<DirectX::XMFLOAT3> velocity) :
-	mTransform{ transform }, mVelocity{ velocity }
+PhysicsObject::PhysicsObject(std::shared_ptr<GameObject> gameObject) :
+	mGameObject{ gameObject }
 {
 }
 
-void PhysicsObject::setTransform(std::shared_ptr<Transform> transform)
+std::shared_ptr<GameObject> PhysicsObject::getGameObject() const 
 {
-	this->mTransform = transform;
-}
-
-void PhysicsObject::setVelocity(std::shared_ptr<DirectX::XMFLOAT3> velocity)
-{
-	this->mVelocity = velocity;
+	return this->mGameObject;
 }
 
 std::shared_ptr<Transform> PhysicsObject::getTransform() const
 {
-	return this->mTransform;
+	return this->mGameObject->getTransform();
 }
 
 std::shared_ptr<DirectX::XMFLOAT3> PhysicsObject::getVelocity() const
 {
-	return this->mVelocity;
+	return this->mGameObject->getVelocity();
 }
 
-void PhysicsObject::Update(float delta)
+void PhysicsObject::update(float delta)
 {
 	DirectX::XMFLOAT3 res;
 	DirectX::XMStoreFloat3(
 		&res,
 		DirectX::XMVectorMultiply(
-			DirectX::XMLoadFloat3(this->mVelocity.get()),
+			DirectX::XMLoadFloat3(this->mGameObject->getVelocity().get()),
 			DirectX::XMVectorReplicate(delta)
 		));
 
-	this->mTransform->setPosition(res);
+	this->mGameObject->getTransform()->translate(res);
 }

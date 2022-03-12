@@ -10,6 +10,11 @@ GameObject::GameObject(std::shared_ptr<Transform> transform)
 	this->mTransform = transform;
 }
 
+GameObject::GameObject(std::shared_ptr<Transform> transform, std::shared_ptr<Model> model, std::shared_ptr<DirectX::XMFLOAT3> velocity) :
+	mTransform{ transform }, mModel{ model }, mVelocity{ velocity }
+{
+}
+
 void GameObject::setTransform(std::shared_ptr<Transform> transform)
 {
 	this->mTransform = transform;
