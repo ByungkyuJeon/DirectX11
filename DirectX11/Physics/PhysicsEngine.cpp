@@ -72,8 +72,8 @@ void PhysicsEngine::update(float delta)
 	for (auto& object : this->mPhysicsObjects)
 	{
 		if (object->getGameObject()->getGameObjectSetting().IsRigidBody()) { continue; }
-		object->getGameObject()->addForce(0.0000001f * delta, -0.00098f * delta, 0.0000001f * delta);
-		object->getGameObject()->multForce(0.9f);
+		object->getGameObject()->addForce((-1 * ((int)delta % 3 - 1)) * 0.000001f * delta, -0.00098f * delta, (-1 * ((int)delta % 3 - 1)) * 0.000001f * delta);
+		object->getGameObject()->multForce(0.99f);
 		object->update(delta);
 	}
 }
@@ -120,9 +120,8 @@ void PhysicsEngine::detectCollision()
 			DirectX::XMFLOAT3 velRatio;
 
 			// 충돌 속도 비율 결정 - X 벡터
-			if ((hasRigid
-				|| lhsVel->x == 0 || rhsVel->x == 0
-				|| lhsVel->x > 0 && rhsVel->x > 0)
+			if ((//hasRigid || 
+				lhsVel->x > 0 && rhsVel->x > 0)
 				|| lhsVel->x < 0 && rhsVel->x < 0)
 			{
 				velRatio.x = lhsVel->x > rhsVel->x ? 1.0f : 0.0f;
@@ -133,9 +132,8 @@ void PhysicsEngine::detectCollision()
 			}
 
 			// 충돌 속도 비율 결정 - Y 벡터
-			if ((hasRigid
-				|| lhsVel->y == 0 || rhsVel->y == 0
-				|| lhsVel->y >= 0 && rhsVel->y >= 0)
+			if ((//hasRigid ||
+				lhsVel->y >= 0 && rhsVel->y >= 0)
 				|| lhsVel->y < 0 && rhsVel->y < 0)
 			{
 				velRatio.y = lhsVel->y > rhsVel->y ? 1.0f : 0.0f;
@@ -146,9 +144,8 @@ void PhysicsEngine::detectCollision()
 			}
 
 			// 충돌 속도 비율 결정 - Z 벡터
-			if ((hasRigid
-				|| lhsVel->y == 0 || rhsVel->y == 0
-				|| lhsVel->z >= 0 && rhsVel->z >= 0)
+			if ((//hasRigid ||
+				lhsVel->z >= 0 && rhsVel->z >= 0)
 				|| lhsVel->z < 0 && rhsVel->z < 0)
 			{
 				velRatio.z = lhsVel->z > rhsVel->z ? 1.0f : 0.0f;

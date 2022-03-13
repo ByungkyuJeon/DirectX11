@@ -36,7 +36,7 @@ bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::
 		std::shared_ptr<Transform> transform = std::make_shared<Transform>();
 		transform->setPosition(0.0f, -25.0f, 0.0f);
 		std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, 0.0f, 0.0f);
-		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\car.fbx");
+		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\plane.fbx");
 		std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
 		gameObject->setMass(1.0f);
 		gameObject->getGameObjectSetting().setCollisionDetectionState(true);
@@ -47,7 +47,7 @@ bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::
 		maps[currentMap].addGameObject(gameObject);
 	}
 
-
+	std::srand(std::time(NULL));
 
 	/*{
 		std::shared_ptr<Transform> transform = std::make_shared<Transform>();
@@ -137,17 +137,17 @@ void GameEngine::Update()
 		}
 		if (keyboard.KeyIsPressed('T'))
 		{
-			if(++gen > 20)
+			if(++gen > 10)
 			{
 				gen = 0;
 				std::shared_ptr<Transform> transform = std::make_shared<Transform>();
-				transform->setPosition(0.0f, 50.0f, 0.0f);
-				std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, 0.0f, 0.0f);
+				transform->setPosition(0.0f, 100.0f, 0.0f);
+				std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>((std::rand() % 100) * 0.001f, 0.0f, (std::rand() % 100) * 0.001f);
 				std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\sphere.fbx");
 				std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
 				gameObject->setMass(1.0f);
 				gameObject->getGameObjectSetting().setCollisionDetectionState(true);
-				gameObject->setCollider(std::make_shared<SphereCollider>(DirectX::XMFLOAT3(0.0f, 50.0f, 0.0f), 10.0f));
+				gameObject->setCollider(std::make_shared<SphereCollider>(DirectX::XMFLOAT3(0.0f, 100.0f, 0.0f), 10.0f));
 				this->mGraphics.registerRenderableObject(gameObject);
 				this->mPhysicsEngine.registerPhysicsObject(gameObject);
 				maps[currentMap].addGameObject(gameObject);
