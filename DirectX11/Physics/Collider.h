@@ -10,7 +10,7 @@ public:
 	{
 		Plane,
 		Sphere,
-		Cube
+		Box
 	};
 
 	virtual IntersectionData isIntersected(Collider* other) = 0;

@@ -110,6 +110,11 @@ void GameObjectSetting::setHiddenInGameState(bool state)
 	this->mIsHiddenInGame = state;
 }
 
+void GameObjectSetting::setRigidBodyState(bool state)
+{
+	this->mIsRigidBody = state;
+}
+
 bool GameObjectSetting::IsHiddenInGame() const
 {
 	return this->mIsHiddenInGame;
@@ -118,4 +123,9 @@ bool GameObjectSetting::IsHiddenInGame() const
 bool GameObjectSetting::CollisionDetectionEnabled() const
 {
 	return this->mCollisionDetectionEnabled;
+}
+
+bool GameObjectSetting::IsRigidBody() const
+{
+	return this->mIsRigidBody;
 }

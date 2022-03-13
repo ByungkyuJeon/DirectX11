@@ -7,20 +7,23 @@
 struct GameObjectSetting
 {
 public:
-	GameObjectSetting() : mIsHiddenInGame{ false }, mCollisionDetectionEnabled{ false } {}
+	GameObjectSetting() : mIsHiddenInGame{ false }, mCollisionDetectionEnabled{ false }, mIsRigidBody{ false }{}
 	GameObjectSetting(bool isHiddenInGame) : 
-		mIsHiddenInGame{ isHiddenInGame }, mCollisionDetectionEnabled{ false }{}
+		mIsHiddenInGame{ isHiddenInGame }, mCollisionDetectionEnabled{ false }, mIsRigidBody{ false }{}
 
 	void setCollisionDetectionState(bool state);
 	void setHiddenInGameState(bool state);
+	void setRigidBodyState(bool state);
 
 	bool IsHiddenInGame() const;
 	bool CollisionDetectionEnabled() const;
+	bool IsRigidBody() const;
 
 
 private:
 	bool mIsHiddenInGame;
 	bool mCollisionDetectionEnabled;
+	bool mIsRigidBody;
 };
 
 class GameObject
@@ -45,6 +48,8 @@ public:
 	const DirectX::XMFLOAT3 getAcceleration() const;
 	float getMass() const;
 
+	void addForce(const DirectX::XMFLOAT3& force);
+	void addForce(float x, float y, float z);
 	void accelerate(const DirectX::XMFLOAT3& acceleration);
 
 	virtual void onCollided(const IntersectionData& intersectionData, std::shared_ptr<Collider> other);
@@ -73,4 +78,7 @@ protected:
 
 	// Áú·®
 	float mMass;
+
+	// Åº¼º
+	float mElasticity;
 };

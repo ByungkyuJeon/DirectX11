@@ -75,12 +75,23 @@ void PhysicsEngine::update(float delta)
 
 void PhysicsEngine::detectCollision()
 {
+	bool hasRigid;
+
 	for (int lhsIdx = 0; lhsIdx < this->mCollisionObjects.size(); lhsIdx++)
 	{
-		for (int rhsIdx = lhsIdx; rhsIdx < this->mCollisionObjects.size(); rhsIdx++)
+		for (int rhsIdx = lhsIdx + 1; rhsIdx < this->mCollisionObjects.size(); rhsIdx++)
 		{
+			if (this->mCollisionObjects[lhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody()
+				&& this->mCollisionObjects[rhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody())
+			{
+				continue;
+			}
+			hasRigid = this->mCollisionObjects[lhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody()
+				|| this->mCollisionObjects[rhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody();
+
+			// 충돌 검사
 			IntersectionData intersectionData =
-				this->mPhysicsObjects[lhsIdx]->getCollider()->isIntersected(this->mPhysicsObjects[rhsIdx]->getCollider().get());
+				this->mCollisionObjects[lhsIdx]->getCollider()->isIntersected(this->mCollisionObjects[rhsIdx]->getCollider().get());
 
 			if (!intersectionData.getIntersectionState())
 			{
@@ -88,10 +99,95 @@ void PhysicsEngine::detectCollision()
 			}
 
 			// 충돌 이벤트 전파
-			this->mPhysicsObjects[lhsIdx]->getGameObject()->onCollided(intersectionData, this->mPhysicsObjects[rhsIdx]->getCollider());
-			this->mPhysicsObjects[rhsIdx]->getGameObject()->onCollided(intersectionData, this->mPhysicsObjects[lhsIdx]->getCollider());
+			this->mCollisionObjects[lhsIdx]->getGameObject()->onCollided(intersectionData, this->mCollisionObjects[rhsIdx]->getCollider());
+			this->mCollisionObjects[rhsIdx]->getGameObject()->onCollided(intersectionData, this->mCollisionObjects[lhsIdx]->getCollider());
+
 
 			// 충돌 물리 연산
+			std::shared_ptr<DirectX::XMFLOAT3> lhsVel = this->mCollisionObjects[lhsIdx]->getGameObject()->getVelocity();
+			std::shared_ptr<DirectX::XMFLOAT3> rhsVel = this->mCollisionObjects[rhsIdx]->getGameObject()->getVelocity();
+
+			// 1. 강체 체크
+			// 2. 충돌 속도 크기 계산
+			DirectX::XMVECTOR impactVelocity = DirectX::XMVectorSubtract(DirectX::XMLoadFloat3(lhsVel.get()), DirectX::XMLoadFloat3(rhsVel.get()));
+
+			// 3. 질량, 방향 기반 속도 크기 분배
+			DirectX::XMFLOAT3 velRatio;
+
+			// 충돌 속도 비율 결정 - X 벡터
+			if ((hasRigid
+				|| lhsVel->x > 0 && rhsVel->x > 0)
+				|| lhsVel->x < 0 && rhsVel->x < 0)
+			{
+				velRatio.x = lhsVel->x > rhsVel->x ? 1.0f : 0.0f;
+			}
+			else
+			{
+				velRatio.x = std::abs(lhsVel->x) / std::abs(DirectX::XMVectorGetX(impactVelocity));
+			}
+
+			// 충돌 속도 비율 결정 - Y 벡터
+			if ((hasRigid
+				|| lhsVel->y >= 0 && rhsVel->y >= 0)
+				|| lhsVel->y < 0 && rhsVel->y < 0)
+			{
+				velRatio.y = lhsVel->y > rhsVel->y ? 1.0f : 0.0f;
+			}
+			else
+			{
+				velRatio.y = std::abs(lhsVel->y) / std::abs(DirectX::XMVectorGetY(impactVelocity));
+			}
+
+			// 충돌 속도 비율 결정 - Z 벡터
+			if ((hasRigid
+				|| lhsVel->z >= 0 && rhsVel->z >= 0)
+				|| lhsVel->z < 0 && rhsVel->z < 0)
+			{
+				velRatio.z = lhsVel->z > rhsVel->z ? 1.0f : 0.0f;
+			}
+			else
+			{
+				velRatio.z = std::abs(lhsVel->z) / std::abs(DirectX::XMVectorGetZ(impactVelocity));
+			}
+
+			// 질량 속도 비율 결정
+			float massRatio = this->mCollisionObjects[lhsIdx]->getGameObject()->getMass() / (this->mCollisionObjects[lhsIdx]->getGameObject()->getMass() + this->mCollisionObjects[rhsIdx]->getGameObject()->getMass());
+
+			// 4. 방향 추가 및 업데이트
+			if (hasRigid)
+			{
+				if (this->mCollisionObjects[rhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody())
+				{
+					this->mCollisionObjects[lhsIdx]->getGameObject()->addForce(
+						-intersectionData.getLtoRNormed().x * std::abs(DirectX::XMVectorGetX(impactVelocity)),
+						-intersectionData.getLtoRNormed().y * std::abs(DirectX::XMVectorGetY(impactVelocity)),
+						-intersectionData.getLtoRNormed().z * std::abs(DirectX::XMVectorGetZ(impactVelocity))
+					);
+				}
+
+				if (this->mCollisionObjects[lhsIdx]->getGameObject()->getGameObjectSetting().IsRigidBody())
+				{
+					this->mCollisionObjects[rhsIdx]->getGameObject()->addForce(
+						intersectionData.getLtoRNormed().x * std::abs(DirectX::XMVectorGetX(impactVelocity)),
+						intersectionData.getLtoRNormed().y * std::abs(DirectX::XMVectorGetY(impactVelocity)),
+						intersectionData.getLtoRNormed().z * std::abs(DirectX::XMVectorGetZ(impactVelocity))
+					);
+				}
+			}
+			else
+			{
+				this->mCollisionObjects[lhsIdx]->getGameObject()->addForce(
+					-intersectionData.getLtoRNormed().x * (1.0f - velRatio.x) * (1.0f - massRatio) * std::abs(DirectX::XMVectorGetX(impactVelocity)),
+					-intersectionData.getLtoRNormed().y * (1.0f - velRatio.y) * (1.0f - massRatio) * std::abs(DirectX::XMVectorGetY(impactVelocity)),
+					-intersectionData.getLtoRNormed().z * (1.0f - velRatio.z) * (1.0f - massRatio) * std::abs(DirectX::XMVectorGetZ(impactVelocity))
+				);
+
+				this->mCollisionObjects[rhsIdx]->getGameObject()->addForce(
+					intersectionData.getLtoRNormed().x * velRatio.x * massRatio * std::abs(DirectX::XMVectorGetX(impactVelocity)),
+					intersectionData.getLtoRNormed().y * velRatio.y * massRatio * std::abs(DirectX::XMVectorGetY(impactVelocity)),
+					intersectionData.getLtoRNormed().z * velRatio.z * massRatio * std::abs(DirectX::XMVectorGetZ(impactVelocity))
+				);
+			}
 			
 		}
 	}

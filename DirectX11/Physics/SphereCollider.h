@@ -8,8 +8,8 @@ class SphereCollider : public Collider
 {
 public:
 	SphereCollider() = default;
-	SphereCollider(DirectX::XMVECTOR& center, float radius);
-	SphereCollider(DirectX::XMFLOAT3& center, float radius);
+	SphereCollider(const DirectX::XMVECTOR& center, float radius);
+	SphereCollider(const DirectX::XMFLOAT3& center, float radius);
 
 	const DirectX::XMFLOAT3& getCenter() const;
 	float getRadius() const;
@@ -23,6 +23,6 @@ public:
 	IntersectionData isIntersected_Implementation(SphereCollider* other) const;
 
 private:
-	DirectX::XMFLOAT3	center;
-	float				radius;
+	DirectX::XMFLOAT3	mCenter;
+	float				mRadius;
 };
