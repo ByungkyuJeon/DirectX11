@@ -39,15 +39,17 @@ public:
 	void setCollider(std::shared_ptr<Collider> collider);
 	void setMass(float mass);
 	
-	const GameObjectSetting& getGameObjectSetting() const;
+	GameObjectSetting& getGameObjectSetting();
 	std::shared_ptr<Transform> getTransform() const;
 	std::shared_ptr<Model> getModel() const;
 	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
 	std::shared_ptr<Collider> getCollider() const;
 	float getMass() const;
 
+	
 	void addForce(const DirectX::XMFLOAT3& force);
 	void addForce(float x, float y, float z);
+	void multForce(float mult);
 
 	virtual void onCollided(const IntersectionData& intersectionData, std::shared_ptr<Collider> other);
 	virtual void update(float delta);

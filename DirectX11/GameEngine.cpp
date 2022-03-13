@@ -1,4 +1,6 @@
 #include "GameEngine.h"
+#include "Physics/PlaneCollider.h"
+#include "Physics/Spherecollider.h"
 
 bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
 {
@@ -28,15 +30,38 @@ bool GameEngine::Initialize(HINSTANCE hInstance, std::string window_title, std::
 	currentMap = "test";
 	this->maps.emplace(currentMap, Map());
 	maps[currentMap].addGameObject(std::make_shared<GameObject>(this->mGraphics.getCamera()->getTransform()));
+
+	// юс╫ц ╧ы╢з
 	{
 		std::shared_ptr<Transform> transform = std::make_shared<Transform>();
-		std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, -0.098f, 0.0f);
-		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\box.fbx");
+		transform->setPosition(0.0f, -25.0f, 0.0f);
+		std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, 0.0f, 0.0f);
+		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\plane.fbx");
 		std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
+		gameObject->setMass(1.0f);
+		gameObject->getGameObjectSetting().setCollisionDetectionState(true);
+		gameObject->getGameObjectSetting().setRigidBodyState(true);
+		gameObject->setCollider(std::make_shared<PlaneCollider>(DirectX::XMFLOAT3(0.0f, 1.0f, 0.0f), -25.0f));
 		this->mGraphics.registerRenderableObject(gameObject);
 		this->mPhysicsEngine.registerPhysicsObject(gameObject);
 		maps[currentMap].addGameObject(gameObject);
 	}
+
+
+
+	/*{
+		std::shared_ptr<Transform> transform = std::make_shared<Transform>();
+		transform->setPosition(0.0f, 25.0f, 0.0f);
+		std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, 0.0f, 0.0f);
+		std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\sphere.fbx");
+		std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
+		gameObject->setMass(1.0f);
+		gameObject->getGameObjectSetting().setCollisionDetectionState(true);
+		gameObject->setCollider(std::make_shared<SphereCollider>(DirectX::XMFLOAT3(0.0f, 25.0f, 0.0f), 1.0f));
+		this->mGraphics.registerRenderableObject(gameObject);
+		this->mPhysicsEngine.registerPhysicsObject(gameObject);
+		maps[currentMap].addGameObject(gameObject);
+	}*/
 
 	return true;
 }
@@ -51,6 +76,7 @@ void GameEngine::Update()
 	// frame timing
 	float frameTime = frameTimer.GetMilisecondsElapsed();
 	frameTimer.ReStart();
+	static int gen = 0;
 
 	// camera update state
 	static bool cameraUpdated = false;
@@ -108,6 +134,24 @@ void GameEngine::Update()
 		if (keyboard.KeyIsPressed('Q'))
 		{
 			this->mGraphics.getCamera()->getTransform()->translate(DirectX::XMVectorScale(this->mGraphics.getCamera()->getTransform()->getDownVector(), cameraSpeed * frameTime));
+		}
+		if (keyboard.KeyIsPressed('T'))
+		{
+			if(++gen > 20)
+			{
+				gen = 0;
+				std::shared_ptr<Transform> transform = std::make_shared<Transform>();
+				transform->setPosition(0.0f, 50.0f, 0.0f);
+				std::shared_ptr<DirectX::XMFLOAT3> velocity = std::make_shared<DirectX::XMFLOAT3>(0.0f, 0.0f, 0.0f);
+				std::shared_ptr<Model> model = this->ModelManager.Instanciate("Data\\Objects\\sphere.fbx");
+				std::shared_ptr<GameObject> gameObject = std::make_shared<GameObject>(transform, model, velocity);
+				gameObject->setMass(1.0f);
+				gameObject->getGameObjectSetting().setCollisionDetectionState(true);
+				gameObject->setCollider(std::make_shared<SphereCollider>(DirectX::XMFLOAT3(0.0f, 50.0f, 0.0f), 10.0f));
+				this->mGraphics.registerRenderableObject(gameObject);
+				this->mPhysicsEngine.registerPhysicsObject(gameObject);
+				maps[currentMap].addGameObject(gameObject);
+			}
 		}
 	}
 

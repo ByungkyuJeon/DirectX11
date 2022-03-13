@@ -27,6 +27,13 @@ void IntersectionData::setLtoRNormed(const DirectX::XMFLOAT3& ltoRNormed)
 	this->mLtoRNormed = ltoRNormed;
 }
 
+void IntersectionData::setLtoRNormed(float x, float y, float z)
+{
+	this->mLtoRNormed.x = x;
+	this->mLtoRNormed.y = y;
+	this->mLtoRNormed.z = z;
+}
+
 void IntersectionData::setIntersectionState(bool intersectionState)
 {
 	this->intersectionState = intersectionState;

@@ -4,6 +4,8 @@
 #include "IntersectionData.h"
 #include <DirectXMath.h>
 
+class PlaneCollider;
+
 class SphereCollider : public Collider
 {
 public:
@@ -11,6 +13,7 @@ public:
 	SphereCollider(const DirectX::XMVECTOR& center, float radius);
 	SphereCollider(const DirectX::XMFLOAT3& center, float radius);
 
+	void setTransform(float x, float y, float z) override;
 	const DirectX::XMFLOAT3& getCenter() const;
 	float getRadius() const;
 
@@ -21,6 +24,7 @@ public:
 	IntersectionData isIntersected(Collider* other) override;
 
 	IntersectionData isIntersected_Implementation(SphereCollider* other) const;
+	IntersectionData isIntersected_Implementation(PlaneCollider* other) const;
 
 private:
 	DirectX::XMFLOAT3	mCenter;

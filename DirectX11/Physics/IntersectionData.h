@@ -13,6 +13,7 @@ public:
 	const DirectX::XMFLOAT3 getLtoRNormed() const;
 
 	void setLtoRNormed(const DirectX::XMFLOAT3& ltoRNormed);
+	void setLtoRNormed(float x, float y, float z);
 	void setIntersectionState(bool intersectionState);
 	void setIntersectionDistance(float distance);
 

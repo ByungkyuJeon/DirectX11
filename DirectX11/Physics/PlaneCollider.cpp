@@ -1,14 +1,22 @@
 #include "PlaneCollider.h"
+#include "SphereCollider.h"
 
 PlaneCollider::PlaneCollider(const DirectX::XMFLOAT3& normal, float distance) :
 	normal{ normal }, distance{ distance }
 {
+	this->setType(Collider::Type::Plane);
 }
 
 PlaneCollider::PlaneCollider(const DirectX::XMVECTOR& normal, float distance) :
 	distance{ distance }
 {
 	DirectX::XMStoreFloat3(&this->normal, normal);
+	this->setType(Collider::Type::Plane);
+}
+
+void PlaneCollider::setTransform(float x, float y, float z)
+{
+	this->distance = y;
 }
 
 PlaneCollider PlaneCollider::normalized() const
@@ -48,20 +56,39 @@ void PlaneCollider::setDistance(float distance)
 	this->distance = distance;
 }
 
-IntersectionData PlaneCollider::isIntersected(const SphereCollider& other) const
+IntersectionData PlaneCollider::isIntersected(Collider* other)
 {
-	float distance = fabsf(this->distance 
-		+ DirectX::XMVectorGetX(
-		DirectX::XMVector3Dot(
-			DirectX::XMLoadFloat3(&this->normal),
-			DirectX::XMLoadFloat3(&other.getCenter())
-			)
-	));
-	return IntersectionData(distance <= other.getRadius(), distance - other.getRadius());
+	switch (other->getType())
+	{
+	case Collider::Plane:
+		assert("default not allowed");
+		break;
+	case Collider::Sphere:
+		return isIntersected_Implementation((SphereCollider*)other);
+		break;
+	case Collider::Box:
+		assert("Sphere to Cube intersection not implemented");
+		break;
+	default:
+		assert("default not allowed");
+		break;
+	}
 }
 
-IntersectionData PlaneCollider::isIntersected(const AxisAlignedBoundingBox& other) const
+IntersectionData PlaneCollider::isIntersected_Implementation(SphereCollider* other) const
 {
+	IntersectionData ret;
+	float distance = fabsf(fabsf(this->distance)
+		+ DirectX::XMVectorGetX(
+			DirectX::XMVector3Dot(
+				DirectX::XMLoadFloat3(&this->normal),
+				DirectX::XMLoadFloat3(&other->getCenter())
+			)
+		));
 
-	return IntersectionData();
+	ret.setIntersectionState(distance <= other->getRadius());
+	ret.setIntersectionDistance(distance - other->getRadius());
+	ret.setLtoRNormed(this->normal.x, this->normal.y, this->normal.z);
+
+	return ret;
 }

@@ -7,6 +7,16 @@ void GameObject::onCollided(const IntersectionData& intersectionData, std::share
 
 void GameObject::update(float delta)
 {
+	if (this->mCollider != nullptr)
+	{
+		this->mCollider->setTransform
+		(
+			this->mTransform->getWorldPosition().x,
+			this->mTransform->getWorldPosition().y,
+			this->mTransform->getWorldPosition().z
+		);
+	}
+
 	this->updateMatrix();
 }
 
@@ -45,7 +55,7 @@ void GameObject::setMass(float mass)
 	this->mMass = mass;
 }
 
-const GameObjectSetting& GameObject::getGameObjectSetting() const
+GameObjectSetting& GameObject::getGameObjectSetting()
 {
 	return this->mGameObjectSetting;
 }
@@ -73,6 +83,27 @@ std::shared_ptr<Collider> GameObject::getCollider() const
 float GameObject::getMass() const
 {
 	return this->mMass;
+}
+
+void GameObject::addForce(const DirectX::XMFLOAT3& force)
+{
+	this->mVelocity->x += force.x;
+	this->mVelocity->y += force.y;
+	this->mVelocity->z += force.z;
+}
+
+void GameObject::addForce(float x, float y, float z)
+{
+	this->mVelocity->x += x;
+	this->mVelocity->y += y;
+	this->mVelocity->z += z;
+}
+
+void GameObject::multForce(float mult)
+{
+	this->mVelocity->x *= mult;
+	this->mVelocity->y *= mult;
+	this->mVelocity->z *= mult;
 }
 
 void GameObject::updateMatrix()

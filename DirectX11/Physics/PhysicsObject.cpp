@@ -28,6 +28,7 @@ std::shared_ptr<Collider> PhysicsObject::getCollider() const
 void PhysicsObject::update(float delta)
 {
 	DirectX::XMFLOAT3 res;
+
 	DirectX::XMStoreFloat3(
 		&res,
 		DirectX::XMVectorMultiply(

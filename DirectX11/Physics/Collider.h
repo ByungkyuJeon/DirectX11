@@ -14,6 +14,7 @@ public:
 	};
 
 	virtual IntersectionData isIntersected(Collider* other) = 0;
+	virtual void setTransform(float x, float y, float z);
 
 	void setType(Type type);
 
