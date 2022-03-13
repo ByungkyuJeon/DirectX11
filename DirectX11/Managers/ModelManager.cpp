@@ -67,6 +67,10 @@ void ModelManager::ProcessMesh(std::shared_ptr<Model>& model, aiMesh* mesh, cons
 		vertex.pos.y = mesh->mVertices[i].y;
 		vertex.pos.z = mesh->mVertices[i].z;
 
+		vertex.normal.x = mesh->mNormals[i].x;
+		vertex.normal.y = mesh->mNormals[i].y;
+		vertex.normal.z = mesh->mNormals[i].z;
+
 		if (mesh->mTextureCoords[0])
 		{
 			vertex.texCoord.x = (float)mesh->mTextureCoords[0][i].x;

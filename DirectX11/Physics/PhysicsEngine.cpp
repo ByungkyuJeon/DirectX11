@@ -72,7 +72,7 @@ void PhysicsEngine::update(float delta)
 	for (auto& object : this->mPhysicsObjects)
 	{
 		if (object->getGameObject()->getGameObjectSetting().IsRigidBody()) { continue; }
-		object->getGameObject()->addForce(0.00000001f * delta, -0.00098f * delta, 0.0f);
+		object->getGameObject()->addForce(0.0000001f * delta, -0.00098f * delta, 0.0000001f * delta);
 		object->getGameObject()->multForce(0.9f);
 		object->update(delta);
 	}

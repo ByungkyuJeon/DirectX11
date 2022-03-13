@@ -4,12 +4,14 @@
 struct alignas(16) CB_VS_vertexshader
 {
 public:
-	CB_VS_vertexshader() : mat{ DirectX::XMMatrixIdentity() }{}
+	CB_VS_vertexshader() : wvpMatrix{ DirectX::XMMatrixIdentity() }, worldMatrix{ DirectX::XMMatrixIdentity() }{}
 
-	DirectX::XMMATRIX mat;
+	DirectX::XMMATRIX wvpMatrix;
+	DirectX::XMMATRIX worldMatrix;
 };
 
-struct alignas(16) CB_PS_pixelshader
+struct alignas(16) CB_PS_light
 {
-	float alpha = 1.0f;
+	DirectX::XMFLOAT3 ambientLightColor;
+	float ambientLightStrength;
 };

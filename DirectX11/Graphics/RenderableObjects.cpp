@@ -15,8 +15,8 @@ void RenderableObjects::Draw(ID3D11DeviceContext* deviceContext, ConstantBuffer<
 	deviceContext->VSSetConstantBuffers(0, 1, cb_vs_vertexShader.GetAddressOf());
 	for (int i = 0; i < this->mGameObject->getModel()->getMeshes().size(); i++)
 	{
-		cb_vs_vertexShader.data.mat = DirectX::XMMatrixMultiply(this->mGameObject->getModel()->getMeshAt(i).GetTransformMatrix(), DirectX::XMMatrixMultiply(this->mGameObject->getTransform()->getWorldMatrix(), viewProjectionMatrix));
-		cb_vs_vertexShader.data.mat = DirectX::XMMatrixTranspose(cb_vs_vertexShader.data.mat);
+		cb_vs_vertexShader.data.wvpMatrix = DirectX::XMMatrixMultiply(this->mGameObject->getModel()->getMeshAt(i).GetTransformMatrix(), DirectX::XMMatrixMultiply(this->mGameObject->getTransform()->getWorldMatrix(), viewProjectionMatrix));
+		cb_vs_vertexShader.data.worldMatrix = DirectX::XMMatrixMultiply(this->mGameObject->getModel()->getMeshAt(i).GetTransformMatrix(), this->mGameObject->getTransform()->getWorldMatrix());
 		cb_vs_vertexShader.ApplyChanges();
 		
 		UINT offset = 0;
