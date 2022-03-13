@@ -40,11 +40,6 @@ void GameObject::setCollider(std::shared_ptr<Collider> collider)
 	this->mCollider = collider;
 }
 
-void GameObject::setAcceleration(const DirectX::XMFLOAT3& acceleration)
-{
-	this->mAcceleration = acceleration;
-}
-
 void GameObject::setMass(float mass)
 {
 	this->mMass = mass;
@@ -75,21 +70,9 @@ std::shared_ptr<Collider> GameObject::getCollider() const
 	return this->mCollider;
 }
 
-const DirectX::XMFLOAT3 GameObject::getAcceleration() const
-{
-	return this->mAcceleration;
-}
-
 float GameObject::getMass() const
 {
 	return this->mMass;
-}
-
-void GameObject::accelerate(const DirectX::XMFLOAT3& acceleration)
-{
-	this->mAcceleration.x += acceleration.x;
-	this->mAcceleration.y += acceleration.y;
-	this->mAcceleration.z += acceleration.z;
 }
 
 void GameObject::updateMatrix()

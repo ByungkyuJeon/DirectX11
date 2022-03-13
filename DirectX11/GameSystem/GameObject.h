@@ -37,7 +37,6 @@ public:
 	void setModel(std::shared_ptr<Model> model);
 	void setVelocity(std::shared_ptr<DirectX::XMFLOAT3> velocity);
 	void setCollider(std::shared_ptr<Collider> collider);
-	void setAcceleration(const DirectX::XMFLOAT3& acceleration);
 	void setMass(float mass);
 	
 	const GameObjectSetting& getGameObjectSetting() const;
@@ -45,12 +44,10 @@ public:
 	std::shared_ptr<Model> getModel() const;
 	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
 	std::shared_ptr<Collider> getCollider() const;
-	const DirectX::XMFLOAT3 getAcceleration() const;
 	float getMass() const;
 
 	void addForce(const DirectX::XMFLOAT3& force);
 	void addForce(float x, float y, float z);
-	void accelerate(const DirectX::XMFLOAT3& acceleration);
 
 	virtual void onCollided(const IntersectionData& intersectionData, std::shared_ptr<Collider> other);
 	virtual void update(float delta);
@@ -72,9 +69,6 @@ protected:
 
 	// 속도
 	std::shared_ptr<DirectX::XMFLOAT3> mVelocity;
-
-	// 가속도
-	DirectX::XMFLOAT3 mAcceleration;
 
 	// 질량
 	float mMass;
