@@ -3,6 +3,13 @@
 #include "PhysicsObject.h"
 #include <vector>
 
+struct PhysicsEngineSetting
+{
+public:
+
+private:
+	DirectX::XMFLOAT3 mGravity;
+};
 
 class PhysicsEngine
 {
@@ -11,15 +18,18 @@ public:
 
 	bool Initialize();
 
-	void registerPhysicsObject(const PhysicsObject& object);
+	void registerPhysicsObject(std::shared_ptr<PhysicsObject> physicsObject);
 	void registerPhysicsObject(std::shared_ptr<GameObject> gameObject);
 	//bool removeObject(const PhysicsObject& object);
 
 	size_t getObjectSize() const;
-	const PhysicsObject& getObject(size_t idx) const;
+	std::shared_ptr<PhysicsObject> getObject(size_t idx) const;
 
-	void Update(float delta);
+	void update(float delta);
 
 private:
-	std::vector<PhysicsObject> physicsObjects;
+	std::vector<std::shared_ptr<PhysicsObject>> mPhysicsObjects;
+	std::vector<std::shared_ptr<PhysicsObject>> mCollisionObjects;
+
+	void detectCollision();
 };

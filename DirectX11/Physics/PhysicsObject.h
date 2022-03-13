@@ -13,6 +13,7 @@ public:
 	std::shared_ptr<GameObject> getGameObject() const;
 	std::shared_ptr<Transform> getTransform() const;
 	std::shared_ptr<DirectX::XMFLOAT3> getVelocity() const;
+	std::shared_ptr<Collider> getCollider() const;
 
 	void update(float delta);
 

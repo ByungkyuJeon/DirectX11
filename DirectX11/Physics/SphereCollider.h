@@ -18,9 +18,9 @@ public:
 	void setCenter(DirectX::XMVECTOR& center);
 	void setRadius(float radius);
 
-	IntersectionData isIntersected(const Collider& other) override;
+	IntersectionData isIntersected(Collider* other) override;
 
-	IntersectionData isIntersected_Implementation(const SphereCollider& other) const;
+	IntersectionData isIntersected_Implementation(SphereCollider* other) const;
 
 private:
 	DirectX::XMFLOAT3	center;

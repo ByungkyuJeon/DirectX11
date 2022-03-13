@@ -118,7 +118,7 @@ void GameEngine::Update()
 	}
 
 	// physics engine update
-	mPhysicsEngine.Update(frameTime);
+	mPhysicsEngine.update(frameTime);
 	this->maps["test"].update(frameTime);
 }
 

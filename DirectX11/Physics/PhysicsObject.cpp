@@ -20,6 +20,11 @@ std::shared_ptr<DirectX::XMFLOAT3> PhysicsObject::getVelocity() const
 	return this->mGameObject->getVelocity();
 }
 
+std::shared_ptr<Collider> PhysicsObject::getCollider() const
+{
+	return this->mGameObject->getCollider();
+}
+
 void PhysicsObject::update(float delta)
 {
 	DirectX::XMFLOAT3 res;

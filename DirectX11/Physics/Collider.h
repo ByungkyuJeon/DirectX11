@@ -1,5 +1,7 @@
 #pragma once
 #include "IntersectionData.h"
+#include "../CoordinateSystem/Transform.h"
+#include <memory>
 
 class Collider
 {
@@ -11,7 +13,7 @@ public:
 		Cube
 	};
 
-	virtual IntersectionData isIntersected(const Collider& other) = 0;
+	virtual IntersectionData isIntersected(Collider* other) = 0;
 
 	void setType(Type type);
 

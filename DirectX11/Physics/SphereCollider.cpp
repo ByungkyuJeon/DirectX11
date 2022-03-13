@@ -36,15 +36,15 @@ void SphereCollider::setRadius(float radius)
 	this->radius = radius;
 }
 
-IntersectionData SphereCollider::isIntersected(const Collider& other)
+IntersectionData SphereCollider::isIntersected(Collider* other)
 {
-	switch (other.getType())
+	switch (other->getType())
 	{
 	case Collider::Plane:
 		assert("Sphere to Plane intersection not implemented");
 		break;
 	case Collider::Sphere:
-		return isIntersected_Implementation((SphereCollider&)other);
+		return isIntersected_Implementation((SphereCollider*)other);
 		break;
 	case Collider::Cube:
 		assert("Sphere to Cube intersection not implemented");
@@ -55,15 +55,15 @@ IntersectionData SphereCollider::isIntersected(const Collider& other)
 	}
 }
 
-IntersectionData SphereCollider::isIntersected_Implementation(const SphereCollider& other) const
+IntersectionData SphereCollider::isIntersected_Implementation(SphereCollider* other) const
 {
 	IntersectionData ret;
-	float dist = DirectX::XMVectorGetX(DirectX::XMVector3Length(DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&this->center), DirectX::XMLoadFloat3(&other.center))));
-	bool intersectionState = dist <= this->radius + other.radius;
+	float dist = DirectX::XMVectorGetX(DirectX::XMVector3Length(DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&this->center), DirectX::XMLoadFloat3(&other->center))));
+	bool intersectionState = dist <= this->radius + other->radius;
 	ret.setIntersectionState(intersectionState);
 	if (intersectionState)
 	{
-		ret.setIntersectionDistance((this->radius + other.radius) - dist);
+		ret.setIntersectionDistance((this->radius + other->radius) - dist);
 	}
 	return ret;
 }
