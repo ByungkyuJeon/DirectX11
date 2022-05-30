@@ -44,13 +44,13 @@ namespace DirectX
     // Model loading options
     enum ModelLoaderFlags : uint32_t
     {
-        ModelLoader_Clockwise           = 0x0,
-        ModelLoader_CounterClockwise    = 0x1,
-        ModelLoader_PremultipledAlpha   = 0x2,
-        ModelLoader_MaterialColorsSRGB  = 0x4,
-        ModelLoader_AllowLargeModels    = 0x8,
-        ModelLoader_IncludeBones        = 0x10,
-        ModelLoader_DisableSkinning     = 0x20,
+        ModelLoader_Clockwise = 0x0,
+        ModelLoader_CounterClockwise = 0x1,
+        ModelLoader_PremultipledAlpha = 0x2,
+        ModelLoader_MaterialColorsSRGB = 0x4,
+        ModelLoader_AllowLargeModels = 0x8,
+        ModelLoader_IncludeBones = 0x10,
+        ModelLoader_DisableSkinning = 0x20,
     };
 
     //----------------------------------------------------------------------------------
@@ -61,13 +61,15 @@ namespace DirectX
             parentIndex(c_Invalid),
             childIndex(c_Invalid),
             siblingIndex(c_Invalid)
-        {}
+        {
+        }
 
         ModelBone(uint32_t parent, uint32_t child, uint32_t sibling) noexcept :
             parentIndex(parent),
             childIndex(child),
             siblingIndex(sibling)
-        {}
+        {
+        }
 
         uint32_t            parentIndex;
         uint32_t            childIndex;
@@ -142,7 +144,7 @@ namespace DirectX
         void __cdecl CreateInputLayout(_In_ ID3D11Device* device, _In_ IEffect* ieffect, _Outptr_ ID3D11InputLayout** iinputLayout) const;
 
         // Change effect used by part and regenerate input layout (be sure to call Model::Modified as well)
-        void __cdecl ModifyEffect(_In_ ID3D11Device* device, _In_ std::shared_ptr<IEffect>& ieffect, bool isalpha = false);
+        void __cdecl ModifyEffect(_In_ ID3D11Device* device, _In_ const std::shared_ptr<IEffect>& ieffect, bool isalpha = false);
     };
 
 
@@ -326,8 +328,8 @@ namespace DirectX
     private:
         std::set<IEffect*>  mEffectCache;
 
-        void XM_CALLCONV ComputeAbsolute(uint32_t index,
-            FXMMATRIX local, size_t nbones,
+        void __cdecl ComputeAbsolute(uint32_t index,
+            CXMMATRIX local, size_t nbones,
             _In_reads_(nbones) const XMMATRIX* inBoneTransforms,
             _Inout_updates_(nbones) XMMATRIX* outBoneTransforms,
             size_t& visited) const;

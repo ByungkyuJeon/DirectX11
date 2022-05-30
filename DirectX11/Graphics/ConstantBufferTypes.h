@@ -14,4 +14,8 @@ struct alignas(16) CB_PS_light
 {
 	DirectX::XMFLOAT3 ambientLightColor;
 	float ambientLightStrength;
+
+	DirectX::XMFLOAT3 dynamicLightPosition;
+	float dynamicLightStrength;
+	DirectX::XMFLOAT3 dynamicLightColor;
 };
