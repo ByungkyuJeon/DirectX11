@@ -63,9 +63,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="StringHelper.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -167,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="GameSystem\LightObject.cpp">
       <Filter>Sources\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="AppMain.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="GameSystem\LightObject.h">
       <Filter>Headers\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Imports.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,13 @@ private:
 
 public:
 
+	
+
 };
 
-static TEngine* Engine;
+static const TEngine* Engine;
+
+static void BootEngine()
+{
+	Engine = new TEngine();
+}
