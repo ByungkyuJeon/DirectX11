@@ -1,6 +1,8 @@
 #pragma once
 
+#include "Framework/Memory/TMemoryPool.h"
 #include "Graphics/Renderer.h"
+
 
 struct TEngineConfig
 {
@@ -10,8 +12,11 @@ struct TEngineConfig
 class TEngine
 {
 private:
-	// 메모리 풀 (+GC?)
+	bool InternalBootstrap();
 
+	// 메모리 풀
+
+	// GC
 
 	// 그래픽스 렌더러
 	Renderer renderer;
@@ -20,7 +25,9 @@ private:
 	// 
 
 public:
+	TEngine();
 
+	bool Initiate();
 	
 
 };
@@ -30,4 +37,6 @@ static const TEngine* Engine;
 static void BootEngine()
 {
 	Engine = new TEngine();
+
+	
 }

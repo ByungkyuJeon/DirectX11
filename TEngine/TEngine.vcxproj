@@ -145,12 +145,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Framework\Memory\MemoryDefinitions.h" />
+    <ClInclude Include="Core\Framework\Memory\TMemoryPool.h" />
     <ClInclude Include="Core\Graphics\Renderer.h" />
+    <ClInclude Include="Core\Physics\Physics.h" />
     <ClInclude Include="Core\TEngine.h" />
+    <ClInclude Include="Core\Core.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Types\MemoryTypes.h" />
     <ClCompile Include="Core\Graphics\Renderer.cpp" />
+    <ClCompile Include="Core\Physics\Physics.cpp" />
     <ClCompile Include="Core\TEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Framework\Memory\MemoryPool.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

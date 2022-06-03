@@ -1,9 +1,11 @@
 #pragma once
 
-class Renderer
+class Physics
 {
 private:
 
 public:
+	Physics() {};
+
 	bool Initiate();
 };
