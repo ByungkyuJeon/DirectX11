@@ -26,13 +26,20 @@ public:
 		m_Pools[InName] = InPoolPtr;
 	};
 
+
+
+	inline size_t GetPoolCount() const;
+	inline size_t GetTotalPoolSize() const;
+
 };
 
 static TMemoryManager* gMemoryManager;
 
 class TMemoryPool
 {
-
+public:
+	virtual inline void* Allocate(Tsize_t InSIze) = 0;
+	virtual inline void Free(void* InMem) = 0;
 };
 
 template<typename TType, Tsize_t TSize>
@@ -43,10 +50,12 @@ public:
 
 private:
 	TType m_Pool[TSize];
+	bool m_State[TSize];
 	Tsize_t m_CurrentIdx;
 
 public:
-
+	virtual inline void* Allocate(Tsize_t InSIze);
+	virtual inline void Free(void* InMem);
 };
 
 template<typename TType, Tsize_t TSize>
