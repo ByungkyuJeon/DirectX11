@@ -5,3 +5,5 @@
 
 // imported headers
 #include <TEngine.h>
+
+extern bool BootEngine(HINSTANCE InHInstance);

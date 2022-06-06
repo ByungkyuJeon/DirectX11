@@ -2,12 +2,10 @@
 #include "GameEngine.h"
 #include <stdio.h>
 
-extern void BootEngine();
-
 int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
-	BootEngine();
-	
+	BootEngine(hInstance);
+
 	GameEngine engine;
 	engine.Initialize(hInstance, "Title", "WindowClass", 1920, 1080);
 

@@ -2,17 +2,26 @@
 
 bool TEngine::InternalBootstrap()
 {
-	return false;
+
+
+
+	return true;
 }
 
-TEngine::TEngine()
+bool TEngine::Initiate(HINSTANCE InHInstance)
 {
-	InternalBootstrap();
-}
+	m_HInstance = InHInstance;
 
-bool TEngine::Initiate()
-{
-	CreatePool<TEngine, 100>();
+	try
+	{
+		InternalBootstrap();
+	}
+	catch (ErrorCode errCode)
+	{
+		std::string errorStr = ErrorCodeToString(errCode);
+		OutputDebugStringA(errorStr.c_str());
+		return false;
+	}
 
-	return false;
+	return true;
 }

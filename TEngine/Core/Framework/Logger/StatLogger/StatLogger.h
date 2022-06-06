@@ -10,7 +10,7 @@ public:
 	{
 		static const std::string m_MessagePrefix = "STAT LOGGER : ";
 		
-		std::string errorMsg = m_MessagePrefix + msg;
+		std::string errorMsg = m_MessagePrefix + msg + '\n';
 		OutputDebugStringA(errorMsg.c_str());
 	}
 
