@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Framework\ErrorLogger\ErrorCode.h" />
     <ClInclude Include="Core\Framework\Memory\MemoryDefinitions.h" />
     <ClInclude Include="Core\Framework\Memory\TMemoryPool.h" />
     <ClInclude Include="Core\Graphics\Renderer.h" />

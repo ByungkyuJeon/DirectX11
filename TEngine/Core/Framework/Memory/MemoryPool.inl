@@ -1,5 +1,25 @@
 #pragma once
 
+template<typename TType>
+inline TType* TMemoryManager::CreateObject()
+{
+	TMemoryPoolBase* targetMemoryPool = m_Pools.find(typeid(TType).name());
+	if (targetMemoryPool == m_Pools.end())
+		return nullptr;
+
+	return targetMemoryPool->Allocate(sizeof(TType));
+}
+
+template<typename TType>
+inline void TMemoryManager::DestroyObject(TType* InMem)
+{
+	TMemoryPoolBase* targetMemoryPool = m_Pools.find(typeid(TType).name());
+	if (targetMemoryPool == m_Pools.end())
+		return nullptr;
+
+	targetMemoryPool->Free(InMem);
+}
+
 inline size_t TMemoryManager::GetPoolCount() const
 {
 	return m_Pools.size();
@@ -18,7 +38,7 @@ inline size_t TMemoryManager::GetTotalPoolSize() const
 }
 
 template<typename TType, Tsize_t TSize>
-inline void* MemoryPool<TType, TSize>::Allocate(Tsize_t InSize)
+inline void* TMemoryPool<TType, TSize>::Allocate(Tsize_t InSize)
 {
 	Tsize_t allocIdx = INVALID_ALLOCATION;
 	for(Tsize_t idx = m_CurrentIdx + 1; idx < TSize; idx++)
@@ -51,7 +71,7 @@ inline void* MemoryPool<TType, TSize>::Allocate(Tsize_t InSize)
 }
 
 template<typename TType, Tsize_t TSize>
-inline void MemoryPool<TType, TSize>::Free(void* InMem)
+inline void TMemoryPool<TType, TSize>::Free(void* InMem)
 {
 	Tsize_t targetIdx = reinterpret_cast<TType*>(InMem) - m_Pool;
 	m_State[targetIdx] = false;

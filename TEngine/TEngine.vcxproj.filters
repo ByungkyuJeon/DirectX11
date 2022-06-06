@@ -33,6 +33,9 @@
     <ClInclude Include="Core\Framework\Memory\MemoryDefinitions.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Framework\ErrorLogger\ErrorCode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\TEngine.cpp">
