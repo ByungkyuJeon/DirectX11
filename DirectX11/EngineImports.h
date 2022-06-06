@@ -4,4 +4,4 @@
 #pragma comment(lib, "TEngine.lib")
 
 // imported headers
-#include "../TEngine/Core/TEngine.h"
+#include <TEngine.h>

@@ -4,8 +4,12 @@ template<typename TType>
 inline TType* TMemoryManager::CreateObject()
 {
 	TMemoryPoolBase* targetMemoryPool = m_Pools.find(typeid(TType).name());
-	if (targetMemoryPool == m_Pools.end())
-		return nullptr;
+	if (targetMemoryPool != m_Pools.end())
+	{
+		PRINT_STAT(ErrorCodeToString(EXISTING_OBJECT));
+		_ASSERT(false);
+		return IntToPtr(EXISTING_OBJECT);
+	}
 
 	return targetMemoryPool->Allocate(sizeof(TType));
 }
@@ -15,7 +19,11 @@ inline void TMemoryManager::DestroyObject(TType* InMem)
 {
 	TMemoryPoolBase* targetMemoryPool = m_Pools.find(typeid(TType).name());
 	if (targetMemoryPool == m_Pools.end())
-		return nullptr;
+	{
+		PRINT_STAT(ErrorCodeToString(NOT_EXISTING_OBJECT));
+		_ASSERT(false);
+		return IntToPtr(NOT_EXISTING_OBJECT);
+	}
 
 	targetMemoryPool->Free(InMem);
 }
@@ -63,7 +71,11 @@ inline void* TMemoryPool<TType, TSize>::Allocate(Tsize_t InSize)
 	}
 
 	if (allocIdx == INVALID_ALLOCATION)
-		return nullptr;
+	{
+		PRINT_STAT(ErrorCodeToString(OUT_OF_MEMORY));
+		_ASSERT(false);
+		return IntToPtr(OUT_OF_MEMORY);
+	}
 
 	m_CurrentIdx = allocIdx;
 

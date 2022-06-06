@@ -32,7 +32,7 @@ public:
 
 };
 
-static const TEngine* Engine;
+static TEngine* Engine;
 
 static void BootEngine()
 {

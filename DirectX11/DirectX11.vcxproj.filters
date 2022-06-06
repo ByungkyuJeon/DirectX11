@@ -293,7 +293,7 @@
     <ClInclude Include="GameSystem\LightObject.h">
       <Filter>Headers\GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Imports.h">
+    <ClInclude Include="EngineImports.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

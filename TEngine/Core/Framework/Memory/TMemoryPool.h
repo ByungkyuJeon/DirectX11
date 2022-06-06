@@ -3,7 +3,18 @@
 #include <typeinfo>
 #include <unordered_map>
 #include "../../Types/MemoryTypes.h"
-#include "MemoryDefinitions.h"
+#include "../Logger/StatLogger/StatLogger.h"
+#include "../Logger/ErrorLogger/ErrorCode.h"
+
+
+#define DEFINE_MEMORY_POOL(TYPE_NAME, POOL_SIZE) static TMemoryPool<TYPE_NAME, POOL_SIZE> m_Pool;
+
+#define GENERATE_MEMORY_POOL \
+	TMemoryPool() : m_CurrentIdx{ 0 } \
+	{ \
+		if(gMemoryManager == nullptr) { gMemoryManager = new TMemoryManager();} \
+		gMemoryManager->RegisterPool(typeid(*this).name(), this); \
+	}; \
 
 class TMemoryPoolBase;
 
@@ -21,7 +32,7 @@ public:
 	void RegisterPool(const std::string& InName, TMemoryPoolBase* InPoolPtr)
 	{
 		if (m_Pools.find(InName) != m_Pools.end())
-			_ASSERT(true);
+			_ASSERT(false);
 		
 		m_Pools[InName] = InPoolPtr;
 	};
@@ -50,7 +61,7 @@ template<typename TType, Tsize_t TSize>
 class TMemoryPool : public TMemoryPoolBase
 {
 public:
-	GENERATE_MEMORY_POOL(TType)
+	GENERATE_MEMORY_POOL
 
 private:
 	TType m_Pool[TSize];
