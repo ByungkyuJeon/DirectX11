@@ -4,6 +4,13 @@
 #include "Graphics/Renderer.h"
 #include "Physics/Physics.h"
 
+
+#ifdef CREATE_DLL_EXPORTS
+#define DLL_EXPORTS __declspec(dllexport)
+#else
+#define DLL_EXPORTS __declspec(dllimport)
+#endif
+
 struct TEngineConfig
 {
 	std::string m_WindowTitle;
@@ -18,7 +25,7 @@ private:
 	HINSTANCE m_HInstance;
 	TEngineConfig m_EngineConfig;
 
-	bool InternalBootstrap();
+	virtual bool InternalBootstrap();
 
 	// 메모리 풀
 
@@ -37,24 +44,9 @@ public:
 	TEngine& operator=(const TEngine& InOther) = delete;
 	TEngine& operator=(const TEngine&& InOther) = delete;
 
-	bool Initiate(HINSTANCE InHInstance);
+	virtual bool Initiate(HINSTANCE InHInstance);
 };
 
-static TEngine Engine;
+static TEngine* ExEngine;
 
-static bool BootEngine(HINSTANCE InHInstance)
-{
-	PRINT_STAT("---Engine Bootstrap Started---");
-
-	// for now, alloc at static
-	//Engine = new TEngine();
-	if (!Engine.Initiate(InHInstance))
-	{
-		PRINT_STAT("---Engine Bootstrap Failed---");
-		return false;
-	}
-
-	PRINT_STAT("---Engine Bootstrap Succeed---");
-
-	return true;
-}
+extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance);

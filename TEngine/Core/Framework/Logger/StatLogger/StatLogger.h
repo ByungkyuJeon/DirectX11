@@ -1,7 +1,8 @@
 #pragma once
 
-#if !_RELEASE
 #include <Windows.h>
+
+#if !_RELEASE
 #define _LOG_STAT
 class TStatLogger
 {
