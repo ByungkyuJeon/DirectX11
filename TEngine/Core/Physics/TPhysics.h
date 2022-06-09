@@ -1,11 +1,11 @@
 #pragma once
 
-class Physics
+class TPhysics
 {
 private:
 
 public:
-	Physics() {};
+	TPhysics() {};
 
 	bool Initiate();
 };

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Framework/Memory/TMemoryPool.h"
-#include "Graphics/Renderer.h"
-#include "Physics/Physics.h"
-
+#include "Window/TWindow.h"
+#include "Graphics/TRenderer.h"
+#include "Physics/TPhysics.h"
 
 #ifdef CREATE_DLL_EXPORTS
 #define DLL_EXPORTS __declspec(dllexport)
@@ -27,15 +27,21 @@ private:
 
 	virtual bool InternalBootstrap();
 
+	// 윈도우
+	TWindow m_Window;
+
+	// DirectX
+	
+
 	// 메모리 풀
 
 	// GC
 
 	// 그래픽스 렌더러
-	Renderer m_Renderer;
+	TRenderer m_Renderer;
 
 	// 
-	Physics m_Physics;
+	TPhysics m_Physics;
 
 public:
 	TEngine() {};

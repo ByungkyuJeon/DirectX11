@@ -18,10 +18,10 @@
     <ClInclude Include="Core\TEngine.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Graphics\Renderer.h">
+    <ClInclude Include="Core\Graphics\TRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Physics\Physics.h">
+    <ClInclude Include="Core\Physics\TPhysics.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\Framework\Memory\TMemoryPool.h">
@@ -36,21 +36,33 @@
     <ClInclude Include="Core\Framework\Logger\StatLogger\StatLogger.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Window\TWindow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Framework\EventDrivenSystem\EventManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DevelopmentDefines.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\TEngine.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Graphics\Renderer.cpp">
+    <ClCompile Include="Core\Graphics\TRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Physics\Physics.cpp">
+    <ClCompile Include="Core\Physics\TPhysics.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\Types\MemoryTypes.h">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\Framework\Memory\TMemoryPool.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Window\TWindow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
