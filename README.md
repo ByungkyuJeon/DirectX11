@@ -28,4 +28,4 @@ For deeper understanding in game algorithms.
 
 ## Contact
 
-* Email : byungkyu_dev@gmail.com
+* Email : byungkyu.dev@gmail.com
