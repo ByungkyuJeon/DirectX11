@@ -13,10 +13,7 @@
 
 struct TEngineConfig
 {
-	std::string m_WindowTitle;
-	std::string m_WindowClass;
-	int m_InitWidth;
-	int m_InitHeight;
+	
 };
 
 class TEngine
@@ -25,7 +22,7 @@ private:
 	HINSTANCE m_HInstance;
 	TEngineConfig m_EngineConfig;
 
-	virtual bool InternalBootstrap();
+	virtual bool InternalBootstrap(int InWindowWidth, int InWindowHeight);
 
 	// À©µµ¿ì
 	TWindow m_Window;
@@ -50,9 +47,11 @@ public:
 	TEngine& operator=(const TEngine& InOther) = delete;
 	TEngine& operator=(const TEngine&& InOther) = delete;
 
-	virtual bool Initiate(HINSTANCE InHInstance);
+	HINSTANCE GetHInstance() const;
+
+	virtual bool Initiate(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
 };
 
 static TEngine* ExEngine;
 
-extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance);
+extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);

@@ -4,25 +4,24 @@
 #include <Windows.h>
 #include <string>
 
-struct TWindowData
+struct TWindowSettingData
 {
-#pragma message(TODO "이거는 클라 로컬 디렉터리에서 로드해와야 한다.")
-	std::string window_title = "";
-	std::string window_class = "";
-	int width = 0;
-	int height = 0;
+#pragma message(TODO "이거는 런처로부터 받자.")
+	int m_Width = 0;
+	int m_Height = 0;
+
+	int GetWidth() const;
+	int GetHeight() const;
+	void SetWidth(int InWindowWidth);
+	void SetHeight(int InWindowHeight);
+
 };
 
 class TWindow
 {
 public:
-	bool Initialize(HINSTANCE InHInstance);
-
+	bool Initialize(int InWindowWidth, int InWindowHeight);
 
 private:
-	HWND m_Handle = NULL;
-	HINSTANCE m_HInstance = NULL;
-
-#pragma message(TODO "데이터 로드 로직 만들 것.")
-	void LoadData();
+	TWindowSettingData m_WindowData;
 };
