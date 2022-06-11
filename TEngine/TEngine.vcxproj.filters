@@ -48,6 +48,9 @@
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\TErrorLogger.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Graphics\TAdapterManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\TEngine.cpp">
@@ -66,6 +69,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\Window\TWindow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Graphics\TAdapterManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

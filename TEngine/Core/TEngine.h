@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core.h"
 #include "Framework/Memory/TMemoryPool.h"
 #include "Window/TWindow.h"
 #include "Graphics/TRenderer.h"
@@ -19,6 +20,7 @@ struct TEngineConfig
 class TEngine
 {
 private:
+	HWND m_HWND;
 	HINSTANCE m_HInstance;
 	TEngineConfig m_EngineConfig;
 
@@ -49,9 +51,9 @@ public:
 
 	HINSTANCE GetHInstance() const;
 
-	virtual bool Initiate(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
+	virtual bool Initiate(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
 };
 
 static TEngine* ExEngine;
 
-extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
+extern "C" DLL_EXPORTS TEngine* ExBootEngine(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);

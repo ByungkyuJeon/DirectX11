@@ -156,6 +156,7 @@
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\TErrorLogger.h" />
     <ClInclude Include="Core\Framework\Logger\StatLogger\StatLogger.h" />
     <ClInclude Include="Core\Framework\Memory\TMemoryPool.h" />
+    <ClInclude Include="Core\Graphics\TAdapterManager.h" />
     <ClInclude Include="Core\Window\TWindow.h" />
     <ClInclude Include="Core\Graphics\TRenderer.h" />
     <ClInclude Include="Core\Physics\TPhysics.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Framework\Memory\TMemoryPool.cpp" />
+    <ClCompile Include="Core\Graphics\TAdapterManager.cpp" />
     <ClCompile Include="Core\Types\MemoryTypes.h" />
     <ClCompile Include="Core\Graphics\TRenderer.cpp" />
     <ClCompile Include="Core\Physics\TPhysics.cpp" />

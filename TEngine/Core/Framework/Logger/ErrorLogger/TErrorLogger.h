@@ -28,7 +28,7 @@ private:
 };
 
 #if !_RELEASE
-#define PRINT_ERROR(msg) TStatLogger::PrintStatLog(std::string(__FILE__) + "(" + std::to_string(__LINE__) + ") : " + msg);
+#define PRINT_ERROR(msg) TErrorLogger::PrintErrorLog(std::string(__FILE__) + "(" + std::to_string(__LINE__) + ") : " + msg);
 #else
 #define PRINT_ERROR(msg) 
 #endif

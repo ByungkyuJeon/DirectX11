@@ -1,12 +1,25 @@
 #define CREATE_DLL_EXPORTS
 #include "TEngine.h"
+#include "Framework/Logger/ErrorLogger/TErrorLogger.h"
 
 bool TEngine::InternalBootstrap(int InWindowWidth, int InWindowHeight)
 {
 	if (!m_Window.Initialize(InWindowWidth, InWindowHeight))
 	{
-#pragma message(TODO "크래시 내고 에러 로그 작업 추가")
+		PRINT_ERROR("Window Initialization failed.")
 		return false;
+	}
+
+	if (!m_Renderer.Initiate(m_HWND))
+	{
+		PRINT_ERROR("Renderer Initialization failed.")
+		return false;
+	}
+
+	if (!m_Physics.Initiate())
+	{
+		PRINT_ERROR("Physics Initialization failed.")
+			return false;
 	}
 
 
@@ -18,8 +31,9 @@ HINSTANCE TEngine::GetHInstance() const
 	return m_HInstance;
 }
 
-bool TEngine::Initiate(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight)
+bool TEngine::Initiate(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight)
 {
+	m_HWND = InHWND;
 	m_HInstance = InHInstance;
 
 	try
@@ -36,12 +50,12 @@ bool TEngine::Initiate(HINSTANCE InHInstance, int InWindowWidth, int InWindowHei
 	return true;
 }
 
-DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight)
+DLL_EXPORTS TEngine* ExBootEngine(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight)
 {
 	PRINT_STAT("---Engine Bootstrap Started---");
 
 	ExEngine = new TEngine();
-	if (!ExEngine->Initiate(InHInstance, InWindowWidth, InWindowHeight))
+	if (!ExEngine->Initiate(InHWND, InHInstance, InWindowWidth, InWindowHeight))
 	{
 		PRINT_STAT("---Engine Bootstrap Failed---");
 		return nullptr;
