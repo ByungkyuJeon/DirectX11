@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../GameSystem/Map.h"
+#include "../Framework/Game/Map.h"
 #include <string>
 #include <unordered_map>
 

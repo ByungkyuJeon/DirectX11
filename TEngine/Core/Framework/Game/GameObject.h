@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../CoordinateSystem/Transform.h"
-#include "../Graphics/Model.h"
-#include "../Physics/Collider.h"
+#include "Transform.h"
+#include "../../Graphics/Model.h"
+#include "../../Physics/Collider.h"
 
 struct GameObjectSetting
 {

@@ -5,6 +5,9 @@
 #include "Window/TWindow.h"
 #include "Graphics/TRenderer.h"
 #include "Physics/TPhysics.h"
+#include "Framework/Game/Map.h"
+#include "Manager/ModelManager.h"
+#include "Manager/MapManager.h"
 
 #ifdef CREATE_DLL_EXPORTS
 #define DLL_EXPORTS __declspec(dllexport)
@@ -20,11 +23,11 @@ struct TEngineConfig
 class TEngine
 {
 private:
-	HWND m_HWND;
-	HINSTANCE m_HInstance;
+
 	TEngineConfig m_EngineConfig;
 
-	virtual bool InternalBootstrap(int InWindowWidth, int InWindowHeight);
+	bool InternalBootstrap();
+	void Update();
 
 	// À©µµ¿ì
 	TWindow m_Window;
@@ -42,6 +45,18 @@ private:
 	// 
 	TPhysics m_Physics;
 
+	// model manager
+	ModelManager m_ModelManager;
+
+	// map manager
+	MapManager m_MapManager;
+
+	std::string currentMap;
+	// game maps (hash table based)
+	std::unordered_map<std::string, Map> maps;
+
+
+	TFrameTimer frameTimer;
 public:
 	TEngine() {};
 	TEngine(const TEngine& InOther) = delete;
@@ -49,11 +64,15 @@ public:
 	TEngine& operator=(const TEngine& InOther) = delete;
 	TEngine& operator=(const TEngine&& InOther) = delete;
 
-	HINSTANCE GetHInstance() const;
+	bool Initialize(HINSTANCE InHInstance);
 
-	virtual bool Initiate(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
+	virtual bool EngineTick();
+
+	const TEngineConfig& GetConfig() const;
+	Length GetWindowWidth() const;
+	Length GetWindowHeight() const;
 };
 
 static TEngine* ExEngine;
 
-extern "C" DLL_EXPORTS TEngine* ExBootEngine(HWND InHWND, HINSTANCE InHInstance, int InWindowWidth, int InWindowHeight);
+extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance);

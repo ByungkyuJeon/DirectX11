@@ -1,11 +1,6 @@
 #pragma once
 
-#ifndef VertexBuffer_h__
-#define VertexBuffer_h__
-#include <d3d11.h>
-#include <wrl/client.h>
-#include <memory>
-#include "..\\ErrorLogger.h"
+#include "../../Core.h"
 
 template<class T>
 class VertexBuffer
@@ -85,11 +80,9 @@ public:
 		HRESULT hr = device->CreateBuffer(&vertexBufferDesc, &vertexBufferData, this->buffer.GetAddressOf());
 		if (FAILED(hr))
 		{
-			ErrorLogger::Log(hr, "vertex initialization failed.");
+			PRINT_ERROR("vertex initialization failed.");
 		}
 
 		return hr;
 	}
 };
-
-#endif

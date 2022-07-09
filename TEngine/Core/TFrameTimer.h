@@ -1,17 +1,17 @@
 #pragma once
 #include <chrono>
 
-class FrameTimer
+class TFrameTimer
 {
 public:
-	FrameTimer();
+	TFrameTimer();
 	double GetMilisecondsElapsed();
 	void ReStart();
 	bool Stop();
 	bool Start();
 
 private:
-	bool isrunning = false;
+	bool m_IsRunning = false;
 #ifdef _WIN32
 	std::chrono::time_point<std::chrono::steady_clock> start;
 	std::chrono::time_point<std::chrono::steady_clock> end;

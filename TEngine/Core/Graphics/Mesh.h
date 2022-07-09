@@ -1,12 +1,10 @@
 #pragma once
-#include "Vertex.h"
-#include "VertexBuffer.h"
+
+#include "../Core.h"
+#include "Shaders/Vertex.h"
+#include "Shaders/VertexBuffer.h"
 #include "IndexBuffer.h"
-#include "ConstantBuffer.h"
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
-#include <vector>
+#include "Shaders/ConstantBuffer.h"
 #include "Texture.h"
 
 class Mesh

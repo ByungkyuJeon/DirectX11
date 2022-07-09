@@ -11,6 +11,7 @@
 
 // imported headers
 #include <TEngine.h>
+#include <Core.h>
 
 HMODULE EngineModule;
 

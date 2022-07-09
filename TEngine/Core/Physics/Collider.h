@@ -1,6 +1,6 @@
 #pragma once
 #include "IntersectionData.h"
-#include "../CoordinateSystem/Transform.h"
+#include "../Framework/Game/Transform.h"
 #include <memory>
 
 class Collider

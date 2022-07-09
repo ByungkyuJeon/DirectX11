@@ -1,14 +1,14 @@
-#include "FrameTimer.h"
+#include "TFrameTimer.h"
 
-FrameTimer::FrameTimer()
+TFrameTimer::TFrameTimer()
 {
 	start = std::chrono::high_resolution_clock::now();
 	end = std::chrono::high_resolution_clock::now();
 }
 
-double FrameTimer::GetMilisecondsElapsed()
+double TFrameTimer::GetMilisecondsElapsed()
 {
-	if (isrunning)
+	if (m_IsRunning)
 	{
 		auto elapsed = std::chrono::duration<double, std::milli>(std::chrono::high_resolution_clock::now() - start);
 		return elapsed.count();
@@ -20,38 +20,38 @@ double FrameTimer::GetMilisecondsElapsed()
 	}
 }
 
-void FrameTimer::ReStart()
+void TFrameTimer::ReStart()
 {
-	isrunning = true;
+	m_IsRunning = true;
 	start = std::chrono::high_resolution_clock::now();
 }
 
-bool FrameTimer::Stop()
+bool TFrameTimer::Stop()
 {
-	if (!isrunning)
+	if (!m_IsRunning)
 	{
 		return false;
 	}
 	else
 	{
 		end = std::chrono::high_resolution_clock::now();
-		isrunning = true;
+		m_IsRunning = true;
 		return true;
 	}
 }
 
-bool FrameTimer::Start()
+bool TFrameTimer::Start()
 {
-	if (!isrunning)
+	if (!m_IsRunning)
 	{
 		start = std::chrono::high_resolution_clock::now();
-		isrunning = true;
+		m_IsRunning = true;
 		return true;
 	}
 	else
 	{
 		start = std::chrono::high_resolution_clock::now();
-		isrunning = true;
+		m_IsRunning = true;
 		return false;
 	}
 }

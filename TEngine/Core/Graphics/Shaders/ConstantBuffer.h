@@ -1,10 +1,7 @@
 #pragma once
-#ifndef ConstantBuffer_h__
-#define ConstantBuffer_h__
-#include <d3d11.h>
+
+#include "../../Core.h"
 #include "ConstantBufferTypes.h"
-#include <wrl/client.h>
-#include"..\\ErrorLogger.h"
 
 template<class T>
 class ConstantBuffer
@@ -46,7 +43,7 @@ public:
 		desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		desc.CPUAccessFlags = D3D10_CPU_ACCESS_WRITE;
 		desc.MiscFlags = 0;
-		desc.ByteWidth = static_cast<UINT>(sizeof(T));//static_cast<UINT>(sizeof(T) + (16 - (sizeof(T) % 16)));
+		desc.ByteWidth = static_cast<UINT>(sizeof(T));
 		desc.StructureByteStride = 0;
 
 		return device->CreateBuffer(&desc, 0, buffer.GetAddressOf());
@@ -58,7 +55,7 @@ public:
 		HRESULT hr = this->deviceContext->Map(buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 		if (FAILED(hr))
 		{
-			ErrorLogger::Log(hr, "constant buffer mapping failed.");
+			PRINT_ERROR("constant buffer mapping failed.");
 			return false;
 		}
 		CopyMemory(mappedResource.pData, &data, sizeof(T));
@@ -66,5 +63,3 @@ public:
 		return true;
 	}
 };
-
-#endif
