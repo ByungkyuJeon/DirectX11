@@ -1,5 +1,4 @@
 #include "EngineImports.h"
-#include "GameEngine.h"
 #include <stdio.h>
 
 
@@ -10,20 +9,16 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 	InitEngine(hInstance);
 	//BootEngine(hInstance);
 
-	GameEngine engine;
-	engine.Initialize(hInstance, "Title", "WindowClass", 1920, 1080);
-
-	HRESULT hr = CoInitialize(NULL);
-	if (FAILED(hr))
+	HRESULT hResult = CoInitialize(NULL);
+	if (FAILED(hResult))
 	{
-		ErrorLogger::Log(hr, "CoInitialize failed.");
+		PRINT_ERROR("CoInitialize failed.");
 		return -1;
 	}
 
-	while (engine.ProcessMessages())
+	while (Engine->EngineTick())
 	{
-		engine.Update();
-		engine.RenderFrame();
+		
 	}
 
 	return 0;

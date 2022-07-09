@@ -1,28 +1,52 @@
 #pragma once
 
+#include "../Core.h"
 #include "../DevelopmentDefines.h"
+#include "../Framework/Input/Keyboard/KeyboardClass.h"
+#include "../Framework/Input/Mouse/MouseClass.h"
 #include <Windows.h>
 #include <string>
 
 struct TWindowData
 {
-#pragma message(TODO "이거는 클라 로컬 디렉터리에서 로드해와야 한다.")
-	std::string window_title = "";
-	std::string window_class = "";
-	int width = 0;
-	int height = 0;
+#pragma message(TODO "이거는 런처로부터 받자.")
+	TString m_WindowTitle;
+	TWString m_WideWindowTitle;
+	TString m_WindowClass;
+	TWString m_WideWindowClass;
+	int m_Width = 0;
+	int m_Height = 0;
+
+	const TString& GetWindowTitle() const;
+	const TWString& GetWideWindowTitle() const;
+	const TString& GetWindowClass() const;
+	const TWString& GetWideWindowClass() const;
+	int GetWidth() const;
+	int GetHeight() const;
+	void SetWidth(int InWindowWidth);
+	void SetHeight(int InWindowHeight);
 };
 
 class TWindow
 {
 public:
-	bool Initialize(HINSTANCE InHInstance);
+	~TWindow();
 
+	bool Initialize();
+	bool ProcessMessages();
+
+	LRESULT WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+	const TWindowData& GetWindowData() const;
+	KeyboardClass& GetKeyboardClass() { return m_KeyboardClass; };
+	MouseClass& GetMouseClass() { return m_MouseClass; };
 
 private:
-	HWND m_Handle = NULL;
-	HINSTANCE m_HInstance = NULL;
+	TWindowData m_WindowData;
 
-#pragma message(TODO "데이터 로드 로직 만들 것.")
-	void LoadData();
+	// input devices
+	KeyboardClass m_KeyboardClass;
+	MouseClass m_MouseClass;
+
+	void RegisterWindowClass();
 };

@@ -233,115 +233,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameSystem\LightObject.cpp" />
     <ClCompile Include="AppMain.cpp" />
-    <ClCompile Include="Managers\ModelManager.cpp" />
-    <ClCompile Include="Managers\MapManager.cpp" />
-    <ClCompile Include="ResourceManager\ModelManager.cpp" />
-    <ClCompile Include="Physics\Collider.cpp" />
-    <ClCompile Include="Physics\PhysicsObject.cpp" />
-    <ClCompile Include="Physics\AxisAlignedBoundingBox.cpp" />
-    <ClCompile Include="Physics\IntersectionData.cpp" />
-    <ClCompile Include="Physics\SphereCollider.cpp" />
-    <ClCompile Include="Graphics\Color.cpp" />
-    <ClCompile Include="FrameTimer.cpp" />
-    <ClCompile Include="GameSystem\GameObject.cpp" />
-    <ClCompile Include="GameSystem\Camera.cpp" />
-    <ClCompile Include="Graphics\AdapterReader.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="ErrorLogger.cpp" />
-    <ClCompile Include="Graphics\GraphicsEngine.cpp" />
-    <ClCompile Include="Graphics\Grid.cpp" />
-    <ClCompile Include="Keyboard\KeyboardClass.cpp" />
-    <ClCompile Include="Keyboard\KeyboardEvent.cpp" />
-    <ClCompile Include="Graphics\Model.cpp" />
-    <ClCompile Include="Graphics\Mesh.cpp" />
-    <ClCompile Include="GameSystem\Map.cpp" />
-    <ClCompile Include="Mouse\MouseClass.cpp" />
-    <ClCompile Include="Mouse\MouseEvent.cpp" />
-    <ClCompile Include="Graphics\RenderableObjects.cpp" />
-    <ClCompile Include="Physics\PhysicsEngine.cpp" />
-    <ClCompile Include="Physics\PlaneCollider.cpp" />
-    <ClCompile Include="RenderWindow.cpp" />
-    <ClCompile Include="Graphics\Shaders.cpp" />
-    <ClCompile Include="StringHelper.cpp" />
-    <ClCompile Include="Graphics\Texture.cpp" />
-    <ClCompile Include="CoordinateSystem\Transform.cpp" />
-    <ClCompile Include="WindowContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameSystem\LightObject.h" />
     <ClInclude Include="EngineImports.h" />
-    <ClInclude Include="Managers\ModelManager.h" />
-    <ClInclude Include="Managers\MapManager.h" />
-    <ClInclude Include="ResourceManager\ModelManager.h" />
-    <ClInclude Include="Physics\Collider.h" />
     <ClInclude Include="CustomMath.h" />
-    <ClInclude Include="Physics\PhysicsObject.h" />
-    <ClInclude Include="Physics\AxisAlignedBoundingBox.h" />
-    <ClInclude Include="Physics\IntersectionData.h" />
-    <ClInclude Include="Physics\SphereCollider.h" />
-    <ClInclude Include="Graphics\Color.h" />
-    <ClInclude Include="COMException.h" />
-    <ClInclude Include="FrameTimer.h" />
-    <ClInclude Include="GameSystem\GameObject.h" />
-    <ClInclude Include="GameSystem\Camera.h" />
-    <ClInclude Include="Graphics\ConstantBuffer.h" />
-    <ClInclude Include="Graphics\ConstantBufferTypes.h" />
-    <ClInclude Include="Graphics\AdapterReader.h" />
-    <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="ErrorLogger.h" />
-    <ClInclude Include="Graphics\GraphicsEngine.h" />
-    <ClInclude Include="Graphics\IndexBuffer.h" />
-    <ClInclude Include="Graphics\Grid.h" />
-    <ClInclude Include="Keyboard\KeyboardClass.h" />
-    <ClInclude Include="Keyboard\KeyboardEvent.h" />
-    <ClInclude Include="Graphics\Model.h" />
-    <ClInclude Include="Graphics\Mesh.h" />
-    <ClInclude Include="GameSystem\Map.h" />
-    <ClInclude Include="Mouse\MouseClass.h" />
-    <ClInclude Include="Mouse\MouseEvent.h" />
-    <ClInclude Include="Graphics\RenderableObjects.h" />
-    <ClInclude Include="Physics\PhysicsEngine.h" />
-    <ClInclude Include="Physics\PlaneCollider.h" />
-    <ClInclude Include="RenderWindow.h" />
-    <ClInclude Include="Graphics\Shaders.h" />
-    <ClInclude Include="StringHelper.h" />
-    <ClInclude Include="Graphics\Vertex.h" />
-    <ClInclude Include="Graphics\VertexBuffer.h" />
-    <ClInclude Include="Graphics\Texture.h" />
-    <ClInclude Include="CoordinateSystem\Transform.h" />
-    <ClInclude Include="WindowContainer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="pixelShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Test|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Test|x64'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-    </FxCompile>
-    <FxCompile Include="vertexShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Test|x64'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Test|x64'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">5.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
-    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

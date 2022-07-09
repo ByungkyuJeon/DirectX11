@@ -1,41 +1,28 @@
 #include "ModelManager.h"
-#include "../StringHelper.h"
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
-#include <DirectXMath.h>
 
-bool ModelManager::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+#include "../Core.h"
+
+bool ModelManager::Initialize()
 {
-	this->device = device;
-	this->deviceContext = deviceContext;
 	return true;
 }
 
 std::shared_ptr<Model> ModelManager::Instanciate(const std::string& filePath)
 {
-	try
+	std::shared_ptr<Model> ret = std::make_shared<Model>();
+	ret->setDirectory(StringHelper::GetdirectoryFromPath(filePath));
+
+	Assimp::Importer importer;
+
+	const aiScene* pScene = importer.ReadFile(filePath, aiProcess_Triangulate | aiProcess_ConvertToLeftHanded);
+
+	if (pScene == nullptr)
 	{
-		std::shared_ptr<Model> ret = std::make_shared<Model>();
-		ret->setDirectory(StringHelper::GetdirectoryFromPath(filePath));
-
-		Assimp::Importer importer;
-
-		const aiScene* pScene = importer.ReadFile(filePath, aiProcess_Triangulate | aiProcess_ConvertToLeftHanded);
-
-		if (pScene == nullptr)
-		{
-			return nullptr;
-		}
-
-		this->ProcessNode(ret, pScene->mRootNode, pScene, DirectX::XMMatrixIdentity());
-		return ret;
-	}
-	catch (COMException& exception)
-	{
-		ErrorLogger::Log(exception);
 		return nullptr;
 	}
+
+	this->ProcessNode(ret, pScene->mRootNode, pScene, DirectX::XMMatrixIdentity());
+	return ret;
 }
 
 void ModelManager::ProcessNode(std::shared_ptr<Model>& model, aiNode* node, const aiScene* scene, const DirectX::XMMATRIX& parentTransformMatrix)
@@ -97,12 +84,12 @@ void ModelManager::ProcessMesh(std::shared_ptr<Model>& model, aiMesh* mesh, cons
 
 	Mesh ret;
 	VertexBuffer<Vertex> vertexBuffer;
-	HRESULT hr = vertexBuffer.Initialize(device, vertices.data(), vertices.size());
-	COM_ERROR_IF_FAILED(hr, "vertexBuffer Initialzation failed.");
+	HRESULT hr = vertexBuffer.Initialize(GDevice.Get(), vertices.data(), vertices.size());
+	PRINT_ERROR("vertexBuffer Initialzation failed.");
 
 	IndexBuffer indexBuffer;
-	hr = indexBuffer.Initialize(device, indices.data(), indices.size());
-	COM_ERROR_IF_FAILED(hr, "indexBuffer Initialzation failed.");
+	hr = indexBuffer.Initialize(GDevice.Get(), indices.data(), indices.size());
+	PRINT_ERROR("indexBuffer Initialzation failed.");
 
 	model->addMesh(Mesh(vertexBuffer, indexBuffer, textures, parentTransformMatrix));
 }
@@ -123,10 +110,10 @@ std::vector<Texture> ModelManager::LoadMaterialTextures(std::shared_ptr<Model>& 
 			pMaterial->Get(AI_MATKEY_COLOR_DIFFUSE, aiColor);
 			if (aiColor.IsBlack())
 			{
-				materialTextures.emplace_back(Texture(this->device, Colors::UnloadedTextureColor, type));
+				materialTextures.emplace_back(Texture(GDevice.Get(), Colors::UnloadedTextureColor, type));
 				return materialTextures;
 			}
-			materialTextures.emplace_back(Texture(this->device, Color(aiColor.r * 255, aiColor.g * 255, aiColor.b * 255), type));
+			materialTextures.emplace_back(Texture(GDevice.Get(), Color(aiColor.r * 255, aiColor.g * 255, aiColor.b * 255), type));
 			return materialTextures;
 			break;
 		}
@@ -143,7 +130,7 @@ std::vector<Texture> ModelManager::LoadMaterialTextures(std::shared_ptr<Model>& 
 			case TextureStorageType::EmbeddedIndexCompressed:
 			{
 				int index = GetTextureIndex(&path);
-				Texture embeddedIndexedTexture(this->device, reinterpret_cast<uint8_t*>(pScene->mTextures[index]->pcData), pScene->mTextures[index]->mWidth, type);
+				Texture embeddedIndexedTexture(GDevice.Get(), reinterpret_cast<uint8_t*>(pScene->mTextures[index]->pcData), pScene->mTextures[index]->mWidth, type);
 				materialTextures.emplace_back(embeddedIndexedTexture);
 				break;
 			}
@@ -151,14 +138,14 @@ std::vector<Texture> ModelManager::LoadMaterialTextures(std::shared_ptr<Model>& 
 			case TextureStorageType::EmbeddedCompressed:
 			{
 				const aiTexture* pTexture = pScene->GetEmbeddedTexture(path.C_Str());
-				Texture embeddedTexture(this->device, reinterpret_cast<uint8_t*>(pTexture->pcData), pTexture->mWidth, type);
+				Texture embeddedTexture(GDevice.Get(), reinterpret_cast<uint8_t*>(pTexture->pcData), pTexture->mWidth, type);
 				materialTextures.emplace_back(embeddedTexture);
 				break;
 			}
 			case TextureStorageType::Disk:
 			{
 				std::string fileName = model->getDirectory() + '\\' + path.C_Str();
-				Texture diskTexture(this->device, fileName, type);
+				Texture diskTexture(GDevice.Get(), fileName, type);
 				materialTextures.emplace_back(diskTexture);
 				break;
 			}
@@ -168,7 +155,7 @@ std::vector<Texture> ModelManager::LoadMaterialTextures(std::shared_ptr<Model>& 
 
 	if (materialTextures.size() == 0)
 	{
-		materialTextures.emplace_back(Texture(this->device, Colors::UnhandledTextureColor, type));
+		materialTextures.emplace_back(Texture(GDevice.Get(), Colors::UnhandledTextureColor, type));
 	}
 	return materialTextures;
 }
