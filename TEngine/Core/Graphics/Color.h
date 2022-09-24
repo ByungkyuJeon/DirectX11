@@ -14,16 +14,16 @@ public:
 	bool operator==(const Color& other) const;
 	bool operator!=(const Color& other) const;
 
-	constexpr BYTE GetR() const;
+	BYTE GetR() const;
 	void SetR(BYTE r);
 
-	constexpr BYTE GetG() const;
+	BYTE GetG() const;
 	void SetG(BYTE g);
 
-	constexpr BYTE GetB() const;
+	BYTE GetB() const;
 	void SetB(BYTE b);
 
-	constexpr BYTE GetA() const;
+	BYTE GetA() const;
 	void SetA(BYTE a);
 
 private:

@@ -4,6 +4,9 @@
 #include "Physics/PlaneCollider.h"
 #include "Physics/SphereCollider.h"
 
+// Engine
+TEngine* ExEngine;
+
 bool TEngine::InternalBootstrap()
 {
 	if (!m_Window.Initialize())

@@ -12,10 +12,12 @@
 #include <d3dcompiler.h>
 #include <vector>
 #include <memory>
+#include <string>
 #include <DirectXMath.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+#include <assimp/material.h>
 
 
 // TYPE DEFINES
@@ -39,9 +41,9 @@ typedef UINT Length;
 
 
 // Globals
-TComPtr<ID3D11Device> GDevice;
-TComPtr<ID3D11DeviceContext> GDeviceContext;
-HWND GWindowHandle;
-HINSTANCE GWindowInstance;
+static TComPtr<ID3D11Device> GDevice;
+static TComPtr<ID3D11DeviceContext> GDeviceContext;
+static HWND GWindowHandle;
+static HINSTANCE GWindowInstance;
 // Globals
 

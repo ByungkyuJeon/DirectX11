@@ -73,6 +73,6 @@ public:
 	Length GetWindowHeight() const;
 };
 
-static TEngine* ExEngine;
+extern TEngine* ExEngine;
 
 extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance);

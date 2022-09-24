@@ -1,30 +1,29 @@
 #pragma once
 
 // imported libraries
-//#pragma comment(lib, "TEngine.lib")
+#pragma comment(lib, "TEngine.lib")
 
-#ifdef CREATE_DLL_EXPORTS
-#define DLL_EXPORTS __declspec(dllexport)
-#else
-#define DLL_EXPORTS __declspec(dllimport)
-#endif
+//#ifdef CREATE_DLL_EXPORTS
+//#define DLL_EXPORTS __declspec(dllexport)
+//#else
+//#define DLL_EXPORTS __declspec(dllimport)
+//#endif
 
 // imported headers
-#include <TEngine.h>
-#include <Core.h>
+#include "TEngine.h"
 
-HMODULE EngineModule;
+//HMODULE EngineModule;
 
-static TEngine* Engine;
-
-typedef TEngine* (*fnBootEngine)(HINSTANCE);
-fnBootEngine BootEngine = (fnBootEngine)GetProcAddress((EngineModule = LoadLibrary(L"TEngine.dll")), "ExBootEngine");
+//typedef TEngine* (*fnBootEngine)(HINSTANCE);
+//fnBootEngine BootEngine = (fnBootEngine)GetProcAddress((EngineModule = LoadLibrary(L"TEngine.dll")), "ExBootEngine");
+//
+//extern TEngine* ExEngine;
 
 bool InitEngine(HINSTANCE InHInstance)
 {
-	if (!EngineModule)
-		return false;
+	/*if (!EngineModule)
+		return false;*/
 
-	Engine = BootEngine(InHInstance);
+	ExEngine = ExBootEngine(InHInstance);
 	return 1;
 }

@@ -1,5 +1,5 @@
 #include "Texture.h"
-#include "..\\ErrorLogger.h"
+#include "../Framework/Logger/ErrorLogger/TErrorLogger.h"
 #include <WICTextureLoader.h>
 #include <DDSTextureLoader.h>
 
@@ -40,7 +40,7 @@ Texture::Texture(ID3D11Device* device, const uint8_t* pData, size_t size, aiText
 {
 	this->type = type;
 	HRESULT hr = DirectX::CreateWICTextureFromMemory(device, pData, size, this->texture.GetAddressOf(), this->textureView.GetAddressOf());
-	COM_ERROR_IF_FAILED(hr, "CreateWICTextureFromMemory failed.");
+	PRINT_ERROR("CreateWICTextureFromMemory failed.");
 }
 
 aiTextureType Texture::GetType() const
@@ -73,9 +73,9 @@ void Texture::InitializeColorTexture(ID3D11Device* device, const Color* color, U
 	inialData.pSysMem = color;
 	inialData.SysMemPitch = sizeof(Color);
 	HRESULT hr = device->CreateTexture2D(&textureDesc, &inialData, &p2DTexture);
-	COM_ERROR_IF_FAILED(hr, "CreateTexture2D failed.");
+	PRINT_ERROR("CreateTexture2D failed.");
 	texture = static_cast<ID3D11Texture2D*>(p2DTexture);
 	CD3D11_SHADER_RESOURCE_VIEW_DESC srvDesc(D3D11_SRV_DIMENSION_TEXTURE2D, textureDesc.Format);
 	hr = device->CreateShaderResourceView(texture.Get(), &srvDesc, textureView.GetAddressOf());
-	COM_ERROR_IF_FAILED(hr, "CreateShaderResourceView failed.");
+	PRINT_ERROR("CreateShaderResourceView failed.");
 }

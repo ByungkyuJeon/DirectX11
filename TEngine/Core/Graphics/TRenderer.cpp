@@ -326,7 +326,7 @@ bool TRenderer::Initialize()
 
 void TRenderer::RegisterRenderableObject(std::shared_ptr<GameObject> InGameObject)
 {
-	std::shared_ptr<RenderableObjects> renderableObject = std::make_shared<RenderableObjects>(InGameObject);
+	RenderableObjects renderableObject = RenderableObjects(InGameObject);
 
 	// 환경 물리 연산 대상에 추가
 	this->renderableObjects.emplace_back(renderableObject);

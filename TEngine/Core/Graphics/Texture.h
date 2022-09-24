@@ -1,8 +1,6 @@
 #pragma once
-#include <d3d11.h>
-#include <wrl/client.h>
-#include <string>
-#include <assimp/material.h>
+
+#include "../Core.h"
 #include "Color.h"
 
 enum class TextureStorageType

@@ -61,6 +61,12 @@
     <Filter Include="Sources\Managers">
       <UniqueIdentifier>{27502339-22a1-4039-8d89-bcee3669ece6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{14a691ae-4cf6-4871-a7f0-1a1776e67558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Core">
+      <UniqueIdentifier>{fed43d5f-9717-4901-b973-a8a59b2bb033}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppMain.cpp">
@@ -73,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="EngineImports.h">
       <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TGame.h">
+      <Filter>Src\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

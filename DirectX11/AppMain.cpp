@@ -1,13 +1,21 @@
 #include "EngineImports.h"
+#include "TGame.h"
 #include <stdio.h>
 
-
+int GuardedMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow);
 
 int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
-	// 1. Initialize Engine dll
+
+	GuardedMain(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+
+	return 0;
+}
+
+int GuardedMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
+{
+	// 1. Initialize Engine
 	InitEngine(hInstance);
-	//BootEngine(hInstance);
 
 	HRESULT hResult = CoInitialize(NULL);
 	if (FAILED(hResult))
@@ -16,9 +24,9 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 		return -1;
 	}
 
-	while (Engine->EngineTick())
+	while (ExEngine->EngineTick())
 	{
-		
+
 	}
 
 	return 0;

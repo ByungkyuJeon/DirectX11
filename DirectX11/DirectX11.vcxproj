@@ -116,10 +116,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <ExternalIncludePath>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
     <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ReferencePath>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(ReferencePath)</ReferencePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -189,6 +189,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);NOMINMAX</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -238,6 +239,7 @@
   <ItemGroup>
     <ClInclude Include="EngineImports.h" />
     <ClInclude Include="CustomMath.h" />
+    <ClInclude Include="Src\TGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
