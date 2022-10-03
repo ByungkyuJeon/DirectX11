@@ -141,6 +141,15 @@
     <ClInclude Include="Core\Physics\PlaneCollider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Core\TEngineMath.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\TEngineConfig.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\TDataIOWrapper.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\TEngine.cpp">

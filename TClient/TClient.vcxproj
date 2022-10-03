@@ -30,9 +30,9 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{03c5c034-5bf5-4183-8572-69c7c060e7c9}</ProjectGuid>
-    <RootNamespace>DirectX11</RootNamespace>
+    <RootNamespace>TClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>TGame</ProjectName>
+    <ProjectName>TClient</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -99,41 +99,45 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir);$(SolutionDir)DirectX11\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\x86\Debug;$(LibraryPath);$(SolutionDir)DirectX11\Libs\Any</LibraryPath>
-    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir);$(SolutionDir)DirectX11\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\x86\Debug;$(LibraryPath);$(SolutionDir)DirectX11\Libs\Any</LibraryPath>
-    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)DirectX11\Includes;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\x86\Release;$(LibraryPath);$(SolutionDir)DirectX11\Libs\Any</LibraryPath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(ReferencePath)</ReferencePath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ReferencePath>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ReferencePath>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -189,12 +193,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);NOMINMAX</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)TEngine\Core;$(SolutionDir)DirectX11\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TEngine\Core;$(SolutionDir)TClient\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TClient\Libs\Any\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;DXGI.lib;D3DCompiler.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>LinkVerbose</ShowProgress>
     </Link>
@@ -210,7 +214,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;DXGI.lib;D3DCompiler.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\x64\Debug;$(SolutionDir)DirectX11\Libs\x64\Release;;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TClient\Libs\Any\;$(SolutionDir)TClient\Libs\x64\Debug;$(SolutionDir)TClient\Libs\x64\Release;;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ShowProgress>LinkVerbose</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
@@ -229,7 +233,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;DXGI.lib;D3DCompiler.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)DirectX11\Libs\Any\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TClient\Libs\Any\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ShowProgress>LinkVerbose</ShowProgress>
     </Link>
   </ItemDefinitionGroup>

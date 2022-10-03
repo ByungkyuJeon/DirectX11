@@ -81,7 +81,7 @@ bool TRenderer::InitializeSwapChain()
 		NULL,
 		0,
 		D3D11_SDK_VERSION,
-		&m_SwapChain.GetSwapChainDesc(m_HWND, ExEngine->GetWindowWidth(), ExEngine->GetWindowHeight()),
+		&m_SwapChain.GetSwapChainDesc(m_HWND, Engine->GetWindowWidth(), Engine->GetWindowHeight()),
 		m_SwapChain.GetSwapChain().GetAddressOf(),
 		GDevice.GetAddressOf(),
 		NULL,
@@ -125,7 +125,7 @@ bool TRenderer::InitializeDepthStencil()
 	HRESULT hResult;
 
 	// µª½º ½ºÅÄ½Ç ¹öÆÛ »ý¼º
-	hResult = GDevice->CreateTexture2D(&m_DepthStencil.GetDepthStencilDesc(ExEngine->GetWindowWidth(), ExEngine->GetWindowHeight()), NULL, m_DepthStencil.GetDepthStencilBuffer().GetAddressOf());
+	hResult = GDevice->CreateTexture2D(&m_DepthStencil.GetDepthStencilDesc(Engine->GetWindowWidth(), Engine->GetWindowHeight()), NULL, m_DepthStencil.GetDepthStencilBuffer().GetAddressOf());
 	if (FAILED(hResult))
 	{
 		PRINT_ERROR("depth stencil buffer creation failed.")
@@ -160,7 +160,7 @@ bool TRenderer::InitializeOutputMerger()
 
 bool TRenderer::InitializeViewPort()
 {
-	GDeviceContext->RSSetViewports(1, &m_ViewPort.GetViewPort(ExEngine->GetWindowWidth(), ExEngine->GetWindowHeight()));
+	GDeviceContext->RSSetViewports(1, &m_ViewPort.GetViewPort(Engine->GetWindowWidth(), Engine->GetWindowHeight()));
 
 	return true;
 }
@@ -295,7 +295,7 @@ bool TRenderer::InitializeScene()
 	{
 		mCamera = std::make_shared<Camera>();
 		mCamera->getTransform()->setPosition(0.0f, 0.0f, -2.0f);
-		mCamera->SetProjectionValues(90.0f, static_cast<float>(ExEngine->GetWindowWidth()) / static_cast<float>(ExEngine->GetWindowHeight()), 0.1f, 1000.0f);
+		mCamera->SetProjectionValues(90.0f, static_cast<float>(Engine->GetWindowWidth()) / static_cast<float>(Engine->GetWindowHeight()), 0.1f, 1000.0f);
 	}
 
 	return true;

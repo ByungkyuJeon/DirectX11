@@ -1,11 +1,10 @@
-#define CREATE_DLL_EXPORTS
 #include "TEngine.h"
 #include "Framework/Logger/ErrorLogger/TErrorLogger.h"
 #include "Physics/PlaneCollider.h"
 #include "Physics/SphereCollider.h"
 
 // Engine
-TEngine* ExEngine;
+TEngine* Engine;
 
 bool TEngine::InternalBootstrap()
 {
@@ -201,12 +200,12 @@ bool TEngine::EngineTick()
 	return true;
 }
 
-DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance)
+TEngine* BootEngine(HINSTANCE InHInstance)
 {
 	PRINT_STAT("---Engine Bootstrap Started---");
 
-	ExEngine = new TEngine();
-	if (!ExEngine->Initialize(InHInstance))
+	Engine = new TEngine();
+	if (!Engine->Initialize(InHInstance))
 	{
 		PRINT_STAT("---Engine Bootstrap Failed---");
 		return nullptr;
@@ -214,5 +213,5 @@ DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance)
 
 	PRINT_STAT("---Engine Bootstrap Succeed---");
 
-	return ExEngine;
+	return Engine;
 }

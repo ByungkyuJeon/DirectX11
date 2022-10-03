@@ -72,17 +72,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
-    <ReferencePath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(ReferencePath)</ReferencePath>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+    <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)DirectX11\Includes\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)DirectX11\Includes\;$(ExternalIncludePath)</ExternalIncludePath>
-    <ReferencePath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(ReferencePath)</ReferencePath>
-    <LibraryPath>$(SolutionDir)DirectX11\Libs\Any\;$(SolutionDir)DirectX11\Libs\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
+    <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
+    <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
+    <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -161,6 +173,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Core\DevelopmentDefines.h" />
+    <ClInclude Include="Core\TDataIOWrapper.h" />
+    <ClInclude Include="Core\TEngineConfig.h" />
+    <ClInclude Include="Core\TEngineMath.h" />
     <ClInclude Include="Core\TFrameTimer.h" />
     <ClInclude Include="Core\Framework\EventDrivenSystem\EventManager.h" />
     <ClInclude Include="Core\Framework\Game\Camera.h" />

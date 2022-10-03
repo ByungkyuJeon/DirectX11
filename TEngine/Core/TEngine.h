@@ -9,12 +9,6 @@
 #include "Manager/ModelManager.h"
 #include "Manager/MapManager.h"
 
-#ifdef CREATE_DLL_EXPORTS
-#define DLL_EXPORTS __declspec(dllexport)
-#else
-#define DLL_EXPORTS __declspec(dllimport)
-#endif
-
 struct TEngineConfig
 {
 	
@@ -73,6 +67,6 @@ public:
 	Length GetWindowHeight() const;
 };
 
-extern TEngine* ExEngine;
+extern TEngine* Engine;
 
-extern "C" DLL_EXPORTS TEngine* ExBootEngine(HINSTANCE InHInstance);
+extern TEngine* BootEngine(HINSTANCE InHInstance);

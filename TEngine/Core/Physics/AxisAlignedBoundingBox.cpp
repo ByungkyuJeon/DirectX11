@@ -1,5 +1,5 @@
 #include "AxisAlignedBoundingBox.h"
-#include "../CustomMath.h"
+#include "../TEngineMath.h"
 
 AxisAlignedBoundingBox::AxisAlignedBoundingBox(DirectX::XMVECTOR& minExtent, DirectX::XMVECTOR& maxExtent)
 {
@@ -60,7 +60,7 @@ IntersectionData AxisAlignedBoundingBox::isIntersected(const AxisAlignedBounding
 		lhsDistance.z > rhsDistance.z ? lhsDistance.z : rhsDistance.z
 	};
 
-	float max = CustomMath::max(Distances.x, Distances.y, Distances.z);
+	float max = TEngineMath::max(Distances.x, Distances.y, Distances.z);
 
 	return IntersectionData{ max < 0, max };
 }
