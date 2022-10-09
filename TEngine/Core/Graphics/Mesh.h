@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../Core.h"
 #include "Shaders/Vertex.h"
 #include "Shaders/VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "Shaders/ConstantBuffer.h"
 #include "Texture.h"
+#include <vector>
 
 class Mesh
 {

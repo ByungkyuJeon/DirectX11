@@ -1,5 +1,6 @@
 #include "TAdapterManager.h"
-#include "../Framework/Logger/ErrorLogger/TErrorLogger.h"
+#include "TErrorLogger.h"
+#include "TEngineDefines.h"
 
 TAdapterData::TAdapterData(IDXGIAdapter* pAdapter)
 {

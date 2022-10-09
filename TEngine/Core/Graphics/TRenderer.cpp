@@ -1,5 +1,5 @@
-#include "TRenderer.h"
 #include "../TEngine.h"
+#include "TRenderer.h"
 #include "../Helper/StringHelper.h"
 #include <memory>
 
@@ -81,7 +81,7 @@ bool TRenderer::InitializeSwapChain()
 		NULL,
 		0,
 		D3D11_SDK_VERSION,
-		&m_SwapChain.GetSwapChainDesc(m_HWND, Engine->GetWindowWidth(), Engine->GetWindowHeight()),
+		&m_SwapChain.GetSwapChainDesc(m_HWND, Engine.GetWindowWidth(), Engine.GetWindowHeight()),
 		m_SwapChain.GetSwapChain().GetAddressOf(),
 		GDevice.GetAddressOf(),
 		NULL,
@@ -125,7 +125,7 @@ bool TRenderer::InitializeDepthStencil()
 	HRESULT hResult;
 
 	// µª½º ½ºÅÄ½Ç ¹öÆÛ »ý¼º
-	hResult = GDevice->CreateTexture2D(&m_DepthStencil.GetDepthStencilDesc(Engine->GetWindowWidth(), Engine->GetWindowHeight()), NULL, m_DepthStencil.GetDepthStencilBuffer().GetAddressOf());
+	hResult = GDevice->CreateTexture2D(&m_DepthStencil.GetDepthStencilDesc(Engine.GetWindowWidth(), Engine.GetWindowHeight()), NULL, m_DepthStencil.GetDepthStencilBuffer().GetAddressOf());
 	if (FAILED(hResult))
 	{
 		PRINT_ERROR("depth stencil buffer creation failed.")
@@ -160,7 +160,7 @@ bool TRenderer::InitializeOutputMerger()
 
 bool TRenderer::InitializeViewPort()
 {
-	GDeviceContext->RSSetViewports(1, &m_ViewPort.GetViewPort(Engine->GetWindowWidth(), Engine->GetWindowHeight()));
+	GDeviceContext->RSSetViewports(1, &m_ViewPort.GetViewPort(Engine.GetWindowWidth(), Engine.GetWindowHeight()));
 
 	return true;
 }
@@ -295,7 +295,7 @@ bool TRenderer::InitializeScene()
 	{
 		mCamera = std::make_shared<Camera>();
 		mCamera->getTransform()->setPosition(0.0f, 0.0f, -2.0f);
-		mCamera->SetProjectionValues(90.0f, static_cast<float>(Engine->GetWindowWidth()) / static_cast<float>(Engine->GetWindowHeight()), 0.1f, 1000.0f);
+		mCamera->SetProjectionValues(90.0f, static_cast<float>(Engine.GetWindowWidth()) / static_cast<float>(Engine.GetWindowHeight()), 0.1f, 1000.0f);
 	}
 
 	return true;
@@ -428,7 +428,7 @@ TSwapChain::TSwapChain()
 	m_SwapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 }
 
-DXGI_SWAP_CHAIN_DESC& TSwapChain::GetSwapChainDesc(HWND InHwnd /*= INVALID_HANDLE*/, Length InWindowWidth /*= INVALID_LENGTH*/, Length InWindowHeight /*= INVALID_LENGTH*/)
+DXGI_SWAP_CHAIN_DESC& TSwapChain::GetSwapChainDesc(HWND InHwnd /*= INVALID_HANDLE*/, TLENGTH InWindowWidth /*= INVALID_LENGTH*/, TLENGTH InWindowHeight /*= INVALID_LENGTH*/)
 {
 	if (InHwnd != INVALID_HANDLE)
 		m_SwapChainDesc.OutputWindow = InHwnd;
@@ -457,7 +457,7 @@ TDepthStencil::TDepthStencil() :
 	m_DepthStencilStateDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
 }
 
-CD3D11_TEXTURE2D_DESC& TDepthStencil::GetDepthStencilDesc(Length InWindowWidth /*= INVALID_LENGTH*/, Length InWindowHeight /*= INVALID_LENGTH*/)
+CD3D11_TEXTURE2D_DESC& TDepthStencil::GetDepthStencilDesc(TLENGTH InWindowWidth /*= INVALID_LENGTH*/, TLENGTH InWindowHeight /*= INVALID_LENGTH*/)
 {
 	if (InWindowWidth != INVALID_LENGTH)
 		m_DepthStencilDesc.Width = InWindowWidth;
@@ -476,7 +476,7 @@ TViewPort::TViewPort()
 	m_ViewPort.MaxDepth = D3D11_MAX_DEPTH;
 }
 
-CD3D11_VIEWPORT& TViewPort::GetViewPort(Length InWindowWidth /*= INVALID_LENGTH*/, Length InWindowHeight /*= INVALID_LENGTH*/)
+CD3D11_VIEWPORT& TViewPort::GetViewPort(TLENGTH InWindowWidth /*= INVALID_LENGTH*/, TLENGTH InWindowHeight /*= INVALID_LENGTH*/)
 {
 	if (InWindowWidth != INVALID_LENGTH)
 		m_ViewPort.Width = InWindowWidth;

@@ -1,7 +1,8 @@
+#include "TEngineCore.h"
 #include "Shaders.h"
+#include <string>
 
-
-bool TVertexShader::Initialize(TWString InShaderPath, D3D11_INPUT_ELEMENT_DESC* InLayoutDesc, UINT InNumElements)
+bool TVertexShader::Initialize(const std::wstring& InShaderPath, D3D11_INPUT_ELEMENT_DESC* InLayoutDesc, UINT InNumElements)
 {
 	HRESULT hResult;
 
@@ -44,7 +45,7 @@ TComPtr<ID3D11InputLayout> TVertexShader::GetInputLayout()
 	return m_InputLayout;
 }
 
-bool TPixelShader::Initialize(TWString InShaderPath)
+bool TPixelShader::Initialize(const std::wstring& InShaderPath)
 {
 	HRESULT hResult;
 

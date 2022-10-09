@@ -1,13 +1,18 @@
 #include "TEngine.h"
-#include "Framework/Logger/ErrorLogger/TErrorLogger.h"
 #include "Physics/PlaneCollider.h"
 #include "Physics/SphereCollider.h"
 
 // Engine
-TEngine* Engine;
+TEngine Engine;
 
 bool TEngine::InternalBootstrap()
 {
+	if (false == InitializeDataIOWrapper())
+	{
+		PRINT_ERROR("data io wrrapper Initialization failed.")
+			return false;
+	}
+
 	if (!m_Window.Initialize())
 	{
 		PRINT_ERROR("Window Initialization failed.")
@@ -159,12 +164,12 @@ const TEngineConfig& TEngine::GetConfig() const
 	return this->m_EngineConfig;
 }
 
-Length TEngine::GetWindowWidth() const
+TLENGTH TEngine::GetWindowWidth() const
 {
 	return m_Window.GetWindowData().GetWidth();
 }
 
-Length TEngine::GetWindowHeight() const
+TLENGTH TEngine::GetWindowHeight() const
 {
 	return m_Window.GetWindowData().GetHeight();
 }
@@ -204,8 +209,7 @@ TEngine* BootEngine(HINSTANCE InHInstance)
 {
 	PRINT_STAT("---Engine Bootstrap Started---");
 
-	Engine = new TEngine();
-	if (!Engine->Initialize(InHInstance))
+	if (!Engine.Initialize(InHInstance))
 	{
 		PRINT_STAT("---Engine Bootstrap Failed---");
 		return nullptr;
@@ -213,5 +217,5 @@ TEngine* BootEngine(HINSTANCE InHInstance)
 
 	PRINT_STAT("---Engine Bootstrap Succeed---");
 
-	return Engine;
+	return &Engine;
 }

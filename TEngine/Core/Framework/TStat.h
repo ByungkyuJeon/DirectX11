@@ -1,10 +1,11 @@
 #pragma once
 
 #include <Windows.h>
+#include <string>
 
-#if !_RELEASE
+#ifndef RELEASE
 #define _LOG_STAT
-class TStatLogger
+class TStat
 {
 public:
 	static void PrintStatLog(const std::string& InMsg)
@@ -20,8 +21,8 @@ private:
 };
 #endif
 
-#if !_RELEASE
-#define PRINT_STAT(msg) TStatLogger::PrintStatLog(std::string(__FILE__) + "(" + std::to_string(__LINE__) + ") : " + msg);
+#if !RELEASE
+#define PRINT_STAT(msg) TStat::PrintStatLog(std::string(__FILE__) + "(" + std::to_string(__LINE__) + ") : " + msg);
 #else
 #define PRINT_STAT(msg) 
 #endif

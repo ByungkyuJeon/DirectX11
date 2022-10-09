@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core.h"
+#include "TEngineDefines.h"
 #include <d3d11.h>
 #include <wrl/client.h>
 #include <vector>

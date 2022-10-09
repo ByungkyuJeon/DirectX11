@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core.h"
+#include "TEngineDefines.h"
 #include "TAdapterManager.h"
 #include "Shaders/Shaders.h"
 #include "Shaders/ConstantBuffer.h"
@@ -25,7 +25,7 @@ public:
 	TSwapChain& operator=(TSwapChain& InOther) = delete;
 	TSwapChain&& operator=(TSwapChain&& InOhter) = delete;
 
-	DXGI_SWAP_CHAIN_DESC& GetSwapChainDesc(HWND InHwnd = INVALID_HANDLE, Length InWindowWidth = INVALID_LENGTH, Length InWindowHeight = INVALID_LENGTH);
+	DXGI_SWAP_CHAIN_DESC& GetSwapChainDesc(HWND InHwnd = INVALID_HANDLE, TLENGTH InWindowWidth = INVALID_LENGTH, TLENGTH InWindowHeight = INVALID_LENGTH);
 
 	TComPtr<IDXGISwapChain> GetSwapChain() { return m_SwapChain; }
 	TComPtr<ID3D11Texture2D> GetBackBuffer() { return m_BackBuffer; }
@@ -48,7 +48,7 @@ public:
 	TDepthStencil& operator=(TDepthStencil& InOther) = delete;
 	TDepthStencil& operator=(TDepthStencil&& InOther) = delete;
 
-	CD3D11_TEXTURE2D_DESC& GetDepthStencilDesc(Length InWindowWidth = INVALID_LENGTH, Length InWindowHeight = INVALID_LENGTH);
+	CD3D11_TEXTURE2D_DESC& GetDepthStencilDesc(TLENGTH InWindowWidth = INVALID_LENGTH, TLENGTH InWindowHeight = INVALID_LENGTH);
 	CD3D11_DEPTH_STENCIL_DESC& GetDepthStencilStateDesc() { return m_DepthStencilStateDesc; }
 
 	TComPtr<ID3D11DepthStencilView> GetDepthStencilView() { return m_DepthStencilView; }
@@ -68,7 +68,7 @@ public:
 	TViewPort& operator=(TViewPort& InOther) = delete;
 	TViewPort& operator=(TViewPort&& InOther) = delete;
 
-	CD3D11_VIEWPORT& GetViewPort(Length InWindowWidth = INVALID_LENGTH, Length InWindowHeight = INVALID_LENGTH);
+	CD3D11_VIEWPORT& GetViewPort(TLENGTH InWindowWidth = INVALID_LENGTH, TLENGTH InWindowHeight = INVALID_LENGTH);
 };
 
 class TRasterizer

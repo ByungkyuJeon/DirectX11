@@ -1,7 +1,13 @@
 #pragma once
 
-#include "../Core.h"
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif // !NOMINMAX
+
 #include "Color.h"
+#include <assimp/material.h>
+#include <d3d11.h>
+#include <wrl/client.h>
 
 enum class TextureStorageType
 {

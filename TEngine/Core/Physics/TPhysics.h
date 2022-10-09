@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core.h"
+
 #include "PhysicsObject.h"
 
 struct PhysicsEngineSetting

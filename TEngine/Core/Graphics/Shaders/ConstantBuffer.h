@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Core.h"
+#include "TErrorLogger.h"
 #include "ConstantBufferTypes.h"
 
 template<class T>

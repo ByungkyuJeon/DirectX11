@@ -99,44 +99,44 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(LibraryPath)</LibraryPath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
-    <IncludePath>$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\;$(SolutionDir)TEngine\Core\;$(IncludePath)</IncludePath>
     <ReferencePath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
@@ -194,6 +194,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);NOMINMAX</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)TEngine\Core;$(SolutionDir)TClient\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

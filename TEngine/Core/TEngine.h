@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "TEngineCore.h"
 #include "Framework/Memory/TMemoryPool.h"
 #include "Window/TWindow.h"
 #include "Graphics/TRenderer.h"
@@ -60,13 +60,13 @@ public:
 
 	bool Initialize(HINSTANCE InHInstance);
 
-	virtual bool EngineTick();
+	bool EngineTick();
 
 	const TEngineConfig& GetConfig() const;
-	Length GetWindowWidth() const;
-	Length GetWindowHeight() const;
+	unsigned int GetWindowWidth() const;
+	unsigned int GetWindowHeight() const;
 };
 
-extern TEngine* Engine;
+extern TEngine Engine;
 
 extern TEngine* BootEngine(HINSTANCE InHInstance);

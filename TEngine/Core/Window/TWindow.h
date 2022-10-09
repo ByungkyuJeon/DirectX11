@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../Core.h"
-#include "../DevelopmentDefines.h"
+#include "TEngineDefines.h"
 #include "../Framework/Input/Keyboard/KeyboardClass.h"
 #include "../Framework/Input/Mouse/MouseClass.h"
 #include <Windows.h>

@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif // !NOMINMAX
+
 #include <Windows.h>
 #include <string>
 #include "ErrorCode.h"

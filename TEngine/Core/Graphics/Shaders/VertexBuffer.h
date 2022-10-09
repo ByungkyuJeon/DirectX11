@@ -1,6 +1,8 @@
 #pragma once
 
-#include "../../Core.h"
+#include "TErrorLogger.h"
+#include <wrl/client.h>
+#include <d3d11.h>
 
 template<class T>
 class VertexBuffer

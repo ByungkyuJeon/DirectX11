@@ -1,6 +1,8 @@
+#include "TEngineCore.h"
 #include "ModelManager.h"
-
-#include "../Core.h"
+#include <memory>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
 
 bool ModelManager::Initialize()
 {

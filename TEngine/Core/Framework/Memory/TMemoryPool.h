@@ -1,10 +1,9 @@
 #pragma once
 
+#include "TEngineCore.h"
 #include <typeinfo>
 #include <unordered_map>
 #include "../../Types/MemoryTypes.h"
-#include "../Logger/StatLogger/StatLogger.h"
-#include "../Logger/ErrorLogger/ErrorCode.h"
 
 
 #define DEFINE_MEMORY_POOL(TYPE_NAME, POOL_SIZE) static TMemoryPool<TYPE_NAME, POOL_SIZE> m_Pool;

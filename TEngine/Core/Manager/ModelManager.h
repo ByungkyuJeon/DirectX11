@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Graphics/Model.h"
-#include "../Core.h"
+#include <assimp/scene.h>
 
 class ModelManager
 {

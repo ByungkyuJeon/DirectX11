@@ -74,25 +74,25 @@
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
-    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
   </PropertyGroup>
@@ -142,6 +142,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -172,10 +173,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Core\DevelopmentDefines.h" />
+    <ClInclude Include="Core\TEngineContext.h" />
+    <ClInclude Include="Core\TEngineDefaults.h" />
+    <ClInclude Include="Core\TEngineDefines.h" />
+    <ClInclude Include="Core\Framework\ErrorCode.h" />
+    <ClInclude Include="Core\Framework\TStat.h" />
+    <ClInclude Include="Core\Framework\TErrorLogger.h" />
     <ClInclude Include="Core\TDataIOWrapper.h" />
     <ClInclude Include="Core\TEngineConfig.h" />
     <ClInclude Include="Core\TEngineMath.h" />
+    <ClInclude Include="Core\TEngineTypes.h" />
     <ClInclude Include="Core\TFrameTimer.h" />
     <ClInclude Include="Core\Framework\EventDrivenSystem\EventManager.h" />
     <ClInclude Include="Core\Framework\Game\Camera.h" />
@@ -216,9 +223,13 @@
     <ClInclude Include="Core\Graphics\TRenderer.h" />
     <ClInclude Include="Core\Physics\TPhysics.h" />
     <ClInclude Include="Core\TEngine.h" />
-    <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Core\TEngineCore.h" />
+    <ClInclude Include="ThirdParty\TinyXML\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\TDataIOWrapper.cpp" />
+    <ClCompile Include="Core\TEngineContext.cpp" />
+    <ClCompile Include="Core\TEngineCore.cpp" />
     <ClCompile Include="Core\TFrameTimer.cpp" />
     <ClCompile Include="Core\Framework\Game\Camera.cpp" />
     <ClCompile Include="Core\Framework\Game\GameObject.cpp" />
@@ -251,6 +262,7 @@
     <ClCompile Include="Core\Physics\TPhysics.cpp" />
     <ClCompile Include="Core\TEngine.cpp" />
     <ClCompile Include="Core\Window\TWindow.cpp" />
+    <ClCompile Include="ThirdParty\TinyXML\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\Framework\Memory\MemoryPool.inl" />

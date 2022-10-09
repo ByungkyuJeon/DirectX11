@@ -20,5 +20,10 @@ bool InitEngine(HINSTANCE InHInstance)
 	if (Engine == nullptr)
 		return false;
 
+	while (Engine->EngineTick())
+	{
+
+	}
+
 	return true;
 }

@@ -27,7 +27,7 @@
     <ClInclude Include="Core\Framework\Memory\TMemoryPool.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Core.h">
+    <ClInclude Include="Core\TEngineCore.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\ErrorCode.h">
@@ -42,7 +42,7 @@
     <ClInclude Include="Core\Framework\EventDrivenSystem\EventManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core\DevelopmentDefines.h">
+    <ClInclude Include="Core\TEngineDefines.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\TErrorLogger.h">
@@ -150,6 +150,27 @@
     <ClInclude Include="Core\TDataIOWrapper.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdParty\TinyXML\tinyxml2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Framework\ErrorCode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Framework\TStat.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Framework\TErrorLogger.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\TEngineTypes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\TEngineContext.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\TEngineDefaults.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\TEngine.cpp">
@@ -246,6 +267,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\Physics\SphereCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\TDataIOWrapper.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\TinyXML\tinyxml2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\TEngineContext.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\TEngineCore.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
