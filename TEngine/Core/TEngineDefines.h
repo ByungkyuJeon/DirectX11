@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #ifndef ENGINE_DEFINE
 #define ENGINE_DEFINE
 
@@ -19,8 +21,8 @@
 
 // TYPE DEFINES
 #define TComPtr Microsoft::WRL::ComPtr
-#define TWString std::wstring
-#define TString std::string
-#define TLENGTH unsigned int
+typedef std::wstring TWString;
+typedef std::string TString;
+typedef unsigned int TLength;
 
 #endif // !ENGINE_DEFINE

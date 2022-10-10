@@ -338,4 +338,3 @@ void TWindow::RegisterWindowClass()
 	// 윈도우 구조체 등록
 	RegisterClassEx(&windowClass);
 }
-

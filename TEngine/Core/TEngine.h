@@ -8,11 +8,7 @@
 #include "Framework/Game/Map.h"
 #include "Manager/ModelManager.h"
 #include "Manager/MapManager.h"
-
-struct TEngineConfig
-{
-	
-};
+#include "TEngineConfig.h"
 
 class TEngine
 {
@@ -69,4 +65,4 @@ public:
 
 extern TEngine Engine;
 
-extern TEngine* BootEngine(HINSTANCE InHInstance);
+extern bool BootEngine(HINSTANCE InHInstance);

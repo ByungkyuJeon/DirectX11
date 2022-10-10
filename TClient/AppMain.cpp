@@ -33,7 +33,7 @@ int GuardedMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_
 		return -1;
 	}
 
-	while (Engine->EngineTick())
+	while (Engine.EngineTick())
 	{
 
 	}

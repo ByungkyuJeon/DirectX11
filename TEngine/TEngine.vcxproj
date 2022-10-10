@@ -27,13 +27,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,30 +71,36 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
     <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
     <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
     <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+    <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
     <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
+    <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -224,6 +230,7 @@
     <ClInclude Include="Core\Physics\TPhysics.h" />
     <ClInclude Include="Core\TEngine.h" />
     <ClInclude Include="Core\TEngineCore.h" />
+    <ClInclude Include="TEngineConfig.h" />
     <ClInclude Include="ThirdParty\TinyXML\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>

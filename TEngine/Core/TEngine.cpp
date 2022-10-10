@@ -205,17 +205,17 @@ bool TEngine::EngineTick()
 	return true;
 }
 
-TEngine* BootEngine(HINSTANCE InHInstance)
+bool BootEngine(HINSTANCE InHInstance)
 {
 	PRINT_STAT("---Engine Bootstrap Started---");
 
 	if (!Engine.Initialize(InHInstance))
 	{
 		PRINT_STAT("---Engine Bootstrap Failed---");
-		return nullptr;
+		return false;
 	}
 
 	PRINT_STAT("---Engine Bootstrap Succeed---");
 
-	return &Engine;
+	return true;
 }

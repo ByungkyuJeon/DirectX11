@@ -16,14 +16,8 @@
 
 bool InitEngine(HINSTANCE InHInstance)
 {
-	Engine = BootEngine(InHInstance);
-	if (Engine == nullptr)
+	if (false == BootEngine(InHInstance))
 		return false;
-
-	while (Engine->EngineTick())
-	{
-
-	}
 
 	return true;
 }
