@@ -1,5 +1,17 @@
 <DataDefinition>
-	<Data name="EngineConfig" src="">
-		
-	</Data>
+	<File name="EngineConfig" src="\..\..\Config\EngineConfig.xml">
+		<Data name="Window">
+			<Data name="Screen">
+				<Value name="isFullScreen" type="bool" default="true"/>
+				<Value name="width" type="int" />
+				<Value name="height" type="int"/>
+			</Data>
+			<Data name="UpperBar">
+				<Value name="title" type="string"/>
+			</Data>
+			<Value name="isFullScreen" type="bool" default="true"/>
+			<Value name="width" type="int" />
+			<Value name="height" type="int"/>
+		</Data>
+	</File>
 </DataDefinition>

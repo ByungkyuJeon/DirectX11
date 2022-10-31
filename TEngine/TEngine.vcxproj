@@ -74,33 +74,33 @@
     <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
-    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)TEngine\Src\;$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)ThirdParty\;$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\ThirdParty\;$(SolutionDir)ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IntDir>$(SolutionDir)obj\Engine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Src\;$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
-    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)obj\Engine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Src\;$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
     <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)obj\Engine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
-    <ExternalIncludePath>$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
+    <IncludePath>$(SolutionDir)TEngine\Src\;$(SolutionDir)TEngine\Core\;$(SolutionDir)TEngine\Core\Framework\;$(SolutionDir)TEngine\ThirdParty\;$(IncludePath);$(SolutionDir)TEngine\Includes\</IncludePath>
+    <ExternalIncludePath>$(SolutionDir)TEngine\ThirdParty\;$(ExternalIncludePath);$(SolutionDir)TEngine\Includes\</ExternalIncludePath>
     <ReferencePath>$(ReferencePath);$(SolutionDir)TEngine\Libs\Any\;$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\</ReferencePath>
     <LibraryPath>$(LibraryPath);$(SolutionDir)TEngine\Libs\$(Platform)\$(Configuration)\;$(SolutionDir)TEngine\Libs\Any\</LibraryPath>
     <OutDir>$(SolutionDir)TClient\Libs\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\TEngine\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)obj\Engine\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -113,12 +113,18 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(SolutionDir)Build\$(Platform)\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -130,6 +136,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -138,6 +147,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(SolutionDir)Build\$(Platform)\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -149,6 +161,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -156,6 +170,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;DXGI.lib;D3DCompiler.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(SolutionDir)Build\$(Platform)\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -168,6 +185,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -177,102 +197,107 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d11.lib;DirectXTK.lib;DXGI.lib;D3DCompiler.lib;assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <FxCompile>
+      <ObjectFileOutput>$(SolutionDir)Build\$(Platform)\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Core\TEngineContext.h" />
-    <ClInclude Include="Core\TEngineDefaults.h" />
-    <ClInclude Include="Core\TEngineDefines.h" />
-    <ClInclude Include="Core\Framework\ErrorCode.h" />
-    <ClInclude Include="Core\Framework\TStat.h" />
-    <ClInclude Include="Core\Framework\TErrorLogger.h" />
-    <ClInclude Include="Core\TDataIOWrapper.h" />
-    <ClInclude Include="Core\TEngineConfig.h" />
-    <ClInclude Include="Core\TEngineMath.h" />
-    <ClInclude Include="Core\TEngineTypes.h" />
-    <ClInclude Include="Core\TFrameTimer.h" />
-    <ClInclude Include="Core\Framework\EventDrivenSystem\EventManager.h" />
-    <ClInclude Include="Core\Framework\Game\Camera.h" />
-    <ClInclude Include="Core\Framework\Game\GameObject.h" />
-    <ClInclude Include="Core\Framework\Game\LightObject.h" />
-    <ClInclude Include="Core\Framework\Game\Map.h" />
-    <ClInclude Include="Core\Framework\Game\Transform.h" />
-    <ClInclude Include="Core\Framework\Input\Keyboard\KeyboardClass.h" />
-    <ClInclude Include="Core\Framework\Input\Keyboard\KeyboardEvent.h" />
-    <ClInclude Include="Core\Framework\Input\Mouse\MouseClass.h" />
-    <ClInclude Include="Core\Framework\Input\Mouse\MouseEvent.h" />
+    <ClInclude Include="Src\TEngineContext.h" />
+    <ClInclude Include="Src\TEngineDefaults.h" />
+    <ClInclude Include="Src\TEngineDefines.h" />
+    <ClInclude Include="Src\ErrorCode.h" />
+    <ClInclude Include="Src\TStat.h" />
+    <ClInclude Include="Src\TErrorLogger.h" />
+    <ClInclude Include="Src\TDataIOWrapper.h" />
+    <ClInclude Include="Src\TEngineMath.h" />
+    <ClInclude Include="Src\TEngineTypes.h" />
+    <ClInclude Include="Src\TFrameTimer.h" />
+    <ClInclude Include="Src\EventManager.h" />
+    <ClInclude Include="Src\Camera.h" />
+    <ClInclude Include="Src\GameObject.h" />
+    <ClInclude Include="Src\LightObject.h" />
+    <ClInclude Include="Src\Map.h" />
+    <ClInclude Include="Src\Transform.h" />
+    <ClInclude Include="Src\KeyboardClass.h" />
+    <ClInclude Include="Src\KeyboardEvent.h" />
+    <ClInclude Include="Src\MouseClass.h" />
+    <ClInclude Include="Src\MouseEvent.h" />
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\ErrorCode.h" />
     <ClInclude Include="Core\Framework\Logger\ErrorLogger\TErrorLogger.h" />
     <ClInclude Include="Core\Framework\Logger\StatLogger\StatLogger.h" />
-    <ClInclude Include="Core\Framework\Memory\TMemoryPool.h" />
-    <ClInclude Include="Core\Graphics\Color.h" />
-    <ClInclude Include="Core\Graphics\IndexBuffer.h" />
-    <ClInclude Include="Core\Graphics\Mesh.h" />
-    <ClInclude Include="Core\Graphics\Model.h" />
-    <ClInclude Include="Core\Graphics\RenderableObjects.h" />
-    <ClInclude Include="Core\Graphics\Shaders\ConstantBuffer.h" />
-    <ClInclude Include="Core\Graphics\Shaders\ConstantBufferTypes.h" />
-    <ClInclude Include="Core\Graphics\Shaders\Shaders.h" />
-    <ClInclude Include="Core\Graphics\Shaders\Vertex.h" />
-    <ClInclude Include="Core\Graphics\Shaders\VertexBuffer.h" />
-    <ClInclude Include="Core\Graphics\TAdapterManager.h" />
-    <ClInclude Include="Core\Graphics\Texture.h" />
-    <ClInclude Include="Core\Helper\StringHelper.h" />
-    <ClInclude Include="Core\Manager\MapManager.h" />
-    <ClInclude Include="Core\Manager\ModelManager.h" />
-    <ClInclude Include="Core\Physics\AxisAlignedBoundingBox.h" />
-    <ClInclude Include="Core\Physics\Collider.h" />
-    <ClInclude Include="Core\Physics\IntersectionData.h" />
-    <ClInclude Include="Core\Physics\PhysicsObject.h" />
-    <ClInclude Include="Core\Physics\PlaneCollider.h" />
-    <ClInclude Include="Core\Physics\SphereCollider.h" />
-    <ClInclude Include="Core\Window\TWindow.h" />
-    <ClInclude Include="Core\Graphics\TRenderer.h" />
-    <ClInclude Include="Core\Physics\TPhysics.h" />
-    <ClInclude Include="Core\TEngine.h" />
-    <ClInclude Include="Core\TEngineCore.h" />
-    <ClInclude Include="TEngineConfig.h" />
+    <ClInclude Include="Src\TMemoryPool.h" />
+    <ClInclude Include="Src\Color.h" />
+    <ClInclude Include="Src\IndexBuffer.h" />
+    <ClInclude Include="Src\Mesh.h" />
+    <ClInclude Include="Src\Model.h" />
+    <ClInclude Include="Src\RenderableObjects.h" />
+    <ClInclude Include="Src\ConstantBuffer.h" />
+    <ClInclude Include="Src\ConstantBufferTypes.h" />
+    <ClInclude Include="Src\Shaders.h" />
+    <ClInclude Include="Src\Vertex.h" />
+    <ClInclude Include="Src\VertexBuffer.h" />
+    <ClInclude Include="Src\TAdapterManager.h" />
+    <ClInclude Include="Src\Texture.h" />
+    <ClInclude Include="Src\StringHelper.h" />
+    <ClInclude Include="Src\MapManager.h" />
+    <ClInclude Include="Src\ModelManager.h" />
+    <ClInclude Include="Src\AxisAlignedBoundingBox.h" />
+    <ClInclude Include="Src\Collider.h" />
+    <ClInclude Include="Src\IntersectionData.h" />
+    <ClInclude Include="Src\PhysicsObject.h" />
+    <ClInclude Include="Src\PlaneCollider.h" />
+    <ClInclude Include="Src\SphereCollider.h" />
+    <ClInclude Include="Src\TWindow.h" />
+    <ClInclude Include="Src\TRenderer.h" />
+    <ClInclude Include="Src\TPhysics.h" />
+    <ClInclude Include="Src\TEngine.h" />
+    <ClInclude Include="Src\TEngineCore.h" />
+    <ClInclude Include="Src\TEngineConfigManager.h" />
     <ClInclude Include="ThirdParty\TinyXML\tinyxml2.h" />
+    <ClInclude Include="Src\TWindowConfig.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core\TDataIOWrapper.cpp" />
-    <ClCompile Include="Core\TEngineContext.cpp" />
-    <ClCompile Include="Core\TEngineCore.cpp" />
-    <ClCompile Include="Core\TFrameTimer.cpp" />
-    <ClCompile Include="Core\Framework\Game\Camera.cpp" />
-    <ClCompile Include="Core\Framework\Game\GameObject.cpp" />
-    <ClCompile Include="Core\Framework\Game\LightObject.cpp" />
-    <ClCompile Include="Core\Framework\Game\Map.cpp" />
-    <ClCompile Include="Core\Framework\Game\Transform.cpp" />
-    <ClCompile Include="Core\Framework\Input\Keyboard\KeyboardClass.cpp" />
-    <ClCompile Include="Core\Framework\Input\Keyboard\KeyboardEvent.cpp" />
-    <ClCompile Include="Core\Framework\Input\Mouse\MouseClass.cpp" />
-    <ClCompile Include="Core\Framework\Input\Mouse\MouseEvent.cpp" />
-    <ClCompile Include="Core\Framework\Memory\TMemoryPool.cpp" />
-    <ClCompile Include="Core\Graphics\Color.cpp" />
-    <ClCompile Include="Core\Graphics\Mesh.cpp" />
-    <ClCompile Include="Core\Graphics\Model.cpp" />
-    <ClCompile Include="Core\Graphics\RenderableObjects.cpp" />
-    <ClCompile Include="Core\Graphics\Shaders\Shaders.cpp" />
-    <ClCompile Include="Core\Graphics\TAdapterManager.cpp" />
-    <ClCompile Include="Core\Graphics\Texture.cpp" />
-    <ClCompile Include="Core\Helper\StringHelper.cpp" />
-    <ClCompile Include="Core\Manager\MapManager.cpp" />
-    <ClCompile Include="Core\Manager\ModelManager.cpp" />
-    <ClCompile Include="Core\Physics\AxisAlignedBoundingBox.cpp" />
-    <ClCompile Include="Core\Physics\Collider.cpp" />
-    <ClCompile Include="Core\Physics\IntersectionData.cpp" />
-    <ClCompile Include="Core\Physics\PhysicsObject.cpp" />
-    <ClCompile Include="Core\Physics\PlaneCollider.cpp" />
-    <ClCompile Include="Core\Physics\SphereCollider.cpp" />
-    <ClCompile Include="Core\Types\MemoryTypes.h" />
-    <ClCompile Include="Core\Graphics\TRenderer.cpp" />
-    <ClCompile Include="Core\Physics\TPhysics.cpp" />
-    <ClCompile Include="Core\TEngine.cpp" />
-    <ClCompile Include="Core\Window\TWindow.cpp" />
+    <ClCompile Include="Src\TDataIOWrapper.cpp" />
+    <ClCompile Include="Src\TEngineContext.cpp" />
+    <ClCompile Include="Src\TEngineCore.cpp" />
+    <ClCompile Include="Src\TFrameTimer.cpp" />
+    <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\GameObject.cpp" />
+    <ClCompile Include="Src\LightObject.cpp" />
+    <ClCompile Include="Src\Map.cpp" />
+    <ClCompile Include="Src\Transform.cpp" />
+    <ClCompile Include="Src\KeyboardClass.cpp" />
+    <ClCompile Include="Src\KeyboardEvent.cpp" />
+    <ClCompile Include="Src\MouseClass.cpp" />
+    <ClCompile Include="Src\MouseEvent.cpp" />
+    <ClCompile Include="Src\TMemoryPool.cpp" />
+    <ClCompile Include="Src\Color.cpp" />
+    <ClCompile Include="Src\Mesh.cpp" />
+    <ClCompile Include="Src\Model.cpp" />
+    <ClCompile Include="Src\RenderableObjects.cpp" />
+    <ClCompile Include="Src\Shaders.cpp" />
+    <ClCompile Include="Src\TAdapterManager.cpp" />
+    <ClCompile Include="Src\Texture.cpp" />
+    <ClCompile Include="Src\StringHelper.cpp" />
+    <ClCompile Include="Src\MapManager.cpp" />
+    <ClCompile Include="Src\ModelManager.cpp" />
+    <ClCompile Include="Src\AxisAlignedBoundingBox.cpp" />
+    <ClCompile Include="Src\Collider.cpp" />
+    <ClCompile Include="Src\IntersectionData.cpp" />
+    <ClCompile Include="Src\PhysicsObject.cpp" />
+    <ClCompile Include="Src\PlaneCollider.cpp" />
+    <ClCompile Include="Src\SphereCollider.cpp" />
+    <ClCompile Include="Src\MemoryTypes.h" />
+    <ClCompile Include="Src\TRenderer.cpp" />
+    <ClCompile Include="Src\TPhysics.cpp" />
+    <ClCompile Include="Src\TEngine.cpp" />
+    <ClCompile Include="Src\TWindow.cpp" />
+    <ClCompile Include="Src\TEngineConfigManager.cpp" />
     <ClCompile Include="ThirdParty\TinyXML\tinyxml2.cpp" />
+    <ClCompile Include="Src\TWindowConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Core\Framework\Memory\MemoryPool.inl" />
+    <None Include="Src\MemoryPool.inl" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
